@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".my_list">
+        </activity>
+        <activity
+            android:name=".TodoList">
+        </activity>
+        <activity
+            android:name=".AllRooms">
+        </activity>
+        <activity
+            android:name=".Recommended">
+        </activity>
     </application>
 
 </manifest>
