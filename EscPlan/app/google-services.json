@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "632728554736",
+    "firebase_url": "https://escplan-71bed.firebaseio.com",
+    "project_id": "escplan-71bed",
+    "storage_bucket": "escplan-71bed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632728554736:android:8448d6ba5d3aeca1",
+        "android_client_info": {
+          "package_name": "com.esc_plan.escplan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632728554736-jgri044i62jrdqgir6of9tjme5mvtlrl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.esc_plan.escplan",
+            "certificate_hash": "86ab4f0679aa0363f44b20ccb3dccf9b5e2706a6"
+          }
+        },
+        {
+          "client_id": "632728554736-8jqr49784kmugvr0qdth0ip0vpkammg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbh1rmI108AZVyCFLmdS7pIHLwZKeF3uY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632728554736-8jqr49784kmugvr0qdth0ip0vpkammg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
