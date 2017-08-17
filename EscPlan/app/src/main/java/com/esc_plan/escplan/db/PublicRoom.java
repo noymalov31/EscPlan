@@ -1,10 +1,17 @@
 package com.esc_plan.escplan.db;
 
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Rooms which are part of the open DB - all rooms manu.
@@ -12,6 +19,8 @@ import java.util.Map;
 
 public class PublicRoom implements Room, Serializable {
 
+    /* room  id */
+    private String id;
 
     /* room name */
     private String name;
@@ -22,17 +31,11 @@ public class PublicRoom implements Room, Serializable {
     /* average rating */
     private float rating;
 
-    /*  date added to db */
-    private Date date;
-
     /* average time to complete the room (in sec) */
     private int time;
 
-    /* difficulty level */
-    private float difficulty;
-
     /* room theme */
-    private int[] genreVote;
+    private Room.Genre genre;
 
     /* website URL */
     private String URL;
@@ -40,11 +43,11 @@ public class PublicRoom implements Room, Serializable {
     /* physical address */
     private String address;
 
-    /* reviews (for ranking) */
-    private Map<String, Integer> reviewsBag;
+    /* reviews  */
+    private ArrayList<String> reviews;
 
     /* list of FB id's */
-    private String[] similarRooms;
+    private ArrayList<String> similarRooms;
 
     /**
      * empty constructor for FB
@@ -60,11 +63,9 @@ public class PublicRoom implements Room, Serializable {
         this.name = name;
         this.peopleCompleted = 0;
         this.rating = 0;
-        this.date = new Date();
         this.time = 0;
-        this.difficulty = 0;
-        this.genreVote = new int[Genre.length];
-        this.reviewsBag = new HashMap<>();
+        this.genre = Genre.General;
+        this.reviews= new ArrayList<>();
     }
 
     /**
@@ -72,24 +73,113 @@ public class PublicRoom implements Room, Serializable {
      * on this room.
      * @param newRoom - PrivateRoom added be a user
      */
-    public void addReview(Room newRoom) {
+    public void addPrivateRoom(PrivateRoom newRoom) {
         if (peopleCompleted == 0) {
             this.rating = newRoom.getRating();
             this.time = newRoom.getTime();
-            this.difficulty = newRoom.getDifficulty();
         } else {
             this.rating = (this.rating * (this.peopleCompleted - 1) + newRoom.getRating())
                     / this.peopleCompleted;
             this.time = (this.time * (this.peopleCompleted - 1) + newRoom.getTime())
                     / this.peopleCompleted;
-            this.difficulty = (this.difficulty *(this.peopleCompleted - 1) + newRoom.getDifficulty())
-                    / this.peopleCompleted;
 
         }
-        this.genreVote[newRoom.getGenre().ordinal()]++;
-        this.reviewsBag.putAll(newRoom.getReviewsBag());
+        this.reviews.add(newRoom.getReview());
         this.peopleCompleted++;
     }
+
+    public void addReview(String review) {
+        reviews.add(review);
+    }
+
+    /* ---------------- GETTERS ---------------- */
+
+    public String getId() {
+        return id;
+    }
+
+    public String genId(DatabaseReference dbref) {
+        if (id == null) {
+            id = dbref.push().getKey();
+        }
+        return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    public int getPeopleCompleted() {
+        return peopleCompleted;
+    }
+
+    @Override
+    public float getRating() {
+        return rating;
+    }
+
+    @Override
+    public int getTime() {
+        return time;
+    }
+
+    @Override
+    public Genre getGenre() {
+        return this.genre;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public ArrayList<String> getReviews() {
+        return reviews;
+    }
+
+    public ArrayList<String> getSimilarRooms() {
+        return similarRooms;
+    }
+
+    /* ---------------- SETTERS ---------------- */
+
+    public void setPeopleCompleted(int peopleCompleted) {
+        this.peopleCompleted = peopleCompleted;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setReviews(ArrayList<String> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void setSimilarRooms(ArrayList<String> similarRooms) {
+        this.similarRooms = similarRooms;
+    }
+
+    /* ---------------- RANKERS ---------------- */
 
     /**
      * function which calculates how similar are this room and other room,
@@ -113,9 +203,43 @@ public class PublicRoom implements Room, Serializable {
         return 0;
     }
 
+    public Map<String, Integer> getReviewsBag() {
+        if (reviews == null || reviews.isEmpty()) {
+            return new HashMap<>();
+        }
+        TreeMap<String, Integer> freqMap = new TreeMap<>();
+
+        /* add entry counting number of words*/
+        Integer cnt = 0;
+
+        for (String review : reviews) {
+            String text = review.toLowerCase();
+
+            String currToken;
+            Matcher m = Pattern.compile("\\w+").matcher(text);
+
+            while (m.find()) {
+                cnt++;
+                currToken = new String(text.substring(m.start(), m.end()));
+                if (freqMap.containsKey(currToken)) {
+                    freqMap.put(currToken, freqMap.get(currToken) + 1);
+
+                } else {
+                    freqMap.put(currToken, 1);
+                }
+            }
+        }
+        freqMap.put("*", cnt);
+        return freqMap;
+    }
+    public void syncToFB(DatabaseReference publicRef) {
+        publicRef.child(genId(publicRef)).setValue(this);
+    }
+/*
     /**
      * @Return map object which can be serialized with fb
-     */
+     *//*
+
     public Map<String, Object> itemToFB() throws IllegalAccessException {
         Map<String, Object> map = new HashMap<>();
 
@@ -124,68 +248,19 @@ public class PublicRoom implements Room, Serializable {
         }
         return map;
     }
-
-    /* ---------------- GETTERS ---------------- */
-
-    @Override
-    public String getName() {
-        return name;
+    public String addToFB(DatabaseReference dbRef) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("peopleCompleted", peopleCompleted);
+        map.put("rating", rating);
+        map.put("time", time);
+        map.put("genre", genre);
+        map.put("URL", URL);
+        map.put("address", address);
+        map.put("similarRooms", similarRooms);
+        map.put("reviews", reviews);
+        dbRef.setValue(map);
+        return "A";
     }
-
-    public int getPeopleCompleted() {
-        return peopleCompleted;
-    }
-
-    @Override
-    public float getRating() {
-        return rating;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    @Override
-    public int getTime() {
-        return time;
-    }
-
-    @Override
-    public float getDifficulty() {
-        return difficulty;
-    }
-
-    @Override
-    public Genre getGenre() {
-        int max = 0;
-        Genre argmax = Genre.General;
-        for (int i = 0; i < this.genreVote.length; i++) {
-            if (genreVote[i] > max) {
-                max = genreVote[i];
-                argmax = Genre.values()[i];
-            }
-        }
-        return argmax;
-    }
-
-    public int[] getGenreVote() {
-        return genreVote;
-    }
-
-    public String getURL() {
-        return URL;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    @Override
-    public Map<String, Integer> getReviewsBag() {
-        return reviewsBag;
-    }
-
-    public String[] getSimilarRooms() {
-        return similarRooms;
-    }
+*/
 }

@@ -1,6 +1,7 @@
 package com.esc_plan.escplan.db;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -12,7 +13,7 @@ public interface Room {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
 
     enum Genre {
-        General, Kids, Horror, Military;
+        General, Kids, Horror, Fantasy, Action;
         public static final int length = Genre.values().length;
     }
 
@@ -22,10 +23,8 @@ public interface Room {
 
     int getTime();
 
-    float getDifficulty();
-
     Genre getGenre();
 
-    Map<String,Integer> getReviewsBag();
+//    Map<String,Integer> getReviewsBag();
 
 }
