@@ -147,7 +147,7 @@ public class Add_room_list extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     String my_date =  String.valueOf(dp.getDayOfMonth())+"."+String.valueOf(dp.getMonth()+1)+"." +String.valueOf(dp.getYear());
                                     date.setText(my_date);
-                                    Toast.makeText(Add_room_list.this, "activity added successfully ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Add_room_list.this, "Date added successfully ", Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
