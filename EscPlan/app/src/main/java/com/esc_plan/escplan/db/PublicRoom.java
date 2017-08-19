@@ -235,6 +235,17 @@ public class PublicRoom implements Room, Serializable {
     public void syncToFB(DatabaseReference publicRef) {
         publicRef.child(genId(publicRef)).setValue(this);
     }
+
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (obj instanceof String) {
+            return this.getId().equals(obj);
+        }
+        if (!(obj instanceof PrivateRoom)) return false;
+        PublicRoom other = (PublicRoom) obj;
+        return getId().equals(other.getId());
+    }
 /*
     /**
      * @Return map object which can be serialized with fb

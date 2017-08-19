@@ -138,5 +138,15 @@ public class PrivateRoom implements Room, Serializable {
         this.picture = picture;
     }
 
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (obj instanceof String) {
+            return this.getPublicRoomLink().equals(obj);
+        }
+        if (!(obj instanceof PrivateRoom)) return false;
+        PrivateRoom other = (PrivateRoom) obj;
+        return getPublicRoomLink().equals(other.getPublicRoomLink());
+    }
 
 }
