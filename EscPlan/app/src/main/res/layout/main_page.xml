@@ -4,57 +4,60 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context="com.esc_plan.escplan.MainActivity">
 
-    <Button
-        android:id="@+id/allRooms_button"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/all_rooms_button" />
 
     <Button
         android:id="@+id/Recommended_button"
-        android:layout_width="115dp"
-        android:layout_height="100dp"
+        android:layout_width="155dp"
+        android:layout_height="125dp"
+        android:background="@drawable/recommended_button"
         android:layout_above="@+id/MyList_button"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/recommended_button" />
+        android:layout_marginLeft="10dp"
+         />
 
     <Button
         android:id="@+id/TODO_button"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/MyList_button"
+        android:layout_width="155dp"
+        android:layout_height="125dp"
+        android:background="@drawable/todo_button"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/todo_button" />
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/MyList_button"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
+        android:layout_width="115dp"
+        android:layout_height="125dp"
+        android:background="@drawable/my_list_button1"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/TODO_button"
         android:layout_alignEnd="@+id/TODO_button"
-        android:layout_alignStart="@+id/allRooms_button"
-        android:layout_below="@+id/allRooms_button"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/my_list_button1" />
+        android:layout_alignStart="@+id/Recommended_button" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp">
+        <Button
+            android:id="@+id/addRoom_button"
+            android:layout_width="110dp"
+            android:layout_height="100dp"
+            android:background="@drawable/add_room_button"
+            android:layout_marginStart="18dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="12dp" />
 
-    <Button
-        android:id="@+id/addRoom_button"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="23dp"
-        android:layout_toStartOf="@+id/Recommended_button"
-        android:background="@drawable/add_room_button" />
+        <Button
+            android:id="@+id/allRooms_button"
+            android:layout_width="110dp"
+            android:layout_height="100dp"
+            android:background="@drawable/all_rooms_button"
+            android:layout_marginBottom="22dp"
+            android:layout_marginEnd="13dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/myCal_button"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:layout_alignTop="@+id/addRoom_button"
-        android:layout_toEndOf="@+id/Recommended_button"
-        android:background="@drawable/cal_button" />
 </RelativeLayout>

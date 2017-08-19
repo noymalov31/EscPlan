@@ -28,6 +28,12 @@
         <activity
             android:name=".Recommended">
         </activity>
+        <activity
+            android:name=".Add_room_todo">
+        </activity>
+        <activity
+            android:name=".Add_room_list">
+        </activity>
     </application>
 
 </manifest>

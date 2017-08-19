@@ -1,5 +1,7 @@
 package com.esc_plan.escplan;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,7 +55,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button add_btn=(Button)findViewById(R.id.addRoom_button);
+        add_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Add_room_list.class);
+                startActivity(i);
+            }
+        });
+
 
 
     }
+
+
 }
