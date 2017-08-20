@@ -1,7 +1,5 @@
 package com.esc_plan.escplan.db;
 
-import android.widget.Toast;
-
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,6 +15,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.TreeMap;
 
 /**
@@ -27,15 +26,20 @@ import java.util.TreeMap;
 
 public class Escaper implements Serializable{
 
+    private static final Date NOT_SCHEDULED = new Date(0);
+
     private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference dbRefAllRooms = null;
     private DatabaseReference dbRefMyRooms = null;
     private DatabaseReference dbRefTodoRooms = null;
+    private DatabaseReference dbRefRecommendedRooms = null;
     private DatabaseReference dbRefRanks = null;
 
     private Query allRoomsQuery = null;
     private Query myRoomsQuery = null;
     private Query todoRoomsQuery = null;
+    private Query recommendedRoomsQuery = null;
+
 
     /* id */
     private String id;
@@ -48,6 +52,12 @@ public class Escaper implements Serializable{
 
     /* all rooms */
     private ArrayList<PublicRoom> allRooms;
+
+    /* recommended rooms */
+    private ArrayList<PublicRoom> recommendedRooms;
+
+    /* tuples of (roomId,coorelation) */
+    private TreeMap<String, Float> recommends;
 
     /* rooms to do by escaper (date if scheduled) */
     private TreeMap<String, Date> todo;
@@ -62,21 +72,26 @@ public class Escaper implements Serializable{
         myRooms = new ArrayList<>();
         todoRooms = new ArrayList<>();
         allRooms = new ArrayList<>();
+        recommendedRooms = new ArrayList<>();
         ranker = new HashMap<>();
         todo = new TreeMap<>();
+        recommends = new TreeMap<>();
 
         dbRefRanks = dbRef.child("ranks").child(id);
         dbRefTodoRooms = dbRef.child(id).child("todo");
         dbRefMyRooms = dbRef.child(id).child("rooms");
+        dbRefRecommendedRooms = dbRef.child(id).child("recommended");
         dbRefAllRooms = dbRef.child("public");
 
         myRoomsQuery = dbRefMyRooms.orderByChild("name");
         allRoomsQuery = dbRefAllRooms.orderByChild("name");
-        todoRoomsQuery = dbRefTodoRooms.orderByChild("name");
+        todoRoomsQuery = dbRefTodoRooms.orderByKey();
+        recommendedRoomsQuery = dbRefRecommendedRooms.orderByValue();
         setAllRoomsEvents();
         setMyRoomsEvents();
         setTodoEvents();
         setRankersEvents();
+        setRecommendedEvents();
     }
 
     /**
@@ -101,11 +116,48 @@ public class Escaper implements Serializable{
     }
 
     /**
+     * @return "recommended" list
+     */
+    public ArrayList<PublicRoom> getRecommendedRooms() {
+        return recommendedRooms;
+    }
+
+    /**
      * should be called before app terminates
      */
     private void syncToFB() {
         dbRefRanks.setValue(ranker);
         dbRefTodoRooms.setValue(todo);
+        /*
+        for (int i = 0; i < recommendedRooms.size(); i++) {
+            dbRefRecommendedRooms.child(String.valueOf(i)).setValue(recommendedRooms.get(i).getId());
+        }
+        */
+    }
+
+    /**
+     * @param todoRoom room from the todo view
+     * @return date scheduled or NULL in case not scheduled
+     */
+    public Date getScheduledDate(PublicRoom todoRoom) {
+        Date date = todo.get(todoRoom);
+        return NOT_SCHEDULED.equals(date) ? null : date;
+    }
+
+    /**
+     * @param recommendedRoom room from the recommended view
+     * @return the correlation to this user
+     */
+    public float getCoorelation(PublicRoom recommendedRoom) {
+        return recommends.get(recommendedRoom);
+    }
+
+    public List<String> getAllRoomsNames() {
+        ArrayList<String> names = new ArrayList<>();
+        for (PublicRoom room : allRooms) {
+            names.add(room.getName());
+        }
+        return names;
     }
 
     public void addPrivateRoom(PrivateRoom room) {
@@ -132,18 +184,45 @@ public class Escaper implements Serializable{
     }
 
     public void unschedule(PublicRoom room) {
-//        todo.put(room.genId(dbRefTodoRooms), new Date(0));
-        todo.get(room.genId(dbRefTodoRooms)).setTime(0);
+        todo.put(room.getId(), NOT_SCHEDULED);
+//        todo.get(room.genId(dbRefTodoRooms)).setTime(0);
     }
 
     public void todo(PublicRoom room) {
-        todo.put(room.genId(dbRefTodoRooms), new Date(0));
+        todo.put(room.getId(), NOT_SCHEDULED);
         todoRooms.add(room);
     }
 
     public void untodo(PublicRoom room) {
         todo.remove(room.genId(dbRefTodoRooms));
         todoRooms.remove(room);
+    }
+
+    private PublicRoom getPublicById(String key) {
+        for (int i = 0; i < allRooms.size(); i++) {
+            if (allRooms.get(i).getId().equals(key)) {
+                return allRooms.get(i);
+            }
+        }
+        return null;
+    }
+
+    private void setRecommendedEvents() {
+        dbRefRecommendedRooms.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot recSnap : dataSnapshot.getChildren()) {
+                    recommends.put(recSnap.getKey(), recSnap.getValue(Float.class));
+                    recommendedRooms.add(getPublicById(recSnap.getKey()));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void setTodoEvents() {
@@ -164,15 +243,6 @@ public class Escaper implements Serializable{
         });
     }
 
-    private PublicRoom getPublicById(String key) {
-        for (int i = 0; i < allRooms.size(); i++) {
-            if (allRooms.get(i).getId().equals(key)) {
-                return allRooms.get(i);
-            }
-        }
-        return null;
-    }
-
     private void setRankersEvents() {
         dbRefRanks.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -189,6 +259,7 @@ public class Escaper implements Serializable{
             }
         });
     }
+
     private void setMyRoomsEvents() {
 
         dbRefMyRooms.addChildEventListener(new ChildEventListener() {

@@ -40,6 +40,9 @@ public class PublicRoom implements Room, Serializable {
     /* website URL */
     private String URL;
 
+    /* phone number */
+    private String phone;
+
     /* physical address */
     private String address;
 
@@ -52,8 +55,7 @@ public class PublicRoom implements Room, Serializable {
     /**
      * empty constructor for FB
      */
-    PublicRoom() {
-    }
+    PublicRoom() { }
 
     /**
      * basic constructor
@@ -105,6 +107,10 @@ public class PublicRoom implements Room, Serializable {
         return id;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
     @Override
     public String getName() {
         return name;
@@ -149,6 +155,10 @@ public class PublicRoom implements Room, Serializable {
 
     public void setPeopleCompleted(int peopleCompleted) {
         this.peopleCompleted = peopleCompleted;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setRating(float rating) {

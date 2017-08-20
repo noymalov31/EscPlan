@@ -22,10 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         escaper = new Escaper(userId);
 
-        /* hook these three arrays to list adapter views */
+        /* hook these four arrays to list adapter views */
 //        escaper.getAllRooms();
 //        escaper.getMyRooms();
 //        escaper.getTodoRooms();
+//        escaper.getRecommendedRooms();
 
 
         Button my_list_btn=(Button)findViewById(R.id.MyList_button);

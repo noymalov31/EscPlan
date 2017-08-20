@@ -37,6 +37,16 @@ public class PrivateRoom implements Room, Serializable {
     /* picture path*/
     public String picture;
 
+    public PrivateRoom() {}
+    public PrivateRoom(String name, String publicRoomLink) {
+        this.name = name;
+        this.rating = 0;
+        this.date = new Date();
+        this.time = 0;
+        this.genre = Genre.General;
+        this.publicRoomLink = publicRoomLink;
+    }
+
     /**
      * @param name
      * @param rating
