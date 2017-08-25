@@ -9,6 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.esc_plan.escplan.db.Escaper;
+import com.esc_plan.escplan.db.PublicRoom;
+
 import java.util.ArrayList;
 
 /**
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 public class AllRooms  extends AppCompatActivity {
 
     private ListView list;
-    private ArrayList<String> listItems ;
+    private ArrayList<PublicRoom> allRoomsListItems ;
     private ListAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,9 @@ public class AllRooms  extends AppCompatActivity {
         setContentView(R.layout.all_rooms);
 
         list = (ListView) findViewById(R.id.list);
-        listItems = new ArrayList<String>();
+        Escaper escaper = new Escaper("NISAN"); // TODO: get user id
+        allRoomsListItems = escaper.getAllRooms();
+        adapter = new AllRoomsListAdapter(getApplicationContext(), R.layout.all_rooms_item, allRoomsListItems);
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
