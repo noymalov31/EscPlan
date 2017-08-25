@@ -2,10 +2,12 @@ package com.esc_plan.escplan;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -50,6 +52,16 @@ public class TodoList extends AppCompatActivity {
 
                 b.show();
                 return true;
+            }
+        });
+
+        android.support.design.widget.FloatingActionButton fab = (android.support.design.widget.FloatingActionButton) findViewById(R.id.addFab);
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(TodoList.this,Add_room_todo.class);
+                startActivity(i);
             }
         });
 

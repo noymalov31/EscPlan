@@ -3,14 +3,38 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/name"
+    android:layout_gravity="center"
+    android:layout_margin="6dp"
+    android:paddingLeft="10dip"
+    android:textSize="20sp"
+    android:textColor="@android:color/background_dark"
+    />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/name"
+        android:id="@+id/rate"
         android:layout_gravity="center"
-        android:layout_margin="6dp"
         android:paddingLeft="10dip"
         android:textSize="20sp"
         android:textColor="@android:color/background_dark"
-        />
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_alignBaseline="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        android:layout_toEndOf="@+id/name"
+        android:layout_marginStart="28dp" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/star"
+        android:layout_alignBottom="@+id/rate"
+        android:layout_toEndOf="@+id/rate" />
+
+
+
 
 </RelativeLayout>
