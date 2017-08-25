@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.esc_plan.escplan.db.Escaper;
+import com.esc_plan.escplan.db.PublicRoom;
+
 import java.util.ArrayList;
 
 /**
@@ -19,7 +22,7 @@ import java.util.ArrayList;
 
 public class TodoList extends AppCompatActivity {
     private ListView list;
-    private ArrayList<String> listItems ;
+    private  ArrayList<PublicRoom> todoListItems ;
     private ListAdapter adapter;
 
 
@@ -29,7 +32,9 @@ public class TodoList extends AppCompatActivity {
         setContentView(R.layout.todo_list);
 
         list = (ListView) findViewById(R.id.list);
-        listItems = new ArrayList<String>();
+        Escaper escaper = new Escaper("NISAN"); // TODO: get user id
+        todoListItems = escaper.getAllRooms();
+        adapter = new AllRoomsListAdapter(getApplicationContext(), R.layout.todo_item, todoListItems);
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
