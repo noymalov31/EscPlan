@@ -47,24 +47,12 @@ public class PrivateRoom implements Room, Serializable {
         this.publicRoomLink = publicRoomLink;
     }
 
-    /**
-     * @param name
-     * @param rating
-     * @param date
-     * @param time
-     * @param genre
-     * @param publicRoomLink
-     * @param picture
-     */
-    public PrivateRoom(String name, float rating, Date date, int time,
-                       Genre genre, String publicRoomLink, String picture) {
-        this.name = name;
-        this.rating = rating;
-        this.date = date;
-        this.time = time;
-        this.genre = genre;
-        this.publicRoomLink = publicRoomLink;
-        this.picture= picture;
+    public PrivateRoom(PublicRoom room) {
+        this.name = room.getName();
+        this.rating = room.getRating();
+        this.date = new Date();
+        this.genre = room.getGenre();
+        this.publicRoomLink = room.getId();
     }
 
     /* ---------------- Getters ---------------- */

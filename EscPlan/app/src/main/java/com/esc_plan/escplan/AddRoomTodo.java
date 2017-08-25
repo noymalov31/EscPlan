@@ -7,13 +7,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.MultiAutoCompleteTextView;
 
 /**
  * Created by noy on 09/08/2017.
  */
 
-public class Add_room_todo  extends AppCompatActivity {
+public class AddRoomTodo extends AppCompatActivity {
     AutoCompleteTextView text;
     String[] rooms={"אוז","משחקי הגורל","סודו של הענק","מרסר 112","שוד המאה","אילומינטי","שוד היהלום"};
 
@@ -35,7 +34,7 @@ public class Add_room_todo  extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Add_room_todo.this,TodoList.class);
+                Intent i = new Intent(AddRoomTodo.this,TodoList.class);
                 startActivity(i);
             }
         });

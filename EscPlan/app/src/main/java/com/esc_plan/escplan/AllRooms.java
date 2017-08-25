@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.esc_plan.escplan.db.Escaper;
 import com.esc_plan.escplan.db.PublicRoom;
+import com.esc_plan.escplan.db.Room;
 
 import java.util.ArrayList;
 
@@ -22,16 +24,16 @@ public class AllRooms  extends AppCompatActivity {
 
     private ListView list;
     private ArrayList<PublicRoom> allRoomsListItems ;
-    private ListAdapter adapter;
+    private ArrayAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_rooms);
 
         list = (ListView) findViewById(R.id.list);
-        Escaper escaper = new Escaper("NISAN"); // TODO: get user id
-        allRoomsListItems = escaper.getAllRooms();
+        allRoomsListItems = MainActivity.escaper().getAllRooms();
         adapter = new AllRoomsListAdapter(getApplicationContext(), R.layout.all_rooms_item, allRoomsListItems);
+        list.setAdapter(adapter);
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override

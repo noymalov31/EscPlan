@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.esc_plan.escplan.db.PrivateRoom;
 
 import java.util.ArrayList;
 
@@ -17,23 +18,25 @@ import java.util.ArrayList;
  * Created by noy on 05/08/2017.
  */
 
-public class my_list  extends AppCompatActivity {
+public class MyList extends AppCompatActivity {
     private ListView list;
-    private ArrayList<String> listItems ;
-    private ListAdapter adapter;
+    private ArrayList<PrivateRoom> myListItems ;
+    private ArrayAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_list);
 
         list = (ListView) findViewById(R.id.list);
-        listItems = new ArrayList<String>();
+        myListItems = MainActivity.escaper().getMyRooms();
+        adapter = new MyListAdapter(getApplicationContext(), R.layout.mylist_item, myListItems);
+        list.setAdapter(adapter);
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                final AlertDialog.Builder b = new AlertDialog.Builder(my_list.this);
+                final AlertDialog.Builder b = new AlertDialog.Builder(MyList.this);
 
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
@@ -58,7 +61,7 @@ public class my_list  extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(my_list.this,Add_room_list.class);
+                Intent i = new Intent(MyList.this,AddRoomList.class);
                 startActivity(i);
             }
         });

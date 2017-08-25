@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".my_list">
+            android:name=".MyList">
         </activity>
         <activity
             android:name=".TodoList">
@@ -29,10 +29,10 @@
             android:name=".Recommended">
         </activity>
         <activity
-            android:name=".Add_room_todo">
+            android:name=".AddRoomTodo">
         </activity>
         <activity
-            android:name=".Add_room_list">
+            android:name=".AddRoomList">
         </activity>
     </application>
 

@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.esc_plan.escplan.db.Escaper;
 import com.esc_plan.escplan.db.PublicRoom;
 
 import java.util.ArrayList;
@@ -23,18 +21,16 @@ import java.util.ArrayList;
 public class TodoList extends AppCompatActivity {
     private ListView list;
     private  ArrayList<PublicRoom> todoListItems ;
-    private ListAdapter adapter;
-
-
+    private ArrayAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todo_list);
 
         list = (ListView) findViewById(R.id.list);
-        Escaper escaper = new Escaper("NISAN"); // TODO: get user id
-        todoListItems = escaper.getAllRooms();
-        adapter = new AllRoomsListAdapter(getApplicationContext(), R.layout.todo_item, todoListItems);
+        todoListItems = MainActivity.escaper().getTodoRooms();
+        adapter = new ToDoListAdapter(getApplicationContext(), R.layout.todo_item, todoListItems);
+        list.setAdapter(adapter);
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
@@ -65,7 +61,7 @@ public class TodoList extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TodoList.this,Add_room_todo.class);
+                Intent i = new Intent(TodoList.this,AddRoomTodo.class);
                 startActivity(i);
             }
         });

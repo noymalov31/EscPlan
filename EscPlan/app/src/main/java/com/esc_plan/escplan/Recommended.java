@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.esc_plan.escplan.db.PublicRoom;
 
 import java.util.ArrayList;
 
@@ -17,15 +20,17 @@ import java.util.ArrayList;
 
 public class Recommended extends AppCompatActivity {
     private ListView list;
-    private ArrayList<String> listItems ;
-    private ListAdapter adapter;
+    private ArrayList<PublicRoom> recommendedItems ;
+    private ArrayAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recommended);
 
         list = (ListView) findViewById(R.id.list);
-        listItems = new ArrayList<String>();
+        recommendedItems = MainActivity.escaper().getRecommendedRooms();
+        adapter = new AllRoomsListAdapter(getApplicationContext(), R.layout.all_rooms_item, recommendedItems);
+        list.setAdapter(adapter);
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override

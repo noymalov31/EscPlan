@@ -54,7 +54,7 @@ public class MyListAdapter extends ArrayAdapter<PrivateRoom> {
         View v = convertView;
         if (v == null){
             LayoutInflater inflatter = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflatter.inflate(R.layout.all_rooms_item, parent, false);
+            v = inflatter.inflate(R.layout.mylist_item, parent, false);
         }
         PrivateRoom curr_room = getItem(position);
         roomName = (TextView) v.findViewById(R.id.name);

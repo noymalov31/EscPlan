@@ -149,7 +149,7 @@ public class Escaper implements Serializable{
      * @return the correlation to this user
      */
     public float getCoorelation(PublicRoom recommendedRoom) {
-        return recommends.get(recommendedRoom);
+        return recommends.get(recommendedRoom.getId());
     }
 
     public List<String> getAllRoomsNames() {

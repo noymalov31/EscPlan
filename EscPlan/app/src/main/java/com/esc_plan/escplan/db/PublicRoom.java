@@ -68,6 +68,21 @@ public class PublicRoom implements Room, Serializable {
         this.time = 0;
         this.genre = Genre.General;
         this.reviews= new ArrayList<>();
+        this.similarRooms = new ArrayList<>();
+    }
+
+    public PublicRoom(String name, float rating, int time, Genre genre,
+                      String URL, String phone, String address) {
+        this.name = name;
+        this.peopleCompleted = 1;
+        this.rating = rating;
+        this.time = time;
+        this.genre = genre;
+        this.URL = URL;
+        this.phone = phone;
+        this.address = address;
+        this.reviews= new ArrayList<>();
+        this.similarRooms = new ArrayList<>();
     }
 
     /**
