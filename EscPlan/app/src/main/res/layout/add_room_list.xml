@@ -1,157 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/add_room_list">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/add_room_list">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/header">
-
-        <TextView
-            android:id="@+id/add_room_header"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/add_room_todo" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/room_name"
-        android:layout_below="@+id/header"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/room_name_header"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="שם החדר: "
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="20sp" />
+            android:id="@+id/header">
 
-        <AutoCompleteTextView
-            android:id="@+id/roomNameAutoComplete"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/add_room_header"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/add_room_todo" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/room_name"
             android:layout_below="@+id/header"
-            android:ems="10"
-            android:hint="שם החדר">
+            android:weightSum="1">
 
-            <requestFocus />
-        </AutoCompleteTextView>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/room_name_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="שם החדר: "
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="20sp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rate"
-        android:layout_below="@+id/room_name"
-        android:layout_alignStart="@+id/save">
+            <AutoCompleteTextView
+                android:id="@+id/roomNameAutoComplete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/header"
+                android:ems="10"
+                android:hint="שם החדר">
 
-        <TextView
+                <requestFocus />
+            </AutoCompleteTextView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.04"
-            android:shadowRadius="2"
-            android:text="דירוג: "
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="20sp"
-            android:id="@+id/rate_header"/>
-        <Spinner
-            android:id="@+id/rates_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/rate"
             android:layout_below="@+id/room_name"
+            android:layout_alignStart="@+id/save">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.04"
+                android:shadowRadius="2"
+                android:text="דירוג: "
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="20sp"
+                android:id="@+id/rate_header"/>
+            <Spinner
+                android:id="@+id/rates_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/room_name"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/image"
+            android:layout_below="@+id/rate">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/date"
+            android:layout_below="@+id/image">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/partners"
+            android:layout_below="@+id/date">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/time"
+            android:layout_below="@+id/partners">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/address"
+            android:layout_below="@+id/time">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/review"
+            android:layout_below="@+id/address">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/note"
+            android:layout_below="@+id/review">
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/save"
+            android:layout_below="@+id/note"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="100dp"
             />
 
+        <Button
+            android:id="@+id/add_field"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/add_field_btn"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="100dp"
+            android:layout_below="@+id/note"
+            android:layout_alignParentEnd="true" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/image"
-        android:layout_below="@+id/rate">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/date"
-        android:layout_below="@+id/image">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/partners"
-        android:layout_below="@+id/date">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/time"
-        android:layout_below="@+id/partners">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/address"
-        android:layout_below="@+id/time">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/review"
-        android:layout_below="@+id/address">
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/note"
-        android:layout_below="@+id/review">
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/add_field"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:background="@drawable/add_field_btn"
-        android:layout_alignBottom="@+id/save"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="29dp" />
-
-    <Button
-        android:id="@+id/save"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginStart="28dp"
-        android:background="@drawable/save"/>
-
-
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
