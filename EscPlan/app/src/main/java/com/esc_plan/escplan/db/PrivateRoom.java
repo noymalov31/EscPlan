@@ -1,7 +1,5 @@
 package com.esc_plan.escplan.db;
 
-import android.graphics.Bitmap;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +17,7 @@ public class PrivateRoom implements Room, Serializable {
     private float rating;
 
     /*  date completed */
-    private String date;
+    private Date date;
 
     /* time the room was completed (in sec) */
     private int time;
@@ -31,40 +29,30 @@ public class PrivateRoom implements Room, Serializable {
     private String review;
 
     /* list of FB id's or just names? */
-    private String associates;
+    private ArrayList<String> associates;
 
     /* FB link to the PublicRoom */
     private String publicRoomLink;
 
-    /* note */
-    private String note;
-
-    /* address */
-    private String address;
-
-    /* picture Bitmap*/
-    public Bitmap picture;
+    /* picture path*/
+    public String picture;
 
     public PrivateRoom() {}
     public PrivateRoom(String name, String publicRoomLink) {
         this.name = name;
         this.rating = 0;
-        this.date = "" ;
+        this.date = new Date();
         this.time = 0;
         this.genre = Genre.General;
-        this.note = "";
-        this.address = "";
         this.publicRoomLink = publicRoomLink;
     }
 
     public PrivateRoom(PublicRoom room) {
         this.name = room.getName();
         this.rating = room.getRating();
-        this.date = "";
+        this.date = new Date();
         this.genre = room.getGenre();
         this.publicRoomLink = room.getId();
-        this.note = "";
-        this.address = room.getAddress();
     }
 
     /* ---------------- Getters ---------------- */
@@ -79,7 +67,7 @@ public class PrivateRoom implements Room, Serializable {
         return rating;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -97,10 +85,7 @@ public class PrivateRoom implements Room, Serializable {
         return review;
     }
 
-    public String getAddress() {
-        return address;
-    }
-    public String getAssociates() {
+    public ArrayList<String> getAssociates() {
         return associates;
     }
 
@@ -108,13 +93,10 @@ public class PrivateRoom implements Room, Serializable {
         return publicRoomLink;
     }
 
-    public Bitmap getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public String getNote() {
-        return this.note;
-    }
 
 
     /* ---------------- Setters ---------------- */
@@ -127,7 +109,7 @@ public class PrivateRoom implements Room, Serializable {
         this.rating = rating;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -135,9 +117,6 @@ public class PrivateRoom implements Room, Serializable {
         this.time = time;
     }
 
-    public void setNote(String note){this.note = note;}
-
-    public void setAddress(String address){this.address = address;}
 
     public void setGenre(Genre genre) {
         this.genre = genre;
@@ -147,7 +126,7 @@ public class PrivateRoom implements Room, Serializable {
         this.review = review;
     }
 
-    public void setAssociates(String associates) {
+    public void setAssociates(ArrayList<String> associates) {
         this.associates = associates;
     }
 
@@ -155,7 +134,7 @@ public class PrivateRoom implements Room, Serializable {
         this.publicRoomLink = publicRoomLink;
     }
 
-    public void setPicture(Bitmap picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 

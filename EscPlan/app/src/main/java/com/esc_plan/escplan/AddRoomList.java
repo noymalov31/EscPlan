@@ -111,6 +111,7 @@ public class AddRoomList extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                /**
                 String name = autoCompleteText.getText().toString();
                 String rate = rate_sp.getSelectedItem().toString();
                 PrivateRoom new_room = new PrivateRoom(name, name);
@@ -161,13 +162,14 @@ public class AddRoomList extends AppCompatActivity {
                 //add image
                 ImageView image_value = (ImageView) findViewById(R.id.img);
                 if (image_value != null) {
-                    BitmapDrawable bd = (BitmapDrawable) image_value.getDrawable();
-                    new_room.setPicture(bd.getBitmap());
+                    //BitmapDrawable bd = (BitmapDrawable) image_value.getDrawable();
+                    //new_room.setPicture(bd.getBitmap());
                 }
 
                 MainActivity.escaper().addPrivateRoom(new_room);
                 Intent i = new Intent(AddRoomList.this, MyList.class);
                 startActivity(i);
+                 */
             }
         });
 

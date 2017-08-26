@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import com.esc_plan.escplan.db.PublicRoom;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by noy on 05/08/2017.
@@ -59,6 +61,19 @@ public class TodoList extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 final AlertDialog.Builder b = new AlertDialog.Builder(TodoList.this);
+                PublicRoom curr_room = adapter.getItem(position);
+                Date scheduled = MainActivity.escaper().getScheduledDate(curr_room);
+                if (scheduled == null){
+                    b.setNeutralButton("הוסף ,תזכורת", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    });
+                }
+                else {
+                    //change image to booked
+                    //ahow on alert the date
+                }
 
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
