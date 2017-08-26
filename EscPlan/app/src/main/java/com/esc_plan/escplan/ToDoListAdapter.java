@@ -34,20 +34,26 @@ public class ToDoListAdapter  extends ArrayAdapter<PublicRoom> {
 
     }
 
-    public void add(PublicRoom item, String Key) {
-        super.add(item);
+    public void add(PublicRoom item) {
+        MainActivity.escaper().todo(item);
     }
 
+    public void deleteByPos(int index){
+        PublicRoom toDelete = getItem(index);
+        deleteItem(toDelete);
+    }
 
+    public void deleteItem(PublicRoom item){
 
-    public void deleteItem(int index){
-        this.listOfItems.remove(index);
+        MainActivity.escaper().untodo(item);
     }
 
     public PublicRoom getItem(int index){
 
         return this.listOfItems.get(index);
     }
+
+
 
     public View getView (int position, View convertView, ViewGroup parent){
         View v = convertView;
@@ -64,5 +70,9 @@ public class ToDoListAdapter  extends ArrayAdapter<PublicRoom> {
 
     public Bitmap decodeToBitmap (byte[] decodedBytes){
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
+    public int getSize(){
+        return listOfItems.size();
     }
 }

@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/header"
-        android:id="@+id/editText" />
+        android:id="@+id/partners_value_i" />
 
 </RelativeLayout>

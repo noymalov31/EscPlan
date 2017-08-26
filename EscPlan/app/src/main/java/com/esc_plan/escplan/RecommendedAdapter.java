@@ -36,16 +36,6 @@ public class RecommendedAdapter  extends ArrayAdapter<PublicRoom> {
 
     }
 
-    public void add(PublicRoom item, String Key) {
-        super.add(item);
-    }
-
-
-
-    public void deleteItem(int index){
-        this.listOfItems.remove(index);
-    }
-
     public PublicRoom getItem(int index){
 
         return this.listOfItems.get(index);

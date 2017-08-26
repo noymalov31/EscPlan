@@ -2,6 +2,7 @@ package com.esc_plan.escplan;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -40,13 +41,23 @@ public class Recommended extends AppCompatActivity {
 
                 b.setNegativeButton("ראה פרטים", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
+                        Intent i = new Intent(Recommended.this, Public_room.class);
+                        String room_name = recommendedItems.get(position).getName();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("room_name", room_name);
+                        i.putExtras(bundle);
+                        startActivity(i);
                     }
                 });
 
                 b.setPositiveButton("הוסף ל- TODO LIST", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
+                        Intent i = new Intent(Recommended.this, AddRoomTodo.class);
+                        String room_name = recommendedItems.get(position).getName();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("room_name", room_name);
+                        i.putExtras(bundle);
+                        startActivity(i);
                     }
                 });
 

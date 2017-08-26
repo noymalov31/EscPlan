@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.esc_plan.escplan.db.PrivateRoom;
 
+
 import java.util.ArrayList;
 
 /**
@@ -21,16 +22,19 @@ import java.util.ArrayList;
 public class MyList extends AppCompatActivity {
     private ListView list;
     private ArrayList<PrivateRoom> myListItems ;
-    private ArrayAdapter adapter;
+    private MyListAdapter adapter;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_list);
 
+
         list = (ListView) findViewById(R.id.list);
         myListItems = MainActivity.escaper().getMyRooms();
         adapter = new MyListAdapter(getApplicationContext(), R.layout.mylist_item, myListItems);
         list.setAdapter(adapter);
+
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
@@ -40,13 +44,19 @@ public class MyList extends AppCompatActivity {
 
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
+                        adapter.deleteByPos(position);
+                        adapter.notifyDataSetChanged();
                     }
                 });
 
                 b.setPositiveButton("ראה פרטים", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
+                        Intent i = new Intent(MyList.this, Private_room.class);
+                        String room_name = myListItems.get(position).getName();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("room_name", room_name);
+                        i.putExtras(bundle);
+                        startActivity(i);
                     }
                 });
 

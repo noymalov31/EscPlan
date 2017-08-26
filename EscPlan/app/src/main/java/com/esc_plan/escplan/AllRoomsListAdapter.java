@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.esc_plan.escplan.db.Escaper;
 import com.esc_plan.escplan.db.PublicRoom;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +35,6 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
     private ArrayList<PublicRoom> listOfItems;
     private Context context;
 
-
     public AllRoomsListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<PublicRoom> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -42,18 +42,20 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
 
     }
 
-    public void add(PublicRoom item, String Key) {
-        super.add(item);
+    public void add(PublicRoom item) {
+        MainActivity.escaper().addPublicRoom(item);
     }
 
+    public void removeByPos(int index){
+        PublicRoom toDelete = getItem(index);
+        deleteItem(toDelete);
+    }
 
-
-    public void deleteItem(int index){
-        this.listOfItems.remove(index);
+    public void deleteItem(PublicRoom item){
+        MainActivity.escaper().removePublicRoom(item);
     }
 
     public PublicRoom getItem(int index){
-
         return this.listOfItems.get(index);
     }
 

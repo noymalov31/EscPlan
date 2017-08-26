@@ -11,11 +11,15 @@
         android:shadowRadius="2"
         android:text="ביקורת: "
         android:textColor="@android:color/holo_blue_light"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:id="@+id/review_value"/>
+        android:id="@+id/review_value"
+        android:layout_toEndOf="@+id/review_header"
+        android:layout_marginStart="13dp"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
