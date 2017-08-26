@@ -57,7 +57,7 @@ public class Escaper implements Serializable{
     private ArrayList<PublicRoom> recommendedRooms;
 
     /* tuples of (roomId,coorelation) */
-    private TreeMap<String, Float> recommends;
+    private TreeMap<String, Integer> recommends;
 
     /* rooms to do by escaper (date if scheduled) */
     private TreeMap<String, Date> todo;
@@ -148,7 +148,7 @@ public class Escaper implements Serializable{
      * @param recommendedRoom room from the recommended view
      * @return the correlation to this user
      */
-    public float getCoorelation(PublicRoom recommendedRoom) {
+    public Integer getCoorelation(PublicRoom recommendedRoom) {
         return recommends.get(recommendedRoom.getId());
     }
 
@@ -213,7 +213,7 @@ public class Escaper implements Serializable{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot recSnap : dataSnapshot.getChildren()) {
-                    recommends.put(recSnap.getKey(), recSnap.getValue(Float.class));
+                    recommends.put(recSnap.getKey(), recSnap.getValue(Integer.class));
                     recommendedRooms.add(getPublicById(recSnap.getKey()));
                 }
             }
