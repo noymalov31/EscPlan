@@ -125,7 +125,7 @@ public class Escaper implements Serializable{
     /**
      * should be called before app terminates
      */
-    private void syncToFB() {
+    public void syncToFB() {
         dbRefRanks.setValue(ranker);
         dbRefTodoRooms.setValue(todo);
         /*
@@ -140,7 +140,7 @@ public class Escaper implements Serializable{
      * @return date scheduled or NULL in case not scheduled
      */
     public Date getScheduledDate(PublicRoom todoRoom) {
-        Date date = todo.get(todoRoom);
+        Date date = todo.get(todoRoom.getId());
         return NOT_SCHEDULED.equals(date) ? null : date;
     }
 
@@ -162,6 +162,9 @@ public class Escaper implements Serializable{
 
     public void addPrivateRoom(PrivateRoom room) {
         dbRefMyRooms.child(room.getPublicRoomLink()).setValue(room);
+        PublicRoom pr = getPublicById(room.getPublicRoomLink());
+        pr.addPrivateRoom(room);
+        addPublicRoom(pr);
         ranker.put(room.getPublicRoomLink(), room.getRating());
     }
 
@@ -180,7 +183,7 @@ public class Escaper implements Serializable{
 
     public void schedule(PublicRoom room, Date date) {
 //        todo.put(room.genId(dbRefTodoRooms), date);
-        todo.get(room.genId(dbRefTodoRooms)).setTime(date.getTime());
+        todo.get(room.getId()).setTime(date.getTime());
     }
 
     public void unschedule(PublicRoom room) {
@@ -194,7 +197,7 @@ public class Escaper implements Serializable{
     }
 
     public void untodo(PublicRoom room) {
-        todo.remove(room.genId(dbRefTodoRooms));
+        todo.remove(room.getId());
         todoRooms.remove(room);
     }
 

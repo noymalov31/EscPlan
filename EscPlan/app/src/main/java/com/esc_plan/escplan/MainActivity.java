@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.esc_plan.escplan.db.Escaper;
+import com.esc_plan.escplan.db.PrivateRoom;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,MyList.class);
                 startActivity(i);
+/*                PrivateRoom pr = new PrivateRoom(escaper.getAllRooms().get(0));
+                pr.setReview("like it2!");
+                pr.setTime(200);
+                pr.setRating(7);
+                escaper.addPrivateRoom(pr);*/
             }
         });
 
@@ -77,5 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        escaper.syncToFB();
+    }
 }

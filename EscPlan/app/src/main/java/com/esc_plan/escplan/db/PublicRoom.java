@@ -95,11 +95,14 @@ public class PublicRoom implements Room, Serializable {
             this.rating = newRoom.getRating();
             this.time = newRoom.getTime();
         } else {
-            this.rating = (this.rating * (this.peopleCompleted - 1) + newRoom.getRating())
+            this.rating = ((this.rating * this.peopleCompleted) + newRoom.getRating())
                     / this.peopleCompleted;
-            this.time = (this.time * (this.peopleCompleted - 1) + newRoom.getTime())
+            this.time = ((this.time * this.peopleCompleted) + newRoom.getTime())
                     / this.peopleCompleted;
 
+        }
+        if (this.reviews == null) {
+            this.reviews = new ArrayList<>();
         }
         this.reviews.add(newRoom.getReview());
         this.peopleCompleted++;
