@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.esc_plan.escplan.db.Escaper;
+import com.esc_plan.escplan.db.PrivateRoom;
 import com.esc_plan.escplan.db.PublicRoom;
+import com.esc_plan.escplan.db.Room;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,11 +34,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,MyList.class);
                 startActivity(i);
-/*                PrivateRoom pr = new PrivateRoom(escaper.getAllRooms().get(0));
-                pr.setReview("like it2!");
-                pr.setTime(200);
-                pr.setRating(7);
-                escaper.addPrivateRoom(pr);*/
+//                PublicRoom publicRoom = new PublicRoom("random", 7.4f,123, Room.Genre.Fantasy,"pum", "054","add");
+//                escaper.addPublicRoom(publicRoom);
+
+//                PublicRoom publicRoom = escaper.getAllRooms().get(0);
+//                PrivateRoom pr = new PrivateRoom(publicRoom, 4f);
+//                pr.setReview("like it threeee3!");
+//                pr.setTime(200);
+//                escaper.addPrivateRoom(pr);
+
+//                escaper.saveImage(publicRoom, "http://blog.nowescape.com/wp-content/uploads/2016/03/escape1.jpg");
             }
         });
 

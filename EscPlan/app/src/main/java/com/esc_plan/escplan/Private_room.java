@@ -80,11 +80,11 @@ public class Private_room extends AppCompatActivity {
             }
 
             //add partners
-            if (!(my_room.getAssociates().isEmpty())){
+            if (my_room.getPartners() != null){
                 LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View mv = vi.inflate(R.layout.partners_private, null);
                 TextView partners = (TextView) mv.findViewById(R.id.partners_value);
-                partners.setText(my_room.getAssociates());
+                partners.setText(my_room.getPartners());
                 ViewGroup insertPoint = (ViewGroup) findViewById(R.id.partners);
                 insertPoint.addView(mv, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }

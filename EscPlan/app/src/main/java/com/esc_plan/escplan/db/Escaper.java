@@ -4,12 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.esc_plan.escplan.MainActivity;
-import com.esc_plan.escplan.MyList;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
@@ -26,9 +24,12 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -226,6 +227,10 @@ public class Escaper implements Serializable{
         todoRooms.remove(room);
     }
 
+    public void saveImage(PublicRoom room, String path) {
+        new DownloadImageTask().execute(room, path);
+    }
+
     public StorageTask<UploadTask.TaskSnapshot>
     saveImage(AppCompatActivity activity, PrivateRoom room, ImageView iv) {
         currIv = iv;
@@ -410,5 +415,28 @@ public class Escaper implements Serializable{
     }
 
     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+    }
+
+    private class DownloadImageTask extends AsyncTask<Object, Void, Void> {
+
+        protected Void doInBackground(Object... params) {
+            Bitmap bitmap;
+            PublicRoom room = (PublicRoom) params[0];
+            String path = (String) params[1];
+            try {
+                HttpURLConnection connection = (HttpURLConnection) (new URL(path)).openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                bitmap = BitmapFactory.decodeStream(input);
+            } catch (Exception e) {
+                return null;
+            }
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+            byte[] ci = baos.toByteArray();
+            storagePublic.child(room.getId() + ".jpeg").putBytes(ci);
+            return null;
+        }
     }
 }
