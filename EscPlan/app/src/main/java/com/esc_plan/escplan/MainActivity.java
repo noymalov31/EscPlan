@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,MyList.class);
                 startActivity(i);
-//                PublicRoom publicRoom = new PublicRoom("random", 7.4f,123, Room.Genre.Fantasy,"pum", "054","add");
-//                escaper.addPublicRoom(publicRoom);
+                PublicRoom publicRoom = new PublicRoom("סודו של הענק", 7.4f,123, Room.Genre.Fantasy,"pum", "054","add");
+                escaper.addPublicRoom(publicRoom);
 
 //                PublicRoom publicRoom = escaper.getAllRooms().get(1);
 //                PrivateRoom pr = new PrivateRoom(publicRoom, 4f);

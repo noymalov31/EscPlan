@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -84,9 +85,20 @@ public class Public_room extends AppCompatActivity {
     //phone number click
     public void onClickPhone(View v)
     {
-        String phone_number =  v.findViewById(R.id.phone_num_value).toString();
+        TextView phone = (TextView) v.findViewById(R.id.phone_num_value);
+        String phone_number = phone.getText().toString();
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + phone_number));
         startActivity(intent);
+    }
+
+    //website click
+    public void onClickWebsite(View v){
+
+        TextView website = (TextView) v.findViewById(R.id.website_value);
+        String url = website.getText().toString();
+        Intent i = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://"+url));
+        startActivity(i);
     }
 }

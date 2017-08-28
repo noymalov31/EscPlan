@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class AddRoomTodo extends AppCompatActivity {
     AutoCompleteTextView autoCompleteText;
-    String[] rooms={"name","אוז","משחקי הגורל","סודו של הענק","מרסר 112","שוד המאה","אילומינטי","שוד היהלום"};
+    String[] rooms={"name","אוז","משחקי הגורל","סודו של הענק","מרסר 112","שוד המאה","אילומינטי","שוד היהלום"}; // todo change
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

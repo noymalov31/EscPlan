@@ -50,6 +50,7 @@ public class Private_room extends AppCompatActivity {
             }
 
             //add note
+
             if (!(my_room.getNote().isEmpty())){
                 LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View mv = vi.inflate(R.layout.note_private, null);
@@ -58,6 +59,8 @@ public class Private_room extends AppCompatActivity {
                 ViewGroup insertPoint = (ViewGroup) findViewById(R.id.note);
                 insertPoint.addView(mv, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
+
+
 
             //add address
             if (!(my_room.getAddress().isEmpty())){
@@ -69,6 +72,7 @@ public class Private_room extends AppCompatActivity {
                 insertPoint.addView(mv, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
 
+
             //add date
             if (!(my_room.getDate().isEmpty())){
                 LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -78,6 +82,7 @@ public class Private_room extends AppCompatActivity {
                 ViewGroup insertPoint = (ViewGroup) findViewById(R.id.date);
                 insertPoint.addView(mv, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
+
 
             //add partners
             if (my_room.getPartners() != null){

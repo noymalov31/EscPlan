@@ -71,8 +71,10 @@ public class TodoList extends AppCompatActivity {
                     });
                 }
                 else {
-                    //change image to booked
-                    //ahow on alert the date
+                    //todo change image to booked
+                    String msg = "נקבע לתאריך :";
+                    msg += scheduled.toString();
+                    b.setMessage(msg);
                 }
 
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {

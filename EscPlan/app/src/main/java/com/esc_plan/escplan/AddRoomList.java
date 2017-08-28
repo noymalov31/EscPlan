@@ -28,9 +28,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PrivateRoom;
+import com.esc_plan.escplan.db.PublicRoom;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.esc_plan.escplan.R.id.add_field;
 
@@ -111,11 +113,11 @@ public class AddRoomList extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                /**
+
                 String name = autoCompleteText.getText().toString();
                 String rate = rate_sp.getSelectedItem().toString();
-                PrivateRoom new_room = new PrivateRoom(name, name);
-                new_room.setRating(Float.valueOf(rate));
+                PublicRoom pub_room = findPublicRoom(name);
+                PrivateRoom new_room = new PrivateRoom(pub_room, Integer.valueOf(rate));
 
                 //add review
                 TextView review_value = (TextView) findViewById(R.id.review_value_i);
@@ -128,7 +130,7 @@ public class AddRoomList extends AppCompatActivity {
                 TextView partners_value = (TextView) findViewById(R.id.partners_value_i);
                 if (partners_value != null) {
                     String partners = partners_value.getText().toString();
-                    new_room.setAssociates(partners);
+                    new_room.setPartners(partners);
                 }
 
                 //add time
@@ -155,24 +157,34 @@ public class AddRoomList extends AppCompatActivity {
                 //add date
                 TextView date_value = (TextView) findViewById(R.id.my_date_i);
                 if (date_value != null) {
-                    String address = address_value.getText().toString();
-                    new_room.setDate(address);
+                    String date = date_value.getText().toString();
+                    new_room.setDate(date);
                 }
 
                 //add image
                 ImageView image_value = (ImageView) findViewById(R.id.img);
                 if (image_value != null) {
-                    //BitmapDrawable bd = (BitmapDrawable) image_value.getDrawable();
-                    //new_room.setPicture(bd.getBitmap());
+                   // new_room.set(bd.getBitmap()); todo
                 }
 
                 MainActivity.escaper().addPrivateRoom(new_room);
                 Intent i = new Intent(AddRoomList.this, MyList.class);
                 startActivity(i);
-                 */
+
             }
         });
 
+    }
+
+    private PublicRoom findPublicRoom(String name) {
+        ArrayList<PublicRoom> all_rooms = MainActivity.escaper().getAllRooms();
+        for (int i=0; i < all_rooms.size(); i++){
+
+            if (name.equals(all_rooms.get(i).getName())){
+                return all_rooms.get(i);
+            }
+        }
+        return null;
     }
 
     private void add_new_field (String field){
