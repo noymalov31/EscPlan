@@ -265,6 +265,21 @@ public class Escaper implements Serializable{
 
     }
 
+    public Task<byte[]> getImage(AppCompatActivity activity, PublicRoom room, ImageView iv) {
+        currIv = iv;
+        iv.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
+        return storagePublic.child(room.getId() + ".jpeg").getBytes(1048576)
+                .addOnSuccessListener(activity, new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        currIv.setImageBitmap(bMap);
+                        currIv.clearColorFilter();
+                    }
+                });
+
+    }
+
     private PublicRoom getPublicById(String key) {
         for (int i = 0; i < allRooms.size(); i++) {
             if (allRooms.get(i).getId().equals(key)) {
