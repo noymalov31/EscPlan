@@ -114,10 +114,6 @@ public class Escaper implements Serializable{
         todoRoomsQuery = dbRefTodoRooms.orderByKey();
         recommendedRoomsQuery = dbRefRecommendedRooms.orderByValue();
         setAllRoomsEvents();
-        setMyRoomsEvents();
-        setTodoEvents();
-        setRankersEvents();
-        setRecommendedEvents();
     }
 
     /**
@@ -290,6 +286,7 @@ public class Escaper implements Serializable{
                 return allRooms.get(i);
             }
         }
+//        return dbRefAllRooms.child(key).;
         return null;
     }
 
@@ -417,6 +414,20 @@ public class Escaper implements Serializable{
 //                Toast.makeText(mContext, "Failed to load comments.",
 //                        Toast.LENGTH_SHORT).show()
             }
+        });
+
+        dbRefAllRooms.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                setMyRoomsEvents();
+                setTodoEvents();
+                setRankersEvents();
+                setRecommendedEvents();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
         });
     }
 
