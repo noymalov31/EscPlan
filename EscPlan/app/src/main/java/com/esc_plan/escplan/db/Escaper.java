@@ -1,5 +1,17 @@
 package com.esc_plan.escplan.db;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+
+import com.esc_plan.escplan.MainActivity;
+import com.esc_plan.escplan.MyList;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -7,7 +19,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -34,6 +51,9 @@ public class Escaper implements Serializable{
     private DatabaseReference dbRefTodoRooms = null;
     private DatabaseReference dbRefRecommendedRooms = null;
     private DatabaseReference dbRefRanks = null;
+    private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    private StorageReference storagePublic = null;
+    private StorageReference storagePrivate = null;
 
     private Query allRoomsQuery = null;
     private Query myRoomsQuery = null;
@@ -65,6 +85,8 @@ public class Escaper implements Serializable{
     /* tuples of (roomId,rank), helpful for ranking */
     private HashMap<String, Float> ranker;
 
+    private ImageView currIv;
+
     public Escaper() { }
 
     public Escaper(String id) {
@@ -82,6 +104,9 @@ public class Escaper implements Serializable{
         dbRefMyRooms = dbRef.child(id).child("rooms");
         dbRefRecommendedRooms = dbRef.child(id).child("recommended");
         dbRefAllRooms = dbRef.child("public");
+
+        storagePrivate = storageRef.child(id);
+        storagePublic = storageRef.child("public");
 
         myRoomsQuery = dbRefMyRooms.orderByChild("name");
         allRoomsQuery = dbRefAllRooms.orderByChild("name");
@@ -199,6 +224,40 @@ public class Escaper implements Serializable{
     public void untodo(PublicRoom room) {
         todo.remove(room.getId());
         todoRooms.remove(room);
+    }
+
+    public StorageTask<UploadTask.TaskSnapshot>
+    saveImage(AppCompatActivity activity, PrivateRoom room, ImageView iv) {
+        currIv = iv;
+
+        Bitmap bitmap = ((BitmapDrawable) iv.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        byte[] ci = baos.toByteArray();
+
+        iv.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
+        return  storagePrivate.child(room.getPublicRoomLink() + ".jpeg").putBytes(ci)
+                .addOnSuccessListener(activity, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        currIv.clearColorFilter();
+                    }
+                });
+    }
+
+    public Task<byte[]> getImage(AppCompatActivity activity, PrivateRoom room, ImageView iv) {
+        currIv = iv;
+        iv.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
+        return storagePrivate.child(room.getPublicRoomLink() + ".jpeg").getBytes(1048576)
+                .addOnSuccessListener(activity, new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        currIv.setImageBitmap(bMap);
+                        currIv.clearColorFilter();
+                    }
+                });
+
     }
 
     private PublicRoom getPublicById(String key) {

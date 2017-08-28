@@ -17,9 +17,9 @@ public class PrivateRoom implements Room, Serializable {
     private float rating;
 
     /*  date completed */
-    private Date date;
+    private String date;
 
-    /* time the room was completed (in sec) */
+    /* time the room was completed (in min) */
     private int time;
 
     /* room theme */
@@ -28,30 +28,32 @@ public class PrivateRoom implements Room, Serializable {
     /* review (anything) */
     private String review;
 
+    /* review (anything) */
+    private String note;
+
+    /* review (anything) */
+    private String address;
+
     /* list of FB id's or just names? */
-    private ArrayList<String> associates;
+    private String partners;
 
     /* FB link to the PublicRoom */
     private String publicRoomLink;
-
-    /* picture path*/
-    public String picture;
 
     public PrivateRoom() {}
     public PrivateRoom(String name, String publicRoomLink) {
         this.name = name;
         this.rating = 0;
-        this.date = new Date();
         this.time = 0;
         this.genre = Genre.General;
         this.publicRoomLink = publicRoomLink;
     }
 
-    public PrivateRoom(PublicRoom room) {
+    public PrivateRoom(PublicRoom room, float rate) {
         this.name = room.getName();
-        this.rating = room.getRating();
-        this.date = new Date();
+        this.rating = rate;
         this.genre = room.getGenre();
+        this.address = room.getAddress();
         this.publicRoomLink = room.getId();
     }
 
@@ -67,7 +69,7 @@ public class PrivateRoom implements Room, Serializable {
         return rating;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -85,16 +87,20 @@ public class PrivateRoom implements Room, Serializable {
         return review;
     }
 
-    public ArrayList<String> getAssociates() {
-        return associates;
-    }
-
     public String getPublicRoomLink() {
         return publicRoomLink;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getNote() {
+        return note;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPartners() {
+        return partners;
     }
 
 
@@ -109,14 +115,13 @@ public class PrivateRoom implements Room, Serializable {
         this.rating = rating;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     public void setTime(int time) {
         this.time = time;
     }
-
 
     public void setGenre(Genre genre) {
         this.genre = genre;
@@ -126,16 +131,20 @@ public class PrivateRoom implements Room, Serializable {
         this.review = review;
     }
 
-    public void setAssociates(ArrayList<String> associates) {
-        this.associates = associates;
-    }
-
     public void setPublicRoomLink(String publicRoomLink) {
         this.publicRoomLink = publicRoomLink;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPartners(String partners) {
+        this.partners = partners;
     }
 
     public boolean equals(Object obj) {

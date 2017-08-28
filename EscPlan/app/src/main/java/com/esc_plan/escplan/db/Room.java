@@ -13,7 +13,7 @@ public interface Room {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
 
     enum Genre {
-        General, Kids, Horror, Fantasy, Action;
+        General, Kids, Horror, Fantasy, Action, Performance;
         public static final int length = Genre.values().length;
     }
 
