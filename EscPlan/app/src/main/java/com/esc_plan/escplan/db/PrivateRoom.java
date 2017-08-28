@@ -1,8 +1,6 @@
 package com.esc_plan.escplan.db;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * rooms which are visible only to a specific user, holding private information
@@ -38,7 +36,10 @@ public class PrivateRoom implements Room, Serializable {
     private String partners;
 
     /* FB link to the PublicRoom */
-    private String publicRoomLink;
+    private String id;
+
+    /* privacy type */
+    private static final Privacy privacy = Privacy.Private;
 
     public PrivateRoom() {}
     public PrivateRoom(String name, String publicRoomLink) {
@@ -46,7 +47,7 @@ public class PrivateRoom implements Room, Serializable {
         this.rating = 0;
         this.time = 0;
         this.genre = Genre.General;
-        this.publicRoomLink = publicRoomLink;
+        this.id = publicRoomLink;
     }
 
     public PrivateRoom(PublicRoom room, float rate) {
@@ -54,7 +55,7 @@ public class PrivateRoom implements Room, Serializable {
         this.rating = rate;
         this.genre = room.getGenre();
         this.address = room.getAddress();
-        this.publicRoomLink = room.getId();
+        this.id = room.getId();
     }
 
     /* ---------------- Getters ---------------- */
@@ -87,8 +88,14 @@ public class PrivateRoom implements Room, Serializable {
         return review;
     }
 
-    public String getPublicRoomLink() {
-        return publicRoomLink;
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public Privacy privacy() {
+        return privacy;
     }
 
     public String getNote() {
@@ -131,8 +138,8 @@ public class PrivateRoom implements Room, Serializable {
         this.review = review;
     }
 
-    public void setPublicRoomLink(String publicRoomLink) {
-        this.publicRoomLink = publicRoomLink;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setNote(String note) {
@@ -151,11 +158,11 @@ public class PrivateRoom implements Room, Serializable {
         if (obj == null) return false;
         if (obj == this) return true;
         if (obj instanceof String) {
-            return this.getPublicRoomLink().equals(obj);
+            return this.getId().equals(obj);
         }
         if (!(obj instanceof PrivateRoom)) return false;
         PrivateRoom other = (PrivateRoom) obj;
-        return getPublicRoomLink().equals(other.getPublicRoomLink());
+        return getId().equals(other.getId());
     }
 
 }

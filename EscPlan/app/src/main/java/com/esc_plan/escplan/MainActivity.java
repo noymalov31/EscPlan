@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 //                PublicRoom publicRoom = new PublicRoom("random", 7.4f,123, Room.Genre.Fantasy,"pum", "054","add");
 //                escaper.addPublicRoom(publicRoom);
 
-//                PublicRoom publicRoom = escaper.getAllRooms().get(0);
+//                PublicRoom publicRoom = escaper.getAllRooms().get(1);
 //                PrivateRoom pr = new PrivateRoom(publicRoom, 4f);
 //                pr.setReview("like it threeee3!");
 //                pr.setTime(200);

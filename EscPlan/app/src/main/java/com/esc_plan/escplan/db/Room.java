@@ -17,6 +17,10 @@ public interface Room {
         public static final int length = Genre.values().length;
     }
 
+    enum Privacy {
+        Public, Private;
+    }
+
     String getName();
 
     float getRating();
@@ -25,6 +29,9 @@ public interface Room {
 
     Genre getGenre();
 
-//    Map<String,Integer> getReviewsBag();
+    String getId();
+
+    Privacy privacy();
+
 
 }

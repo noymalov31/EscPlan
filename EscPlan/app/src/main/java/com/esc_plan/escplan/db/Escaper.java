@@ -187,16 +187,16 @@ public class Escaper implements Serializable{
     }
 
     public void addPrivateRoom(PrivateRoom room) {
-        dbRefMyRooms.child(room.getPublicRoomLink()).setValue(room);
-        PublicRoom pr = getPublicById(room.getPublicRoomLink());
+        dbRefMyRooms.child(room.getId()).setValue(room);
+        PublicRoom pr = getPublicById(room.getId());
         pr.addPrivateRoom(room);
         addPublicRoom(pr);
-        ranker.put(room.getPublicRoomLink(), room.getRating());
+        ranker.put(room.getId(), room.getRating());
     }
 
     public void removePrivateRoom(PrivateRoom room) {
-        dbRefMyRooms.child(room.getPublicRoomLink()).setValue(null);
-        ranker.remove(room.getPublicRoomLink());
+        dbRefMyRooms.child(room.getId()).setValue(null);
+        ranker.remove(room.getId());
     }
 
     public void addPublicRoom(PublicRoom room) {
@@ -227,12 +227,12 @@ public class Escaper implements Serializable{
         todoRooms.remove(room);
     }
 
-    public void saveImage(PublicRoom room, String path) {
+    public void saveImage(Room room, String path) {
         new DownloadImageTask().execute(room, path);
     }
 
     public StorageTask<UploadTask.TaskSnapshot>
-    saveImage(AppCompatActivity activity, PrivateRoom room, ImageView iv) {
+    saveImage(AppCompatActivity activity, Room room, ImageView iv) {
         currIv = iv;
 
         Bitmap bitmap = ((BitmapDrawable) iv.getDrawable()).getBitmap();
@@ -241,7 +241,9 @@ public class Escaper implements Serializable{
         byte[] ci = baos.toByteArray();
 
         iv.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
-        return  storagePrivate.child(room.getPublicRoomLink() + ".jpeg").putBytes(ci)
+        StorageReference storage = (room.privacy() == Room.Privacy.Private)?
+                storagePrivate : storagePublic;
+        return storage.child(room.getId() + ".jpeg").putBytes(ci)
                 .addOnSuccessListener(activity, new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -250,10 +252,12 @@ public class Escaper implements Serializable{
                 });
     }
 
-    public Task<byte[]> getImage(AppCompatActivity activity, PrivateRoom room, ImageView iv) {
+    public Task<byte[]> getImage(AppCompatActivity activity, Room room, ImageView iv) {
         currIv = iv;
+        StorageReference storage = (room.privacy() == Room.Privacy.Private)?
+                storagePrivate : storagePublic;
         iv.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
-        return storagePrivate.child(room.getPublicRoomLink() + ".jpeg").getBytes(1048576)
+        return storage.child(room.getId() + ".jpeg").getBytes(1048576)
                 .addOnSuccessListener(activity, new OnSuccessListener<byte[]>() {
                     @Override
                     public void onSuccess(byte[] bytes) {
@@ -354,7 +358,7 @@ public class Escaper implements Serializable{
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String oldKey) {
                 for (int i = 0; i < myRooms.size(); i++) {
-                    if (myRooms.get(i).getPublicRoomLink().equals(oldKey)) {
+                    if (myRooms.get(i).getId().equals(oldKey)) {
                         myRooms.set(i, dataSnapshot.getValue(PrivateRoom.class));
                     }
                 }
@@ -436,7 +440,7 @@ public class Escaper implements Serializable{
 
         protected Void doInBackground(Object... params) {
             Bitmap bitmap;
-            PublicRoom room = (PublicRoom) params[0];
+            Room room = (Room) params[0];
             String path = (String) params[1];
             try {
                 HttpURLConnection connection = (HttpURLConnection) (new URL(path)).openConnection();
@@ -450,7 +454,10 @@ public class Escaper implements Serializable{
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
             byte[] ci = baos.toByteArray();
-            storagePublic.child(room.getId() + ".jpeg").putBytes(ci);
+
+            StorageReference storage = (room.privacy() == Room.Privacy.Private)?
+                 storagePrivate : storagePublic;
+            storage.child(room.getId() + ".jpeg").putBytes(ci);
             return null;
         }
     }

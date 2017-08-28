@@ -49,6 +49,9 @@ public class PublicRoom implements Room, Serializable {
     /* list of FB id's */
     private ArrayList<String> similarRooms;
 
+    /* privacy type */
+    private static final Privacy privacy = Privacy.Public;
+
     /**
      * empty constructor for FB
      */
@@ -111,6 +114,7 @@ public class PublicRoom implements Room, Serializable {
 
     /* ---------------- GETTERS ---------------- */
 
+    @Override
     public String getId() {
         return id;
     }
@@ -257,8 +261,10 @@ public class PublicRoom implements Room, Serializable {
         freqMap.put("*", cnt);
         return freqMap;
     }
-    public void syncToFB(DatabaseReference publicRef) {
-        publicRef.child(genId(publicRef)).setValue(this);
+
+    @Override
+    public Privacy privacy() {
+        return privacy;
     }
 
     public boolean equals(Object obj) {
