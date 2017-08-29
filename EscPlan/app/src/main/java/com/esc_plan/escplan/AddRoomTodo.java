@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.esc_plan.escplan.db.PublicRoom;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by noy on 09/08/2017.
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 
 public class AddRoomTodo extends AppCompatActivity {
     AutoCompleteTextView autoCompleteText;
-    String[] rooms={"name","אוז","משחקי הגורל","סודו של הענק","מרסר 112","שוד המאה","אילומינטי","שוד היהלום"}; // todo change
+    List<String> rooms =  MainActivity.escaper().getAllRoomsNames();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,7 @@ public class AddRoomTodo extends AppCompatActivity {
         autoCompleteText=(AutoCompleteTextView)findViewById(R.id.autoCompleteTextView);
         autoCompleteText.setText(room_name);
 
-        ArrayAdapter adapter = new
-                ArrayAdapter(this,android.R.layout.simple_list_item_1,rooms);
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, rooms.toArray());
 
         autoCompleteText.setAdapter(adapter);
         autoCompleteText.setThreshold(1);

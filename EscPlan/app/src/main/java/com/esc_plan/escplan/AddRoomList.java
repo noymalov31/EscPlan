@@ -33,6 +33,7 @@ import com.esc_plan.escplan.db.PublicRoom;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.esc_plan.escplan.R.id.add_field;
 
@@ -43,7 +44,7 @@ import static com.esc_plan.escplan.R.id.add_field;
 public class AddRoomList extends AppCompatActivity {
     AutoCompleteTextView room_names;
 
-    String[] rooms = {"אוז", "משחקי הגורל", "סודו של הענק", "מרסר 112", "שוד המאה", "אילומינטי", "שוד היהלום"};
+    List<String> rooms =  MainActivity.escaper().getAllRoomsNames();
     String[] rates = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     String[] fields = { "תמונה" ,"תאריך", "שותפים", "זמן יציאה", "כתובת","ביקורת", "הערה"};
     private static int RESULT_LOAD_IMAGE = 1;
@@ -57,7 +58,7 @@ public class AddRoomList extends AppCompatActivity {
         setContentView(R.layout.add_room_list);
 
         room_names = (AutoCompleteTextView) findViewById(R.id.roomNameAutoComplete);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, rooms);
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, rooms.toArray());
         room_names.setAdapter(adapter);
         room_names.setThreshold(1);
 
