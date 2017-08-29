@@ -1,8 +1,10 @@
 package com.esc_plan.escplan;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 public class RecommendedAdapter  extends ArrayAdapter<PublicRoom> {
 
     private TextView roomName;
+    private TextView matching_presents;
     private ProgressBar progressBar;
     private ArrayList<PublicRoom> listOfItems;
     private Context context;
@@ -50,8 +53,18 @@ public class RecommendedAdapter  extends ArrayAdapter<PublicRoom> {
         PublicRoom curr_room = getItem(position);
         roomName = (TextView) v.findViewById(R.id.name);
         roomName.setText(curr_room.getName());
+        Integer coorelation = MainActivity.escaper().getCoorelation(curr_room);
+        matching_presents = (TextView) v.findViewById(R.id.present);
+        matching_presents.setText(String.valueOf(coorelation)+"% ");
         progressBar = (ProgressBar) v.findViewById(R.id.matching);
-        progressBar.setProgress(MainActivity.escaper().getCoorelation(curr_room));
+        progressBar.setProgress(coorelation);
+        if (coorelation < 50) {
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+        }
+        else if (coorelation > 85) {
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+        }
+
 
         return v;
     }

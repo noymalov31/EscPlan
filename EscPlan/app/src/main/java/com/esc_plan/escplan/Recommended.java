@@ -30,7 +30,7 @@ public class Recommended extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.list);
         recommendedItems = MainActivity.escaper().getRecommendedRooms();
-        adapter = new RecommendedAdapter(getApplicationContext(), R.layout.all_rooms_item, recommendedItems);
+        adapter = new RecommendedAdapter(getApplicationContext(), R.layout.recommended_item, recommendedItems);
         list.setAdapter(adapter);
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){

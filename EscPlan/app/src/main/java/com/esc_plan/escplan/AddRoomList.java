@@ -45,7 +45,7 @@ public class AddRoomList extends AppCompatActivity {
 
     String[] rooms = {"אוז", "משחקי הגורל", "סודו של הענק", "מרסר 112", "שוד המאה", "אילומינטי", "שוד היהלום"};
     String[] rates = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-    String[] fields = { "תאריך","כתובת", "ביקורת", "הערה ", "תמונה", "שותפים", "זמן יציאה"};
+    String[] fields = { "תמונה" ,"תאריך", "שותפים", "זמן יציאה", "כתובת","ביקורת", "הערה"};
     private static int RESULT_LOAD_IMAGE = 1;
     private String selectedImagePath;
     private String filemanagerstring;
@@ -195,7 +195,7 @@ public class AddRoomList extends AppCompatActivity {
             ViewGroup insertPoint = (ViewGroup) findViewById(R.id.partners);
             insertPoint.addView(v, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
-        else if (field == "הערה "){
+        else if (field == "הערה"){
             LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View v = vi.inflate(R.layout.note, null);
 
