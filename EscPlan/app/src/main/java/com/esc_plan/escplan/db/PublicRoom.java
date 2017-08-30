@@ -101,10 +101,12 @@ public class PublicRoom implements Room, Serializable {
                     / this.peopleCompleted;
 
         }
-        if (this.reviews == null) {
-            this.reviews = new ArrayList<>();
+        if (newRoom.getReview() != null) {
+            if (this.reviews == null) {
+                this.reviews = new ArrayList<>();
+            }
+            this.reviews.add(newRoom.getReview());
         }
-        this.reviews.add(newRoom.getReview());
         this.peopleCompleted++;
     }
 

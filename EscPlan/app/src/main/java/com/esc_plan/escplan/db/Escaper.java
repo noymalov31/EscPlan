@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -83,9 +84,6 @@ public class Escaper implements Serializable{
     /* rooms to do by escaper (date if scheduled) */
     private TreeMap<String, Date> todo;
 
-    /* tuples of (roomId,rank), helpful for ranking */
-    private HashMap<String, Float> ranker;
-
     private ImageView currIv;
 
     public Escaper() { }
@@ -96,7 +94,6 @@ public class Escaper implements Serializable{
         todoRooms = new ArrayList<>();
         allRooms = new ArrayList<>();
         recommendedRooms = new ArrayList<>();
-        ranker = new HashMap<>();
         todo = new TreeMap<>();
         recommends = new TreeMap<>();
 
@@ -144,18 +141,6 @@ public class Escaper implements Serializable{
         return recommendedRooms;
     }
 
-    /**
-     * should be called before app terminates
-     */
-    public void syncToFB() {
-        dbRefRanks.setValue(ranker);
-        dbRefTodoRooms.setValue(todo);
-        /*
-        for (int i = 0; i < recommendedRooms.size(); i++) {
-            dbRefRecommendedRooms.child(String.valueOf(i)).setValue(recommendedRooms.get(i).getId());
-        }
-        */
-    }
 
     /**
      * @param todoRoom room from the todo view
@@ -184,15 +169,15 @@ public class Escaper implements Serializable{
 
     public void addPrivateRoom(PrivateRoom room) {
         dbRefMyRooms.child(room.getId()).setValue(room);
+        dbRefRanks.child(room.getId()).setValue(room.getRating());
         PublicRoom pr = getPublicById(room.getId());
         pr.addPrivateRoom(room);
         addPublicRoom(pr);
-        ranker.put(room.getId(), room.getRating());
     }
 
     public void removePrivateRoom(PrivateRoom room) {
         dbRefMyRooms.child(room.getId()).setValue(null);
-        ranker.remove(room.getId());
+        dbRefRanks.child(room.getId()).setValue(null);
     }
 
     public void addPublicRoom(PublicRoom room) {
@@ -204,23 +189,19 @@ public class Escaper implements Serializable{
     }
 
     public void schedule(PublicRoom room, Date date) {
-//        todo.put(room.genId(dbRefTodoRooms), date);
-        todo.get(room.getId()).setTime(date.getTime());
+        dbRefTodoRooms.child(room.getId()).setValue(date);
     }
 
     public void unschedule(PublicRoom room) {
-        todo.put(room.getId(), NOT_SCHEDULED);
-//        todo.get(room.genId(dbRefTodoRooms)).setTime(0);
+        dbRefTodoRooms.child(room.getId()).setValue(NOT_SCHEDULED);
     }
 
     public void todo(PublicRoom room) {
-        todo.put(room.getId(), NOT_SCHEDULED);
-        todoRooms.add(room);
+        dbRefTodoRooms.child(room.getId()).setValue(NOT_SCHEDULED);
     }
 
     public void untodo(PublicRoom room) {
-        todo.remove(room.getId());
-        todoRooms.remove(room);
+        dbRefTodoRooms.child(room.getId()).setValue(null);
     }
 
     public void saveImage(Room room, String path) {
@@ -309,36 +290,30 @@ public class Escaper implements Serializable{
     }
 
     private void setTodoEvents() {
-        dbRefTodoRooms.addListenerForSingleValueEvent(new ValueEventListener() {
+        dbRefTodoRooms.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                todo.put(dataSnapshot.getKey(), dataSnapshot.getValue(Date.class));
+                todoRooms.add(getPublicById(dataSnapshot.getKey()));
+            }
 
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot todoSnap : dataSnapshot.getChildren()) {
-                    todo.put(todoSnap.getKey(), todoSnap.getValue(Date.class));
-                    todoRooms.add(getPublicById(todoSnap.getKey()));
-                }
+            public void onChildChanged(DataSnapshot dataSnapshot, String oldKey) {
+                todo.put(dataSnapshot.getKey(), dataSnapshot.getValue(Date.class));
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                todoRooms.remove(getPublicById(dataSnapshot.getKey()));
+                todo.remove(dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void setRankersEvents() {
-        dbRefRanks.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot rankSnap : dataSnapshot.getChildren()) {
-                    ranker.put(rankSnap.getKey(), rankSnap.getValue(Float.class));
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
@@ -422,7 +397,6 @@ public class Escaper implements Serializable{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 setMyRoomsEvents();
                 setTodoEvents();
-                setRankersEvents();
                 setRecommendedEvents();
             }
 
