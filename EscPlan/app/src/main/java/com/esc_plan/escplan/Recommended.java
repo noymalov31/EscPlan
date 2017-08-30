@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,7 +38,7 @@ public class Recommended extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                final AlertDialog.Builder b = new AlertDialog.Builder(Recommended.this);
+                final AlertDialog.Builder b = new AlertDialog.Builder(new ContextThemeWrapper(Recommended.this, R.style.AlertDialogCustom));
 
                 b.setNegativeButton("ראה פרטים", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

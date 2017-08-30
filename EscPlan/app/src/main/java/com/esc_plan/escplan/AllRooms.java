@@ -5,9 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -25,7 +30,7 @@ public class AllRooms  extends AppCompatActivity {
 
     private ListView list;
     private ArrayList<PublicRoom> allRoomsListItems ;
-    private ArrayAdapter adapter;
+    private AllRoomsListAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +44,7 @@ public class AllRooms  extends AppCompatActivity {
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                final AlertDialog.Builder b = new AlertDialog.Builder(AllRooms.this);
+                final AlertDialog.Builder b = new AlertDialog.Builder(new ContextThemeWrapper(AllRooms.this, R.style.AlertDialogCustom));
                 b.setNegativeButton("ראה פרטים", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         Intent i = new Intent(AllRooms.this, Public_room.class);
@@ -66,6 +71,23 @@ public class AllRooms  extends AppCompatActivity {
 
                 b.show();
                 return true;
+            }
+        });
+
+        Button search = (Button) findViewById(R.id.search_button);
+        search.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                EditText et = (EditText) findViewById(R.id.search_edittext);
+                String search_content = et.getText().toString();
+                for (int i=0; i< allRoomsListItems.size(); i++){
+                    if (!(adapter.getItem(i).getName().toLowerCase().contains(search_content.toLowerCase()))) {
+                        View curr_item = list.getChildAt(i);
+                        curr_item.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1));
+                        curr_item.setVisibility(View.GONE);
+                    }
+                }
             }
         });
 

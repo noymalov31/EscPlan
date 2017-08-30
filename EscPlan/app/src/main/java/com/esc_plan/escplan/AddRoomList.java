@@ -243,7 +243,6 @@ public class AddRoomList extends AppCompatActivity {
                     final DatePicker dp = new DatePicker(AddRoomList.this);
                     layout.addView(dp);
 
-
                     new AlertDialog.Builder(AddRoomList.this)
                             .setTitle("בחר תאריך")
                             .setView(layout)
