@@ -118,6 +118,7 @@ public class AddRoomList extends AppCompatActivity {
                 String name = autoCompleteText.getText().toString();
                 String rate = rate_sp.getSelectedItem().toString();
                 PublicRoom pub_room = findPublicRoom(name);
+                pub_room.setReviews(null);
                 PrivateRoom new_room = new PrivateRoom(pub_room, Integer.valueOf(rate));
 
                 //add review
@@ -162,13 +163,14 @@ public class AddRoomList extends AppCompatActivity {
                     new_room.setDate(date);
                 }
 
+                MainActivity.escaper().addPrivateRoom(new_room);
+
                 //add image
                 ImageView image_value = (ImageView) findViewById(R.id.img);
                 if (image_value != null) {
-                   // new_room.set(bd.getBitmap()); todo
+                    MainActivity.escaper().saveImage(AddRoomList.this, new_room, image_value);
                 }
 
-                MainActivity.escaper().addPrivateRoom(new_room);
                 Intent i = new Intent(AddRoomList.this, MyList.class);
                 startActivity(i);
 

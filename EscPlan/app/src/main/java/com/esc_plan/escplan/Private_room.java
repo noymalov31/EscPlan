@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.esc_plan.escplan.db.PrivateRoom;
@@ -39,8 +40,13 @@ public class Private_room extends AppCompatActivity {
             name.setText(my_room.getName());
             TextView rate = (TextView) findViewById(R.id.rate_value);
             rate.setText(Float.toString(my_room.getRating()));
+
+            //add image
+            ImageView iv = (ImageView) findViewById(R.id.image_pr);
+            MainActivity.escaper().getImage(Private_room.this, my_room, iv);
+
             //add review
-            if (!(my_room.getReview().isEmpty())){
+            if (my_room.getReview()!= null){
                 LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View mv = vi.inflate(R.layout.review_private, null);
                 TextView review = (TextView) mv.findViewById(R.id.review_value);
@@ -51,7 +57,7 @@ public class Private_room extends AppCompatActivity {
 
             //add note
 
-            if (!(my_room.getNote().isEmpty())){
+            if (my_room.getNote() != null){
                 LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View mv = vi.inflate(R.layout.note_private, null);
                 TextView note = (TextView) mv.findViewById(R.id.note_value);
@@ -63,7 +69,7 @@ public class Private_room extends AppCompatActivity {
 
 
             //add address
-            if (!(my_room.getAddress().isEmpty())){
+            if (my_room.getAddress() != null){
                 LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View mv = vi.inflate(R.layout.address_private, null);
                 TextView address = (TextView) mv.findViewById(R.id.address_value);
@@ -74,7 +80,7 @@ public class Private_room extends AppCompatActivity {
 
 
             //add date
-            if (!(my_room.getDate().isEmpty())){
+            if (my_room.getDate() != null){
                 LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View mv = vi.inflate(R.layout.date_private, null);
                 TextView date = (TextView) mv.findViewById(R.id.date_value);

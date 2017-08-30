@@ -7,7 +7,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/room_name"
-        android:weightSum="1">
+        android:weightSum="1"
+       >
 
         <TextView
             android:id="@+id/room_name_header"
@@ -102,6 +103,15 @@
     android:id="@+id/note"
     android:layout_below="@+id/review">
     </LinearLayout>
+
+    //image
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/note"
+        android:id="@+id/image_pr"/>
+
+
 
 
 
