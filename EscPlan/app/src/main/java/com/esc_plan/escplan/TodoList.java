@@ -63,16 +63,6 @@ public class TodoList extends AppCompatActivity {
             }
         }
 
-        for (int i=0; i< todoListItems.size(); i++){
-            final PublicRoom curr_room = adapter.getItem(i);
-            Date scheduled = MainActivity.escaper().getScheduledDate(curr_room);
-            if (scheduled != null) {
-                View v = list.getChildAt(i);
-                ImageView iv = (ImageView) v.findViewById(R.id.todo_item_img);
-                iv.setImageResource(R.drawable.booked);
-            }
-        }
-
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {

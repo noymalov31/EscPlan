@@ -9,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.esc_plan.escplan.R;
 import com.esc_plan.escplan.db.PublicRoom;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by noy on 25/08/2017.
@@ -64,7 +66,12 @@ public class ToDoListAdapter  extends ArrayAdapter<PublicRoom> {
         PublicRoom curr_room = getItem(position);
         roomName = (TextView) v.findViewById(R.id.name);
         roomName.setText(curr_room.getName());
+        Date scheduled = MainActivity.escaper().getScheduledDate(curr_room);
+        if (scheduled != null) {
+            ImageView iv = (ImageView) v.findViewById(R.id.todo_item_img);
+            iv.setImageResource(R.drawable.booked);
 
+        }
         return v;
     }
 
