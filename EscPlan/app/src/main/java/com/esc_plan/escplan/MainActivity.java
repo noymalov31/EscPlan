@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        escaper.syncToFB();
     }
 
     private void create_db(){

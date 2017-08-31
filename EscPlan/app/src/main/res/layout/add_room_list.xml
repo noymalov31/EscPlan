@@ -39,6 +39,7 @@
                 android:layout_weight="0.34"
                 android:shadowRadius="2"
                 android:text="שם החדר: "
+                android:textStyle="bold"
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="20sp" />
 
@@ -68,6 +69,7 @@
                 android:layout_weight="0.04"
                 android:shadowRadius="2"
                 android:text="דירוג: "
+                android:textStyle="bold"
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="20sp"
                 android:id="@+id/rate_header"/>

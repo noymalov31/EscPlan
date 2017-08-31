@@ -8,6 +8,7 @@
         android:layout_weight="0.34"
         android:shadowRadius="2"
         android:text="שותפים: "
+        android:textStyle="bold"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="20sp"
         android:layout_alignBottom="@+id/editText"

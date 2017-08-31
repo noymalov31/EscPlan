@@ -5,16 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PublicRoom;
@@ -66,7 +64,7 @@ public class TodoList extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                Intent i = new Intent(TodoList.this, Public_room.class);
+                Intent i = new Intent(TodoList.this, PublicRoomPage.class);
                 String room_name = todoListItems.get(position).getName();
                 Bundle bundle = new Bundle();
                 bundle.putString("room_name", room_name);
@@ -161,6 +159,15 @@ public class TodoList extends AppCompatActivity {
             }
         });
 
+        Button goto_menu = (Button) findViewById(R.id.gotomenu);
+        goto_menu.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(TodoList.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     public PublicRoom getRoomByName(String name){

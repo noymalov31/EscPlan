@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.esc_plan.escplan.db.PrivateRoom;
@@ -52,7 +52,7 @@ public class MyList extends AppCompatActivity {
 
                 b.setPositiveButton("ראה פרטים", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        Intent i = new Intent(MyList.this, Private_room.class);
+                        Intent i = new Intent(MyList.this, PrivateRoomPage.class);
                         String room_name = myListItems.get(position).getName();
                         Bundle bundle = new Bundle();
                         bundle.putString("room_name", room_name);
@@ -73,6 +73,16 @@ public class MyList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MyList.this,AddRoomList.class);
+                startActivity(i);
+            }
+        });
+
+        Button goto_menu = (Button) findViewById(R.id.gotomenu);
+        goto_menu.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MyList.this,MainActivity.class);
                 startActivity(i);
             }
         });

@@ -9,7 +9,6 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.esc_plan.escplan.db.PublicRoom;
@@ -42,7 +41,7 @@ public class Recommended extends AppCompatActivity {
 
                 b.setNegativeButton("ראה פרטים", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        Intent i = new Intent(Recommended.this, Public_room.class);
+                        Intent i = new Intent(Recommended.this, PublicRoomPage.class);
                         String room_name = recommendedItems.get(position).getName();
                         Bundle bundle = new Bundle();
                         bundle.putString("room_name", room_name);

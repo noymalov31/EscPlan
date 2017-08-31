@@ -38,10 +38,10 @@
             android:name=".AddRoomList">
         </activity>
         <activity
-            android:name=".Private_room">
+            android:name=".PrivateRoomPage">
         </activity>
         <activity
-            android:name=".Public_room">
+            android:name=".PublicRoomPage">
         </activity>
     </application>
 

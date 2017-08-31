@@ -10,15 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.esc_plan.escplan.db.Escaper;
 import com.esc_plan.escplan.db.PublicRoom;
-import com.esc_plan.escplan.db.Room;
 
 import java.util.ArrayList;
 
@@ -47,7 +43,7 @@ public class AllRooms  extends AppCompatActivity {
                 final AlertDialog.Builder b = new AlertDialog.Builder(new ContextThemeWrapper(AllRooms.this, R.style.AlertDialogCustom));
                 b.setNegativeButton("ראה פרטים", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        Intent i = new Intent(AllRooms.this, Public_room.class);
+                        Intent i = new Intent(AllRooms.this, PublicRoomPage.class);
                         String room_name = allRoomsListItems.get(position).getName();
                         Bundle bundle = new Bundle();
                         bundle.putString("room_name", room_name);
@@ -91,5 +87,14 @@ public class AllRooms  extends AppCompatActivity {
             }
         });
 
+        Button goto_menu = (Button) findViewById(R.id.gotomenu);
+        goto_menu.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AllRooms.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

@@ -1,11 +1,13 @@
 package com.esc_plan.escplan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +19,7 @@ import java.util.ArrayList;
  * Created by noy on 26/08/2017.
  */
 
-public class Private_room extends AppCompatActivity {
+public class PrivateRoomPage extends AppCompatActivity {
     PrivateRoom my_room;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class Private_room extends AppCompatActivity {
 
             //add image
             ImageView iv = (ImageView) findViewById(R.id.image_pr);
-            MainActivity.escaper().getImage(Private_room.this, my_room, iv);
+            MainActivity.escaper().getImage(PrivateRoomPage.this, my_room, iv);
 
             //add review
             if (my_room.getReview()!= null){
@@ -115,6 +117,15 @@ public class Private_room extends AppCompatActivity {
 
 
         }
+        Button goto_menu = (Button) findViewById(R.id.gotomenu);
+        goto_menu.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PrivateRoomPage.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 

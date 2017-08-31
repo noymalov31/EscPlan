@@ -8,10 +8,19 @@
     android:id="@+id/name"
     android:layout_gravity="center"
     android:layout_margin="6dp"
-    android:paddingLeft="10dip"
     android:textSize="20sp"
     android:textColor="@android:color/background_dark"
+        android:paddingRight="10dip"
+        android:paddingLeft="200dip"
+        android:layout_alignParentRight="true"
+
     />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +42,7 @@
         android:src="@drawable/star"
         android:layout_alignBottom="@+id/rate"
         android:layout_toEndOf="@+id/rate" />
+    </LinearLayout>
 
 
 

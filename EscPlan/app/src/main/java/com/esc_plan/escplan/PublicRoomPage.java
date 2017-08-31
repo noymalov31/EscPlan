@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
  * Created by noy on 19/08/2017.
  */
 
-public class Public_room extends AppCompatActivity {
+public class PublicRoomPage extends AppCompatActivity {
     PublicRoom curr_room;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +46,13 @@ public class Public_room extends AppCompatActivity {
         genre.setText(String.valueOf(curr_room.getGenre()));
         TextView reviews = (TextView) findViewById(R.id.reviews_value);
         String all_reviews = "";
-        for (int i=0; i < curr_room.getReviews().size(); i++){
-            all_reviews += curr_room.getReviews().get(i) + "\n";
+        if (curr_room.getReviews() != null) {
+            for (int i = 0; i < curr_room.getReviews().size(); i++) {
+                all_reviews += curr_room.getReviews().get(i) + "\n";
 
+            }
+            reviews.setText(all_reviews);
         }
-        reviews.setText(all_reviews );
         TextView similar_rooms_value = (TextView) findViewById(R.id.similar_rooms_value);
         String all_similar = "";
         if (curr_room.getSimilarRooms() != null) {
@@ -67,7 +68,7 @@ public class Public_room extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Public_room.this, AddRoomTodo.class);
+                Intent i = new Intent(PublicRoomPage.this, AddRoomTodo.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("room_name", curr_room.getName());
                 i.putExtras(bundle);
@@ -77,7 +78,15 @@ public class Public_room extends AppCompatActivity {
 
 
 
+        Button goto_menu = (Button) findViewById(R.id.gotomenu);
+        goto_menu.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PublicRoomPage.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
 
 
     }
