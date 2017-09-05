@@ -11,7 +11,6 @@
         android:text="כתובת: "
         android:textColor="@android:color/holo_blue_light"
         android:textSize="20sp"
-        android:layout_alignBottom="@+id/editText"
         android:layout_alignParentStart="true" />
     <EditText
         android:layout_width="400dp"
