@@ -68,4 +68,16 @@ public class Recommended extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.escaper().setCurrAdapter(adapter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.escaper().removeCurrAdapter();
+    }
 }

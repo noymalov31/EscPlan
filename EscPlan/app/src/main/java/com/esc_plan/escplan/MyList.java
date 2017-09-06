@@ -46,7 +46,6 @@ public class MyList extends AppCompatActivity {
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         adapter.deleteByPos(position);
-                        adapter.notifyDataSetChanged();
                     }
                 });
 
@@ -87,5 +86,17 @@ public class MyList extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.escaper().setCurrAdapter(adapter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.escaper().removeCurrAdapter();
     }
 }

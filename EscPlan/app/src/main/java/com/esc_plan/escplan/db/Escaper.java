@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+import com.esc_plan.escplan.TodoList;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
@@ -85,6 +87,7 @@ public class Escaper implements Serializable{
     private TreeMap<String, Date> todo;
 
     private ImageView currIv;
+    private ArrayAdapter currAdapter;
 
     public Escaper() { }
 
@@ -280,6 +283,7 @@ public class Escaper implements Serializable{
                     recommends.put(recSnap.getKey(), recSnap.getValue(Integer.class));
                     recommendedRooms.add(getPublicById(recSnap.getKey()));
                 }
+                notifyDataChange();
             }
 
             @Override
@@ -295,17 +299,20 @@ public class Escaper implements Serializable{
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 todo.put(dataSnapshot.getKey(), dataSnapshot.getValue(Date.class));
                 todoRooms.add(getPublicById(dataSnapshot.getKey()));
+                notifyDataChange();
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String oldKey) {
                 todo.put(dataSnapshot.getKey(), dataSnapshot.getValue(Date.class));
+                notifyDataChange();
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 todoRooms.remove(getPublicById(dataSnapshot.getKey()));
                 todo.remove(dataSnapshot.getKey());
+                notifyDataChange();
             }
 
             @Override
@@ -324,7 +331,7 @@ public class Escaper implements Serializable{
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 myRooms.add(dataSnapshot.getValue(PrivateRoom.class));
-//                adapter.notifyDataSetChanged();
+                notifyDataChange();
             }
 
             @Override
@@ -334,12 +341,13 @@ public class Escaper implements Serializable{
                         myRooms.set(i, dataSnapshot.getValue(PrivateRoom.class));
                     }
                 }
+                notifyDataChange();
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 myRooms.remove(dataSnapshot.getValue(PrivateRoom.class));
-//                adapter.notifyDataSetChanged();
+                notifyDataChange();
             }
 
             @Override
@@ -361,7 +369,7 @@ public class Escaper implements Serializable{
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 allRooms.add(dataSnapshot.getValue(PublicRoom.class));
-//                adapter.notifyDataSetChanged();
+                notifyDataChange();
             }
 
             @Override
@@ -371,12 +379,13 @@ public class Escaper implements Serializable{
                         allRooms.set(i, dataSnapshot.getValue(PublicRoom.class));
                     }
                 }
+                notifyDataChange();
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 allRooms.remove(dataSnapshot.getValue(PublicRoom.class));
-//                adapter.notifyDataSetChanged();
+                notifyDataChange();
             }
 
             @Override
@@ -420,6 +429,21 @@ public class Escaper implements Serializable{
 
     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
     }
+
+    public void setCurrAdapter(ArrayAdapter currAdapter) {
+        this.currAdapter = currAdapter;
+    }
+
+    public void removeCurrAdapter() {
+        this.currAdapter = null;
+    }
+
+    public void notifyDataChange() {
+        if (this.currAdapter != null) {
+            this.currAdapter.notifyDataSetChanged();
+        }
+    }
+
 
     private class DownloadImageTask extends AsyncTask<Object, Void, Void> {
 

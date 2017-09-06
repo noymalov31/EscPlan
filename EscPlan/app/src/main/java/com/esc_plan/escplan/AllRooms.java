@@ -54,6 +54,7 @@ public class AllRooms  extends AppCompatActivity {
 
                 b.setPositiveButton("הוסף ל- TODO LIST", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+
                         Intent i = new Intent(AllRooms.this, AddRoomTodo.class);
                         String room_name = allRoomsListItems.get(position).getName();
                         Bundle bundle = new Bundle();
@@ -96,5 +97,17 @@ public class AllRooms  extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.escaper().setCurrAdapter(adapter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.escaper().removeCurrAdapter();
     }
 }

@@ -57,7 +57,7 @@ public class ToDoListAdapter  extends ArrayAdapter<PublicRoom> {
 
 
 
-    public View getView (int position, View convertView, ViewGroup parent){
+   public View getView (int position, View convertView, ViewGroup parent){
         View v = convertView;
         if (v == null){
             LayoutInflater inflatter = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,8 +67,10 @@ public class ToDoListAdapter  extends ArrayAdapter<PublicRoom> {
         roomName = (TextView) v.findViewById(R.id.name);
         roomName.setText(curr_room.getName());
         Date scheduled = MainActivity.escaper().getScheduledDate(curr_room);
-        if (scheduled != null) {
-            ImageView iv = (ImageView) v.findViewById(R.id.todo_item_img);
+        ImageView iv = (ImageView) v.findViewById(R.id.todo_item_img);
+        if (scheduled == null) {
+            iv.setImageResource(R.drawable.not_booked);
+        } else {
             iv.setImageResource(R.drawable.booked);
 
         }

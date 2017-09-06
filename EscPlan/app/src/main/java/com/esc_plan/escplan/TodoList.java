@@ -26,7 +26,7 @@ import java.util.Date;
 
 public class TodoList extends AppCompatActivity {
     private ListView list;
-    private  ArrayList<PublicRoom> todoListItems ;
+    private ArrayList<PublicRoom> todoListItems ;
     private ToDoListAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,6 @@ public class TodoList extends AppCompatActivity {
                 PublicRoom toAdd = getRoomByName(room_name);
                 if (toAdd != null) {
                     adapter.add(toAdd);
-                    adapter.notifyDataSetChanged();
                 } else {
                     final AlertDialog.Builder err = new AlertDialog.Builder(TodoList.this);
                     err.setTitle("שגיאה!");
@@ -60,6 +59,7 @@ public class TodoList extends AppCompatActivity {
                 }
             }
         }
+
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -102,9 +102,6 @@ public class TodoList extends AppCompatActivity {
 
                                             MainActivity.escaper().schedule(curr_room, calendar.getTime());
                                             Toast.makeText(TodoList.this, "Date added successfully ", Toast.LENGTH_SHORT).show();
-                                            View v = list.getChildAt(position);
-                                            ImageView iv = (ImageView)v.findViewById(R.id.todo_item_img);
-                                            iv.setImageResource(R.drawable.booked);
                                         }
                                     })
                                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
@@ -125,7 +122,6 @@ public class TodoList extends AppCompatActivity {
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         adapter.deleteByPos(position);
-                        adapter.notifyDataSetChanged();
                     }
                 });
 
@@ -168,6 +164,18 @@ public class TodoList extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.escaper().setCurrAdapter(adapter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.escaper().removeCurrAdapter();
     }
 
     public PublicRoom getRoomByName(String name){
