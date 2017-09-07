@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PrivateRoom;
 import com.esc_plan.escplan.db.PublicRoom;
+import com.esc_plan.escplan.db.Room;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -42,9 +44,7 @@ import static com.esc_plan.escplan.R.id.add_field;
  */
 
 public class AddRoomList extends AppCompatActivity {
-    AutoCompleteTextView room_names;
-
-    List<String> rooms =  MainActivity.escaper().getAllRoomsNames();
+    List<PublicRoom> rooms =  MainActivity.escaper().getAllRooms();
     String[] rates = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     String[] fields = { "תמונה" ,"תאריך", "שותפים", "זמן יציאה", "כתובת","ביקורת", "הערה"};
     private static int RESULT_LOAD_IMAGE = 1;
@@ -52,26 +52,48 @@ public class AddRoomList extends AppCompatActivity {
     private String filemanagerstring;
     AutoCompleteTextView autoCompleteText;
 
+    private PublicRoom selectedRoom = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_room_list);
 
-        room_names = (AutoCompleteTextView) findViewById(R.id.roomNameAutoComplete);
-        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, rooms.toArray());
-        room_names.setAdapter(adapter);
-        room_names.setThreshold(1);
+        autoCompleteText = (AutoCompleteTextView) findViewById(R.id.roomNameAutoComplete);
+        final ArrayAdapter adapter = new AutocompleteAdapter(this, R.layout.autocomp_item, rooms);
+        autoCompleteText.setAdapter(adapter);
+        autoCompleteText.setThreshold(1);
 
         Bundle bundle = getIntent().getExtras();
         String room_name = "";
         if(bundle != null ) {
-            room_name = bundle.getString("room_name");
+            int roomIndex = bundle.getInt(getString(R.string.ROOM_POS));
+
+            switch (Room.Type.vals[bundle.getInt(getString(R.string.ROOM_TYPE))]) {
+                case ALL:
+                    selectedRoom = MainActivity.escaper().getAllRooms().get(roomIndex);
+                    break;
+                case TODO:
+                    selectedRoom  = MainActivity.escaper().getTodoRooms().get(roomIndex);
+                    break;
+                case RECOMMENDED:
+                    selectedRoom  = MainActivity.escaper().getRecommendedRooms().get(roomIndex);
+                    break;
+                case MINE:
+                    return;
+            }
+            room_name = selectedRoom.getName();
         }
 
-        autoCompleteText=(AutoCompleteTextView)findViewById(R.id.roomNameAutoComplete);
         autoCompleteText.setText(room_name);
+        autoCompleteText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedRoom = (PublicRoom) adapterView.getAdapter().getItem(i);
+            }
+        });
 
-        final ArrayAdapter<String> rate_adp = new ArrayAdapter<String>(AddRoomList.this,
+        final ArrayAdapter<String> rate_adp = new ArrayAdapter<>(AddRoomList.this,
                 android.R.layout.simple_spinner_item, rates);
         final Spinner rate_sp = (Spinner) findViewById(R.id.rates_spinner);
         rate_sp.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -84,7 +106,7 @@ public class AddRoomList extends AppCompatActivity {
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(AddRoomList.this);
-                final ArrayAdapter<String> adp = new ArrayAdapter<String>(AddRoomList.this,
+                final ArrayAdapter<String> adp = new ArrayAdapter<>(AddRoomList.this,
                         android.R.layout.simple_spinner_item, fields);
 
                 final Spinner sp = new Spinner(AddRoomList.this);
@@ -115,11 +137,8 @@ public class AddRoomList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String name = autoCompleteText.getText().toString();
                 String rate = rate_sp.getSelectedItem().toString();
-                PublicRoom pub_room = findPublicRoom(name);
-                pub_room.setReviews(null);
-                PrivateRoom new_room = new PrivateRoom(pub_room, Integer.valueOf(rate));
+                PrivateRoom new_room = new PrivateRoom(selectedRoom, Integer.valueOf(rate));
 
                 //add review
                 TextView review_value = (TextView) findViewById(R.id.review_value_i);
@@ -173,21 +192,11 @@ public class AddRoomList extends AppCompatActivity {
 
                 Intent i = new Intent(AddRoomList.this, MyList.class);
                 startActivity(i);
+                finish();
 
             }
         });
 
-    }
-
-    private PublicRoom findPublicRoom(String name) {
-        ArrayList<PublicRoom> all_rooms = MainActivity.escaper().getAllRooms();
-        for (int i=0; i < all_rooms.size(); i++){
-
-            if (name.equals(all_rooms.get(i).getName())){
-                return all_rooms.get(i);
-            }
-        }
-        return null;
     }
 
     private void add_new_field (String field){
@@ -323,8 +332,6 @@ public class AddRoomList extends AppCompatActivity {
 
 
     }
-
-
 
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
         ParcelFileDescriptor parcelFileDescriptor =

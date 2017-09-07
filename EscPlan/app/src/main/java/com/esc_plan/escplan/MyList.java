@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.esc_plan.escplan.db.PrivateRoom;
+import com.esc_plan.escplan.db.Room;
 
 
 import java.util.ArrayList;
@@ -36,6 +37,17 @@ public class MyList extends AppCompatActivity {
         adapter = new MyListAdapter(getApplicationContext(), R.layout.mylist_item, myListItems);
         list.setAdapter(adapter);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Intent i = new Intent(MyList.this, PrivateRoomPage.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putInt(getString(R.string.ROOM_POS), position);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
@@ -45,21 +57,9 @@ public class MyList extends AppCompatActivity {
 
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        adapter.deleteByPos(position);
+                        MainActivity.escaper().removePrivateRoom(myListItems.get(position));
                     }
                 });
-
-                b.setPositiveButton("ראה פרטים", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        Intent i = new Intent(MyList.this, PrivateRoomPage.class);
-                        String room_name = myListItems.get(position).getName();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("room_name", room_name);
-                        i.putExtras(bundle);
-                        startActivity(i);
-                    }
-                });
-
 
                 b.show();
                 return true;
@@ -83,6 +83,7 @@ public class MyList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MyList.this,MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 

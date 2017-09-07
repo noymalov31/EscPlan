@@ -7,10 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PublicRoom;
+import com.esc_plan.escplan.db.Room;
 
 import java.util.ArrayList;
+
+import static com.esc_plan.escplan.db.Room.Type;
 
 /**
  * Created by noy on 19/08/2017.
@@ -22,14 +26,21 @@ public class PublicRoomPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.public_room);
+
         Bundle bundle = getIntent().getExtras();
-        String room_name = bundle.getString("room_name");
-        ArrayList<PublicRoom> all_rooms = MainActivity.escaper().getAllRooms();
-        for (int i=0; i < all_rooms.size(); i++){
-            if (room_name.equals(all_rooms.get(i).getName())){
-                curr_room = all_rooms.get(i);
+        int roomIndex = bundle.getInt(getString(R.string.ROOM_POS));
+        switch (Type.vals[bundle.getInt(getString(R.string.ROOM_TYPE))]) {
+            case ALL:
+                curr_room = MainActivity.escaper().getAllRooms().get(roomIndex);
                 break;
-            }
+            case TODO:
+                curr_room = MainActivity.escaper().getTodoRooms().get(roomIndex);
+                break;
+            case RECOMMENDED:
+                curr_room = MainActivity.escaper().getRecommendedRooms().get(roomIndex);
+                break;
+            case MINE:
+                return;
         }
 
         TextView name = (TextView) findViewById(R.id.name_value);
@@ -68,11 +79,10 @@ public class PublicRoomPage extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(PublicRoomPage.this, AddRoomTodo.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("room_name", curr_room.getName());
-                i.putExtras(bundle);
-                startActivity(i);
+                MainActivity.escaper().todo(curr_room);
+
+                Toast.makeText(PublicRoomPage.this, curr_room.getName() +
+                        "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -85,6 +95,7 @@ public class PublicRoomPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(PublicRoomPage.this,MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 

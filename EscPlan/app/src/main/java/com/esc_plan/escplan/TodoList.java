@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PublicRoom;
+import com.esc_plan.escplan.db.Room;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,35 +41,14 @@ public class TodoList extends AppCompatActivity {
         adapter = new ToDoListAdapter(getApplicationContext(), R.layout.todo_item, todoListItems);
         list.setAdapter(adapter);
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null ) {
-            String room_name = bundle.getString("room_name");
-            if (room_name != null) {
-                PublicRoom toAdd = getRoomByName(room_name);
-                if (toAdd != null) {
-                    adapter.add(toAdd);
-                } else {
-                    final AlertDialog.Builder err = new AlertDialog.Builder(TodoList.this);
-                    err.setTitle("שגיאה!");
-                    err.setMessage("החדר שניסית להוסיף אינו קיים. נא נסה שנית");
-                    err.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-
-                        }
-                    });
-                    err.show();
-                }
-            }
-        }
-
-
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Intent i = new Intent(TodoList.this, PublicRoomPage.class);
-                String room_name = todoListItems.get(position).getName();
                 Bundle bundle = new Bundle();
-                bundle.putString("room_name", room_name);
+
+                bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.TODO.ordinal());
+                bundle.putInt(getString(R.string.ROOM_POS), position);
                 i.putExtras(bundle);
                 startActivity(i);
             }
@@ -117,20 +98,25 @@ public class TodoList extends AppCompatActivity {
                     String msg = "נקבע לתאריך :";
                     msg += scheduled.toString();
                     b.setMessage(msg);
+                    b.setNeutralButton("הסר תאריך", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            MainActivity.escaper().unschedule(todoListItems.get(position));
+                        }
+                    });
                 }
 
                 b.setNegativeButton("מחק", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        adapter.deleteByPos(position);
+                        MainActivity.escaper().untodo(todoListItems.get(position));
                     }
                 });
 
                 b.setPositiveButton("הוסף לרשימה שלי", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         Intent i = new Intent(TodoList.this, AddRoomList.class);
-                        String room_name = todoListItems.get(position).getName();
                         Bundle bundle = new Bundle();
-                        bundle.putString("room_name", room_name);
+                        bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.TODO.ordinal());
+                        bundle.putInt(getString(R.string.ROOM_POS), position);
                         i.putExtras(bundle);
                         startActivity(i);
                     }

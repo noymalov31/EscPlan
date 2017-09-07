@@ -16,6 +16,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="ROOM_POS">room_pos</string>
+    <string name="ROOM_TYPE">room_type</string>
 
 
 </resources>

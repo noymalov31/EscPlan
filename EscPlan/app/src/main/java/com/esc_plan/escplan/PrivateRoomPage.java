@@ -27,16 +27,8 @@ public class PrivateRoomPage extends AppCompatActivity {
         setContentView(R.layout.private_room);
         Bundle bundle = getIntent().getExtras();
         if(bundle != null ) {
-            String room_name = bundle.getString("room_name");
-
-            ArrayList<PrivateRoom> prooms = MainActivity.escaper().getMyRooms();
-            for (int i=0; i < prooms.size(); i++){
-
-                if (room_name.equals(prooms.get(i).getName())){
-                    my_room = prooms.get(i);
-                    break;
-                }
-            }
+            my_room = MainActivity.escaper().getMyRooms()
+                    .get(bundle.getInt(getString(R.string.ROOM_POS)));
 
             TextView name = (TextView) findViewById(R.id.name_value);
             name.setText(my_room.getName());
@@ -111,10 +103,6 @@ public class PrivateRoomPage extends AppCompatActivity {
                 ViewGroup insertPoint = (ViewGroup) findViewById(R.id.time);
                 insertPoint.addView(mv, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
-
-
-
-
 
         }
         Button goto_menu = (Button) findViewById(R.id.gotomenu);

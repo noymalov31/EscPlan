@@ -16,6 +16,10 @@ public interface Room {
         General, Kids, Horror, Fantasy, Action, Performance;
         public static final int length = Genre.values().length;
     }
+    enum Type {
+        ALL, TODO, RECOMMENDED, MINE;
+        public static final Type[] vals = Type.values();
+    }
 
     enum Privacy {
         Public, Private;

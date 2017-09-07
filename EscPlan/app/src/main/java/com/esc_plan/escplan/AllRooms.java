@@ -13,8 +13,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PublicRoom;
+import com.esc_plan.escplan.db.Room;
+import com.esc_plan.escplan.db.Room.Type;
 
 import java.util.ArrayList;
 
@@ -37,30 +40,31 @@ public class AllRooms  extends AppCompatActivity {
         adapter = new AllRoomsListAdapter(getApplicationContext(), R.layout.all_rooms_item, allRoomsListItems);
         list.setAdapter(adapter);
 
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Intent i = new Intent(AllRooms.this, PublicRoomPage.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putInt(getString(R.string.ROOM_TYPE), Type.ALL.ordinal());
+                bundle.putInt(getString(R.string.ROOM_POS), position);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
+
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 final AlertDialog.Builder b = new AlertDialog.Builder(new ContextThemeWrapper(AllRooms.this, R.style.AlertDialogCustom));
-                b.setNegativeButton("ראה פרטים", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        Intent i = new Intent(AllRooms.this, PublicRoomPage.class);
-                        String room_name = allRoomsListItems.get(position).getName();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("room_name", room_name);
-                        i.putExtras(bundle);
-                        startActivity(i);
-                    }
-                });
 
                 b.setPositiveButton("הוסף ל- TODO LIST", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        MainActivity.escaper().todo(allRoomsListItems.get(position));
 
-                        Intent i = new Intent(AllRooms.this, AddRoomTodo.class);
-                        String room_name = allRoomsListItems.get(position).getName();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("room_name", room_name);
-                        i.putExtras(bundle);
-                        startActivity(i);
+                        Toast.makeText(AllRooms.this, allRoomsListItems.get(position).getName() +
+                                "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -95,6 +99,7 @@ public class AllRooms  extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(AllRooms.this,MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
     }

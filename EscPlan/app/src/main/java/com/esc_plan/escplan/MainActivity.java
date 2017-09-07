@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private static Escaper escaper = null;
-    private static AuthActivity authenticator = null;
     public static Escaper escaper() {
         return escaper;
     }
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        authenticator = new AuthActivity();
+        AuthActivity authenticator = new AuthActivity();
         if (authenticator.getUserString() == null) {
             Intent i =new Intent(this, AuthActivity.class);
             startActivity(i);
@@ -55,16 +54,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,MyList.class);
                 startActivity(i);
-                //PublicRoom publicRoom = new PublicRoom("סודו של הענק", 7.4f,123, Room.Genre.Fantasy,"pum", "054","add");
-                //escaper.addPublicRoom(publicRoom);
-
-//                PublicRoom publicRoom = escaper.getAllRooms().get(1);
-//                PrivateRoom pr = new PrivateRoom(publicRoom, 4f);
-//                pr.setReview("like it threeee3!");
-//                pr.setTime(200);
-//                escaper.addPrivateRoom(pr);
-
-//                escaper.saveImage(publicRoom, "http://blog.nowescape.com/wp-content/uploads/2016/03/escape1.jpg");
             }
         });
 
@@ -107,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        create_db(); // todo delete
 
     }
 
@@ -161,10 +148,6 @@ public class MainActivity extends AppCompatActivity {
         catch (IOException e) {
             Log.d(MainActivity.class.getSimpleName(), "FAILED!!!!00");
         }
-
-
-
-
     }
 
 }

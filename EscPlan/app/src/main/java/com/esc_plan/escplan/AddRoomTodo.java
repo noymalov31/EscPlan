@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PublicRoom;
 
@@ -20,38 +22,37 @@ import java.util.List;
 
 public class AddRoomTodo extends AppCompatActivity {
     AutoCompleteTextView autoCompleteText;
-    List<String> rooms =  MainActivity.escaper().getAllRoomsNames();
+    ArrayList<PublicRoom> rooms =  MainActivity.escaper().getAllRooms();
+    private PublicRoom selectedRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_room_todo);
-        Bundle bundle = getIntent().getExtras();
-        String room_name = "";
-        if(bundle != null ) {
-            room_name = bundle.getString("room_name");
-        }
 
-
-        autoCompleteText=(AutoCompleteTextView)findViewById(R.id.autoCompleteTextView);
-        autoCompleteText.setText(room_name);
-
-        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, rooms.toArray());
-
+        autoCompleteText = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        final ArrayAdapter adapter = new AutocompleteAdapter(this, R.layout.autocomp_item, rooms);
         autoCompleteText.setAdapter(adapter);
         autoCompleteText.setThreshold(1);
 
-        Button todo_list_btn=(Button)findViewById(R.id.add_button);
+
+        autoCompleteText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedRoom = (PublicRoom) adapterView.getAdapter().getItem(i);
+            }
+        });
+
+        Button todo_list_btn = (Button)findViewById(R.id.add_button);
         todo_list_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                String name = autoCompleteText.getText().toString();
-                Intent i = new Intent(AddRoomTodo.this,TodoList.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("room_name", name);
-                i.putExtras(bundle);
-                startActivity(i);
+                MainActivity.escaper().todo(selectedRoom);
+
+                Toast.makeText(AddRoomTodo.this, selectedRoom.getName() +
+                        "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
