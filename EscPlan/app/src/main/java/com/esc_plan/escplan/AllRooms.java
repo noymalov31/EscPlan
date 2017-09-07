@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esc_plan.escplan.db.PublicRoom;
@@ -48,7 +51,7 @@ public class AllRooms  extends AppCompatActivity {
                 Bundle bundle = new Bundle();
 
                 bundle.putInt(getString(R.string.ROOM_TYPE), Type.ALL.ordinal());
-                bundle.putInt(getString(R.string.ROOM_POS), position);
+                bundle.putInt(getString(R.string.ROOM_POS), adapter.getRealIndex(position));
                 i.putExtras(bundle);
                 startActivity(i);
             }
@@ -61,9 +64,9 @@ public class AllRooms  extends AppCompatActivity {
 
                 b.setPositiveButton("הוסף ל- TODO LIST", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        MainActivity.escaper().todo(allRoomsListItems.get(position));
+                        MainActivity.escaper().todo(adapter.getItem(position));
 
-                        Toast.makeText(AllRooms.this, allRoomsListItems.get(position).getName() +
+                        Toast.makeText(AllRooms.this, adapter.getItem(position).getName() +
                                 "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
 
                     }
@@ -75,20 +78,18 @@ public class AllRooms  extends AppCompatActivity {
             }
         });
 
-        Button search = (Button) findViewById(R.id.search_button);
-        search.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText) findViewById(R.id.search_edittext);
-                String search_content = et.getText().toString();
-                for (int i=0; i< allRoomsListItems.size(); i++){
-                    if (!(adapter.getItem(i).getName().toLowerCase().contains(search_content.toLowerCase()))) {
-                        View curr_item = list.getChildAt(i);
-                        curr_item.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1));
-                        curr_item.setVisibility(View.GONE);
-                    }
-                }
+        TextView searchBox = (TextView) findViewById(R.id.search_edittext);
+        searchBox.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {}
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) { }
+
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                adapter.filterList(s);
             }
         });
 

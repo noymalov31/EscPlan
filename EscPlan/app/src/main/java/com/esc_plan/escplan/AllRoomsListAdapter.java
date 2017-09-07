@@ -34,29 +34,14 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
     private TextView roomRate;
     private ArrayList<PublicRoom> listOfItems;
     private Context context;
+    private ArrayList<Integer> realIndex;
 
     public AllRoomsListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<PublicRoom> objects) {
-        super(context, resource, objects);
+        super(context, resource, new ArrayList<>(objects));
         this.context = context;
         this.listOfItems = objects;
+        this.realIndex = new ArrayList<>();
 
-    }
-
-    public void add(PublicRoom item) {
-        MainActivity.escaper().addPublicRoom(item);
-    }
-
-    public void removeByPos(int index){
-        PublicRoom toDelete = getItem(index);
-        deleteItem(toDelete);
-    }
-
-    public void deleteItem(PublicRoom item){
-        MainActivity.escaper().removePublicRoom(item);
-    }
-
-    public PublicRoom getItem(int index){
-        return this.listOfItems.get(index);
     }
 
     public View getView (int position, View convertView, ViewGroup parent){
@@ -77,6 +62,20 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
+    public void filterList(CharSequence s) {
+        clear();
+        realIndex.clear();
+        for (int i = 0; i < listOfItems.size(); i++) {
+            if (listOfItems.get(i).getName().contains(s.toString())) {
+                add(listOfItems.get(i));
+                realIndex.add(i);
+            }
+        }
+        notifyDataSetChanged();
+    }
+    public int getRealIndex(int i){
+        return realIndex.get(i);
+    }
 
 }
 
