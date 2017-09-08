@@ -36,11 +36,11 @@
             android:text="שם החדר: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/name_value"/>
     </LinearLayout>
 
@@ -62,11 +62,11 @@
             android:textStyle="bold"
             android:text="דירוג: "
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/rate_value"/>
     </LinearLayout>
 
