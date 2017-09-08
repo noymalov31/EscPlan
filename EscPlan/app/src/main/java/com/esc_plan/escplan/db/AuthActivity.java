@@ -140,15 +140,6 @@ public class AuthActivity extends AppCompatActivity implements LoaderCallbacks<C
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-
-        Button signBtn = (Button) findViewById(R.id.email_sign_in_button);
-        signBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
         SignInButton googleBtn = (SignInButton) findViewById(R.id.sign_in_button);
         setGooglePlusButtonText(googleBtn);
         googleBtn.setOnClickListener(new View.OnClickListener() {
@@ -225,7 +216,7 @@ public class AuthActivity extends AppCompatActivity implements LoaderCallbacks<C
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;

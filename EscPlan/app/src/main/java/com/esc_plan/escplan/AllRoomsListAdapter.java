@@ -40,7 +40,6 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
         super(context, resource, new ArrayList<>(objects));
         this.context = context;
         this.listOfItems = objects;
-        this.realIndex = new ArrayList<>();
 
     }
 
@@ -64,7 +63,16 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
 
     public void filterList(CharSequence s) {
         clear();
-        realIndex.clear();
+        if ((s == null) || (s.length() == 0)) {
+            addAll(this.listOfItems);
+            realIndex = null;
+            return;
+        }
+        if (realIndex  == null) {
+            realIndex = new ArrayList<>();
+        } else {
+            realIndex.clear();
+        }
         for (int i = 0; i < listOfItems.size(); i++) {
             if (listOfItems.get(i).getName().contains(s.toString())) {
                 add(listOfItems.get(i));
@@ -74,7 +82,7 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
         notifyDataSetChanged();
     }
     public int getRealIndex(int i){
-        return realIndex.get(i);
+        return (realIndex == null) ? i:realIndex.get(i);
     }
 
 }
