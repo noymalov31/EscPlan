@@ -35,24 +35,6 @@ public class MyListAdapter extends ArrayAdapter<PrivateRoom> {
 
     }
 
-    public void add(PrivateRoom item) {
-        MainActivity.escaper().addPrivateRoom(item);
-    }
-
-    public void deleteByPos(int index){
-        PrivateRoom toDelete = getItem(index);
-        deleteItem(toDelete);
-    }
-
-    public void deleteItem(PrivateRoom item){
-        MainActivity.escaper().removePrivateRoom(item);
-    }
-
-    public PrivateRoom getItem(int index){
-
-        return this.listOfItems.get(index);
-    }
-
     public View getView (int position, View convertView, ViewGroup parent){
         View v = convertView;
         if (v == null){

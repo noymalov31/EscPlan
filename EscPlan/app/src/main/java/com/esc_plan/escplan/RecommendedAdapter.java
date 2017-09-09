@@ -39,11 +39,6 @@ public class RecommendedAdapter  extends ArrayAdapter<PublicRoom> {
 
     }
 
-    public PublicRoom getItem(int index){
-
-        return this.listOfItems.get(index);
-    }
-
     public View getView (int position, View convertView, ViewGroup parent){
         View v = convertView;
         if (v == null){
