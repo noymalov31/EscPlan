@@ -27,27 +27,23 @@
 
     //name
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/room_name"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/room_image"
         android:weightSum="1">
 
+
         <TextView
-            android:id="@+id/room_name_header"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.34"
+            android:typeface="sans"
+            android:textSize="50sp"
             android:shadowRadius="2"
-            android:text="שם החדר: "
             android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@android:color/holo_blue_dark"
             android:id="@+id/name_value"/>
     </LinearLayout>
 
@@ -58,6 +54,8 @@
         android:id="@+id/rate"
         android:layout_below="@+id/room_name"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:weightSum="1">
 
         <TextView
@@ -69,11 +67,11 @@
             android:text="דירוג: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/rate_value"/>
     </LinearLayout>
 
@@ -82,6 +80,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:id="@+id/address"
         android:layout_below="@+id/rate"
         android:weightSum="1">
@@ -95,11 +95,11 @@
             android:text="כתובת: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/adress_value"/>
     </LinearLayout>
 
@@ -107,6 +107,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:layout_alignParentRight="true"
         android:id="@+id/phone_num"
         android:layout_below="@+id/address"
@@ -121,11 +123,11 @@
             android:text="טלפון: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/phone_num_value"
             android:onClick="onClickPhone" />
     </LinearLayout>
@@ -134,6 +136,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:id="@+id/website"
         android:layout_below="@+id/phone_num"
         android:layout_alignParentRight="true"
@@ -148,11 +152,11 @@
             android:text="אתר החדר: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/website_value"
             android:onClick="onClickWebsite"/>
     </LinearLayout>
@@ -162,6 +166,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/genre"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:layout_below="@+id/website"
         android:layout_alignParentRight="true"
         android:weightSum="1">
@@ -175,11 +181,11 @@
             android:text="ז'אנר: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/genre_value"/>
     </LinearLayout>
 
@@ -187,6 +193,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:id="@+id/reviews"
         android:layout_below="@+id/genre"
         android:layout_alignParentRight="true"
@@ -201,11 +209,11 @@
             android:text="ביקורות: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/reviews_value"/>
     </LinearLayout>
 
@@ -214,6 +222,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/similar_rooms"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:layout_below="@+id/reviews"
         android:layout_alignParentRight="true"
         android:weightSum="1">
@@ -227,17 +237,17 @@
             android:text="חדרים דומים: "
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/similar_rooms_value"/>
     </LinearLayout>
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
         android:id="@+id/add_to_todo"
         android:layout_marginBottom="52dp"
         android:background="@drawable/add_to_todo_btn"
