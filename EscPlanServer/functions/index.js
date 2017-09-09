@@ -40,6 +40,14 @@ exports.ranker = functions.database
 
 });
 
+exports.addPublicRoomDB = functions.https.onRequest((request, response) => {
+       response.send("Working on adding database");
+
+       response.send("Added sucessfully!");
+ });
+
+
+
 function getDeltaRooms(base, other) {
 	var diff = [];
 	other.forEach(function(room) {
