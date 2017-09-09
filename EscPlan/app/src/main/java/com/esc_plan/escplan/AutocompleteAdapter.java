@@ -17,11 +17,7 @@ public class AutocompleteAdapter extends ArrayAdapter<PublicRoom> {
 
     private LayoutInflater layoutInflater;
     private List<PublicRoom> rooms;
-//    private List<Integer> realIndex;
 
-/*    public int getRealIndex(int i) {
-        return realIndex.get(i);
-    }*/
     private Filter mFilter = new Filter() {
         @Override
         public String convertResultToString(Object resultValue) {
@@ -31,16 +27,12 @@ public class AutocompleteAdapter extends ArrayAdapter<PublicRoom> {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
-//            realIndex = new ArrayList<>();
 
             if (constraint != null) {
                 ArrayList<PublicRoom> suggestions = new ArrayList<>();
                 for (int i = 0; i < rooms.size(); i++) {
-
-                    // Note: change the "contains" to "startsWith" if you only want starting matches
                     if (rooms.get(i).getName().contains(constraint.toString())) {
                         suggestions.add(rooms.get(i));
-//                        realIndex.add(i);
                     }
                 }
 

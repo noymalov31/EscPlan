@@ -191,8 +191,7 @@ public class AddRoomList extends AppCompatActivity {
                     MainActivity.escaper().saveImage(AddRoomList.this, new_room, image_value);
                 }
 
-                Intent i = new Intent(AddRoomList.this, MyList.class);
-                startActivity(i);
+                Toast.makeText(AddRoomList.this, "room added successfully ", Toast.LENGTH_SHORT).show();
                 finish();
 
             }

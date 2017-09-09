@@ -119,6 +119,7 @@ public class TodoList extends AppCompatActivity {
                         bundle.putInt(getString(R.string.ROOM_POS), position);
                         i.putExtras(bundle);
                         startActivity(i);
+                        finish();
                     }
                 });
 
