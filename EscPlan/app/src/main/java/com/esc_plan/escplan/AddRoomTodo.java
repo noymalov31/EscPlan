@@ -51,7 +51,7 @@ public class AddRoomTodo extends AppCompatActivity {
                 MainActivity.escaper().todo(selectedRoom);
 
                 Toast.makeText(AddRoomTodo.this, selectedRoom.getName() +
-                        "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                        " התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

@@ -93,12 +93,16 @@ public class PublicRoom implements Room, Serializable {
     public void addPrivateRoom(PrivateRoom newRoom) {
         if (peopleCompleted == 0) {
             this.rating = newRoom.getRating();
-            this.time = newRoom.getTime();
+            if (newRoom.getTime() != 0) {
+                this.time = newRoom.getTime();
+            }
         } else {
             this.rating = ((this.rating * this.peopleCompleted) + newRoom.getRating())
-                    / this.peopleCompleted;
-            this.time = ((this.time * this.peopleCompleted) + newRoom.getTime())
-                    / this.peopleCompleted;
+                    / (this.peopleCompleted + 1);
+            if (newRoom.getTime() != 0) {
+                this.time = ((this.time * this.peopleCompleted) + newRoom.getTime())
+                        / (this.peopleCompleted + 1);
+            }
 
         }
         if (newRoom.getReview() != null) {

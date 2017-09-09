@@ -59,11 +59,6 @@ public class Escaper implements Serializable{
     private StorageReference storagePublic = null;
     private StorageReference storagePrivate = null;
 
-    private Query allRoomsQuery = null;
-    private Query myRoomsQuery = null;
-    private Query todoRoomsQuery = null;
-    private Query recommendedRoomsQuery = null;
-
 
     /* id */
     private String id;
@@ -109,10 +104,10 @@ public class Escaper implements Serializable{
         storagePrivate = storageRef.child(id);
         storagePublic = storageRef.child("public");
 
-        myRoomsQuery = dbRefMyRooms.orderByChild("name");
-        allRoomsQuery = dbRefAllRooms.orderByChild("name");
-        todoRoomsQuery = dbRefTodoRooms.orderByKey();
-        recommendedRoomsQuery = dbRefRecommendedRooms.orderByValue();
+//        myRoomsQuery = dbRefMyRooms.orderByChild("name");
+//        allRoomsQuery = dbRefAllRooms.orderByChild("name");
+//        todoRoomsQuery = dbRefTodoRooms.orderByKey();
+//        recommendedRoomsQuery = dbRefRecommendedRooms.orderByValue();
         setAllRoomsEvents();
     }
 
@@ -270,7 +265,6 @@ public class Escaper implements Serializable{
                 return allRooms.get(i);
             }
         }
-//        return dbRefAllRooms.child(key).;
         return null;
     }
 
@@ -337,8 +331,9 @@ public class Escaper implements Serializable{
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String oldKey) {
                 for (int i = 0; i < myRooms.size(); i++) {
-                    if (myRooms.get(i).getId().equals(oldKey)) {
+                    if (myRooms.get(i).getId().equals(dataSnapshot.getKey())) {
                         myRooms.set(i, dataSnapshot.getValue(PrivateRoom.class));
+                        break;
                     }
                 }
                 notifyDataChange();
@@ -375,8 +370,9 @@ public class Escaper implements Serializable{
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String oldKey) {
                 for (int i = 0; i < allRooms.size(); i++) {
-                    if (allRooms.get(i).genId(dbRefAllRooms).equals(oldKey)) {
+                    if (allRooms.get(i).getId().equals(dataSnapshot.getKey())) {
                         allRooms.set(i, dataSnapshot.getValue(PublicRoom.class));
+                        break;
                     }
                 }
                 notifyDataChange();
