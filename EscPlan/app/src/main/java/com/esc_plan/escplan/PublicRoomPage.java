@@ -1,6 +1,7 @@
 package com.esc_plan.escplan;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -50,9 +51,10 @@ public class PublicRoomPage extends AppCompatActivity {
         TextView address = (TextView) findViewById(R.id.adress_value);
         address.setText(curr_room.getAddress());
         TextView phone_num = (TextView) findViewById(R.id.phone_num_value);
+        phone_num.setPaintFlags(phone_num.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         phone_num.setText(curr_room.getPhone());
         TextView website = (TextView) findViewById(R.id.website_value);
-        website.setText(curr_room.getURL());
+        website.setPaintFlags(website.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         TextView genre = (TextView) findViewById(R.id.genre_value);
         genre.setText(String.valueOf(curr_room.getGenre()));
         TextView reviews = (TextView) findViewById(R.id.reviews_value);
@@ -116,9 +118,9 @@ public class PublicRoomPage extends AppCompatActivity {
     public void onClickWebsite(View v){
 
         TextView website = (TextView) v.findViewById(R.id.website_value);
-        String url = website.getText().toString();
+        String url = curr_room.getURL().toString();
         Intent i = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://"+url));
+                Uri.parse(url));
         startActivity(i);
     }
 }
