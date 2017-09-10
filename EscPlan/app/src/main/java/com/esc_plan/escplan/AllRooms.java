@@ -67,7 +67,7 @@ public class AllRooms  extends AppCompatActivity {
                         MainActivity.escaper().todo(adapter.getItem(position));
 
                         Toast.makeText(AllRooms.this, adapter.getItem(position).getName() +
-                                "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                                " התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
 
                     }
                 });

@@ -9,150 +9,146 @@
         android:layout_height="fill_parent"
         android:id="@+id/private_room">
 
-    <Button
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/gotomenu"
-        android:id="@+id/gotomenu"
-        android:layout_alignParentLeft="true"
-        />
-    //name
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/room_name"
-        android:weightSum="1"
-        android:layout_below="@+id/gotomenu"
-        android:layout_alignParentRight="true"
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gotomenu"
+            android:id="@+id/gotomenu"
+            android:layout_alignParentLeft="true"
+            />
+        //name
 
-        >
-
-
-        <TextView
+        //room image:
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:typeface="sans"
-            android:textSize="50sp"
-            android:shadowRadius="2"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="@android:color/holo_blue_dark"
-            android:id="@+id/name_value"/>
-    </LinearLayout>
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="20dp"
-    android:src="@drawable/sep"
-    android:id="@+id/sep"
-    android:layout_below="@+id/room_name"/>
-    //rate
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rate"
-        android:layout_below="@+id/sep"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:weightSum="1">
+            android:id="@+id/text_photo">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/image_pr"/>
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_alignParentRight="true"/>>
 
-        <TextView
-            android:id="@+id/rate_header"
+            //name
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:typeface="sans"
+                android:textSize="50sp"
+                android:shadowRadius="2"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_alignBottom="@+id/image_pr"
+                android:textColor="@android:color/holo_blue_dark"
+                android:id="@+id/name_value"/>>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:src="@drawable/sep"
+            android:id="@+id/sep"
+            android:layout_below="@+id/text_photo"/>
+        //rate
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:textStyle="bold"
-            android:text="דירוג: "
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/rate"
+            android:layout_below="@+id/sep"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/rate_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:textStyle="bold"
+                android:text="דירוג: "
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/rate_value"/>
+        </LinearLayout>
+
+        //date
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/rate_value"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/date"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/rate">
+        </LinearLayout>
 
-    //date
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-    android:id="@+id/date"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/rate">
-    </LinearLayout>
+        //partners
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/partners"
+            android:layout_below="@+id/date">
+        </LinearLayout>
 
-    //partners
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/partners"
-    android:layout_below="@+id/date">
-    </LinearLayout>
+        //time
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:id="@+id/time"
+            android:layout_below="@+id/partners">
+        </LinearLayout>
 
-    //time
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:orientation="horizontal"
-    android:id="@+id/time"
-    android:layout_below="@+id/partners">
-    </LinearLayout>
+        //address
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:id="@+id/address"
+            android:layout_below="@+id/time">
+        </LinearLayout>
 
-    //address
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentRight="true"
-        android:orientation="horizontal"
-    android:id="@+id/address"
-    android:layout_below="@+id/time">
-    </LinearLayout>
+        //review
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/review"
+            android:layout_below="@+id/address">
+        </LinearLayout>
 
-    //review
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/review"
-    android:layout_below="@+id/address">
-    </LinearLayout>
-
-    //note
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-    android:id="@+id/note"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/review">
-    </LinearLayout>
-
-    //image
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_below="@+id/note"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/image_pr"/>
+        //note
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/note"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/review">
+        </LinearLayout>
 
     </RelativeLayout>
 </ScrollView>

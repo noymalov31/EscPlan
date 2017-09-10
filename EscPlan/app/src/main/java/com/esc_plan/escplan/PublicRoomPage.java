@@ -49,6 +49,8 @@ public class PublicRoomPage extends AppCompatActivity {
         name.setText(curr_room.getName());
         TextView rate = (TextView) findViewById(R.id.rate_value);
         rate.setText(Float.toString(curr_room.getRating()));
+        TextView time = (TextView) findViewById(R.id.time_value);
+        time.setText(Float.toString(curr_room.getTime()));
         TextView address = (TextView) findViewById(R.id.adress_value);
         address.setText(curr_room.getAddress());
         TextView phone_num = (TextView) findViewById(R.id.phone_num_value);
@@ -57,7 +59,7 @@ public class PublicRoomPage extends AppCompatActivity {
         TextView website = (TextView) findViewById(R.id.website_value);
         website.setPaintFlags(website.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         TextView genre = (TextView) findViewById(R.id.genre_value);
-        genre.setText(String.valueOf(curr_room.getGenre()));
+        genre.setText(curr_room.getGenre().getHebName());
         TextView reviews = (TextView) findViewById(R.id.reviews_value);
         String all_reviews = "";
 
@@ -89,7 +91,7 @@ public class PublicRoomPage extends AppCompatActivity {
                 MainActivity.escaper().todo(curr_room);
 
                 Toast.makeText(PublicRoomPage.this, curr_room.getName() +
-                        "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                        " התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
             }
         });
 
