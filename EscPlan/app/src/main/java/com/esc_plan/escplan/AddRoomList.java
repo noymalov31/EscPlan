@@ -7,13 +7,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,10 +32,7 @@ import com.esc_plan.escplan.db.Room;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
-import static com.esc_plan.escplan.R.id.add_field;
 
 /**
  * Created by noy on 12/08/2017.
