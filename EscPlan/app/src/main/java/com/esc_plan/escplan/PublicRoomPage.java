@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +60,10 @@ public class PublicRoomPage extends AppCompatActivity {
         genre.setText(String.valueOf(curr_room.getGenre()));
         TextView reviews = (TextView) findViewById(R.id.reviews_value);
         String all_reviews = "";
+
+        ImageView iv = (ImageView) findViewById(R.id.room_image);
+        MainActivity.escaper().getImage(PublicRoomPage.this, curr_room, iv);
+
         if (curr_room.getReviews() != null) {
             for (int i = 0; i < curr_room.getReviews().size(); i++) {
                 all_reviews += curr_room.getReviews().get(i) + "\n";

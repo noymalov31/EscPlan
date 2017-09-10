@@ -1,10 +1,10 @@
 {
 	"public" :
 	{
-		"1" : {
+		"orphanage" : {
 			"address" : "מצודת בית'ר 8, בת ים, ישראל",
 			"genre" : "Horror",
-			"id" : "1",
+			"id" : "orphanage",
 			"name" : "בית היתומים",
 			"peopleCompleted" : 0,
 			"phone" : "0733744376",
@@ -12,10 +12,10 @@
 			"time" : 0,
 			"url" : "http://rsqisrael.com/heb/Booking/room511172"
 		},
-		"2" : {
+		"camp" : {
 			"address" : "אפעל 23, פתח תקווה, ישראל",
 			"genre" : "Action",
-			"id" : "2",
+			"id" : "camp",
 			"name" :  "מחנה 23",
 			"peopleCompleted" : 0,
 			"phone" : "0733745154",
@@ -23,10 +23,10 @@
 			"time" : 0,
 			"url" : "http://breakout.co.il/"
 		},
-		"3" : {
+		"flight301" : {
 			"address" : "שפע טל 6, תל אביב יפו, 67013, ישראל",
 			"genre" : "Action",
-			"id" : "3",
+			"id" : "flight301",
 			"name" :  "טיסה 301",
 			"peopleCompleted" : 0,
 			"phone" : "0733745157",
@@ -34,10 +34,10 @@
 			"time" : 0,
 			"url" : "http://www.questair.co.il/escape-room-flight301"
 		},
-		"4" : {
+		"the-neighbors-mansion" : {
 			"address" : "אליעזר מזל 3, ראשון לציון, ישראל",
 			"genre" : "Horror",
-			"id" : "4",
+			"id" : "the-neighbors-mansion",
 			"name" :  "אחוזת השכן",
 			"peopleCompleted" : 0,
 			"phone" : "0733745153",
@@ -45,10 +45,10 @@
 			"time" : 0,
 			"url" : "http://www.escape-center-israel.com/"
 		},
-		"5" : {
+		"allenby-28" : {
 			"address" : "אלנבי 28, תל אביב יפו, ישראל",
 			"genre" : "Performance",
-			"id" : "5",
+			"id" : "allenby-28",
 			"name" :  "אלנבי 28",
 			"peopleCompleted" : 0,
 			"phone" : "0733745158",
@@ -56,10 +56,10 @@
 			"time" : 0,
 			"url" : "http://artquest.co.il/"
 		},
-		"6" : {
+		"witch-hunt" : {
 			"address" : "אריה שנקר 2, פתח תקווה, ישראל",
 			"genre" : "Fantasy",
-			"id" : "6",
+			"id" : "witch-hunt",
 			"name" :  "ציד מכשפות",
 			"peopleCompleted" : 0,
 			"phone" : "0733745159",
@@ -67,10 +67,10 @@
 			"time" : 0,
 			"url" : "http://www.quest-master.co.il/witch-hunt#orderDate"
 		},
-		"7" : {
+		"white-noise" : {
 			"address" : "יוסף בוקסנבאום 1, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "7",
+			"id" : "white-noise",
 			"name" :  "רעש לבן",
 			"peopleCompleted" : 0,
 			"phone" : "0733745160",
@@ -78,10 +78,10 @@
 			"time" : 0,
 			"url" : "https://vertigotlv.com/whitenoise/"
 		},
-		"8" : {
+		"mercer-112" : {
 			"address" : "שפע טל 6, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "8",
+			"id" : "mercer-112",
 			"name" :  "מרסר 112",
 			"peopleCompleted" : 0,
 			"phone" : "0733745161",
@@ -89,10 +89,10 @@
 			"time" : 0,
 			"url" : "http://www.questair.co.il/escape-room-mercer112"
 		},
-		"9" : {
+		"project-x" : {
 			"address" : "שפע טל 6, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "9",
+			"id" : "project-x",
 			"name" :  "פרויקט איקס",
 			"peopleCompleted" : 0,
 			"phone" : "0733745162",
@@ -100,10 +100,10 @@
 			"time" : 0,
 			"url" : "http://www.questair.co.il/escape-room-projectx"
 		},
-		"10" : {
+		"challenge-pirates-herzliya" : {
 			"address" : "האתגר : ברקת 5, הרצליה, 4651105, ישראל",
 			"genre" : "General",
-			"id" : "10",
+			"id" : "challenge-pirates-herzliya",
 			"name" :  "פיראטים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745163",
@@ -111,10 +111,10 @@
 			"time" : 0,
 			"url" : "http://www.challenge-israel.co.il/product/%D7%94%D7%90%D7%AA%D7%92%D7%A8-%D7%A4%D7%99%D7%A8%D7%90%D7%98%D7%99%D7%9D/"
 		},
-		"11" : {
+		"operation-saffron-roshpina" : {
 			"address" : "ראש פינה, ישראל",
 			"genre" : "General",
-			"id" : "11",
+			"id" : "operation-saffron-roshpina",
 			"name" :  "מבצע זעפרן ראש פינה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745272",
@@ -122,10 +122,10 @@
 			"time" : 0,
 			"url" : "http://www.insideoutroom.co.il/%D7%A8%D7%90%D7%A9-%D7%A4%D7%99%D7%A0%D7%94.html"
 		},
-		"12" : {
+		"the-last-job" : {
 			"address" : "נירים 10, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "12",
+			"id" : "the-last-job",
 			"name" :  "הג'וב האחרון",
 			"peopleCompleted" : 0,
 			"phone" : "0733745273",
@@ -133,10 +133,10 @@
 			"time" : 0,
 			"url" : "http://www.mindrush.co.il/"
 		},
-		"13" : {
+		"1408" : {
 			"address" : "הגביש 4, נתניה, ישראל",
 			"genre" : "Horror",
-			"id" : "13",
+			"id" : "1408",
 			"name" :  "1408",
 			"peopleCompleted" : 0,
 			"phone" : "0733745274",
@@ -144,10 +144,10 @@
 			"time" : 0,
 			"url" : "http://p-room.co.il/#intro1"
 		},
-		"14" : {
+		"jimmywho" : {
 			"address" : "שדרות רוטשילד 22, תל אביב יפו, ישראל",
 			"genre" : "Action",
-			"id" : "14",
+			"id" : "jimmywho",
 			"name" :  "ג'ימי מי?",
 			"peopleCompleted" : 0,
 			"phone" : "0733745276",
@@ -155,10 +155,10 @@
 			"time" : 0,
 			"url" : "http://www.insideoutroom.co.il/%D7%92-%D7%99%D7%9E%D7%99-%D7%9E%D7%99-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91.html"
 		},
-		"15" : {
+		"the-museum" : {
 			"address" : "בני ברית 8, הוד השרון, ישראל",
 			"genre" : "General",
-			"id" : "15",
+			"id" : "the-museum",
 			"name" :  "המוזיאון",
 			"peopleCompleted" : 0,
 			"phone" : "0733745275",
@@ -166,10 +166,10 @@
 			"time" : 0,
 			"url" : "http://escape-plan.co.il/#/top"
 		},
-		"16" : {
+		"piratescape" : {
 			"address" : "דרך מנחם בגין 112, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "16",
+			"id" : "piratescape",
 			"name" :  "צופן הפיראטים - תל אביב",
 			"peopleCompleted" : 0,
 			"phone" : "0733745277",
@@ -177,10 +177,10 @@
 			"time" : 0,
 			"url" : "http://www.piratescape.co.il"
 		},
-		"17" : {
+		"grand-karlibach" : {
 			"address" : "דרך מנחם בגין 65, תל אביב יפו, ישראל",
 			"genre" : "Performance",
-			"id" : "17",
+			"id" : "grand-karlibach",
 			"name" :  "הגראנד קרליבך הוטל - חוויות אימרסיביות",
 			"peopleCompleted" : 0,
 			"phone" : "0733745277",
@@ -188,10 +188,10 @@
 			"time" : 0,
 			"url" : "http://www.grand-karlibach.co.il"
 		},
-		"18" : {
+		"the-horror-circus" : {
 			"address" : "יוסף לוי 3, קריית ביאליק, ישראל",
 			"genre" : "Horror",
-			"id" : "18",
+			"id" : "the-horror-circus",
 			"name" :  "קרקס האימה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745278",
@@ -199,10 +199,10 @@
 			"time" : 0,
 			"url" : "http://lo-st.co.il/room/horror-circus/"
 		},
-		"19" : {
+		"shutlim" : {
 			"address" : "דוד סחרוב 17, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "19",
+			"id" : "shutlim",
 			"name" :  "שתולים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745299",
@@ -210,10 +210,10 @@
 			"time" : 0,
 			"url" : "https://www.lostroom.co.il/shtulim"
 		},
-		"20" : {
+		"careto-raanana" : {
 			"address" : "היצירה 13, רעננה, ישראל",
 			"genre" : "General",
-			"id" : "20",
+			"id" : "careto-raanana",
 			"name" :  "קארטו רעננה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745300",
@@ -221,10 +221,10 @@
 			"time" : 0,
 			"url" : "http://www.insideoutroom.co.il/%D7%A7%D7%90%D7%A8%D7%98%D7%95.html"
 		},
-		"21" : {
+		"OperationSaffron" : {
 			"address" : "היצירה 13, רעננה, ישראל",
 			"genre" : "General",
-			"id" : "21",
+			"id" : "OperationSaffron",
 			"name" :  "מבצע זעפרן",
 			"peopleCompleted" : 0,
 			"phone" : "0733745302",
@@ -232,10 +232,10 @@
 			"time" : 0,
 			"url" : "http://www.insideoutroom.co.il/%D7%9E%D7%91%D7%A6%D7%A2-%D7%96%D7%A2%D7%A4%D7%A8%D7%9F.html"
 		},
-		"22" : {
+		"cleaning-for-mr-richbaum" : {
 			"address" : "האלה 27, אבן יהודה, ישראל",
 			"genre" : "General",
-			"id" : "22",
+			"id" : "cleaning-for-mr-richbaum",
 			"name" :  "לנקות את מר ריצ'באום",
 			"peopleCompleted" : 0,
 			"phone" : "0733745308",
@@ -243,10 +243,10 @@
 			"time" : 0,
 			"url" : "http://www.a-mazed.co.il/%D7%97%D7%93%D7%A8-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%A0%D7%A7%D7%95%D7%AA-%D7%90%D7%AA-%D7%92%D7%99%D7%90-%D7%A8%D7%99%D7%A6%D7%91%D7%90%D7%95%D7%9D/"
 		},
-		"23" : {
+		"the-yellow-sponge" : {
 			"address" : "המוסכים 22, חיפה, ישראל",
 			"genre" : "General",
-			"id" : "23",
+			"id" : "the-yellow-sponge",
 			"name" :  "בובספוג- המתכון הסודי",
 			"peopleCompleted" : 0,
 			"phone" : "0733745330",
@@ -254,10 +254,10 @@
 			"time" : 0,
 			"url" : "http://escapeland.co.il/%D7%94%D7%A1%D7%A4%D7%95%D7%92-%D7%94%D7%A6%D7%94%D7%95%D7%91/"
 		},
-		"24" : {
+		"the-ring" : {
 			"address" : "שדרות הנשיא 104, חיפה, ישראל",
 			"genre" : "General",
-			"id" : "24",
+			"id" : "the-ring",
 			"name" :  "הצלצול וקללת הקלטת",
 			"peopleCompleted" : 0,
 			"phone" : "0733745332",
@@ -265,10 +265,10 @@
 			"time" : 0,
 			"url" : "https://www.escapeclub.co.il/"
 		},
-		"25" : {
+		"the-diamond-heist" : {
 			"address" : "הנופר 3, רעננה, ישראל",
 			"genre" : "General",
-			"id" : "25",
+			"id" : "the-diamond-heist",
 			"name" :  "שוד היהלום",
 			"peopleCompleted" : 0,
 			"phone" : "0733745333",
@@ -276,10 +276,10 @@
 			"time" : 0,
 			"url" : "http://www.Breakaway.co.il//order4"
 		},
-		"26" : {
+		"abandoned-house-mystery" : {
 			"address" : "התעשייה 37, נשר, ישראל",
 			"genre" : "General",
-			"id" : "26",
+			"id" : "abandoned-house-mystery",
 			"name" :  "תעלומת הבית הנטוש",
 			"peopleCompleted" : 0,
 			"phone" : "0733745335",
@@ -287,10 +287,10 @@
 			"time" : 0,
 			"url" : "http://real-quest.co.il"
 		},
-		"27" : {
+		"TheOtherSide" : {
 			"address" : "יוסף קארו 19, תל אביב יפו, ישראל",
 			"genre" : "Horror",
-			"id" : "27",
+			"id" : "TheOtherSide",
 			"name" :  "הצד האחר",
 			"peopleCompleted" : 0,
 			"phone" : "0733745334",
@@ -298,10 +298,10 @@
 			"time" : 0,
 			"url" : "http://mysticroom.co.il/the-other-side"
 		},
-		"28" : {
+		"excalibur" : {
 			"address" : "התעשייה 37, נשר, ישראל",
 			"genre" : "General",
-			"id" : "28",
+			"id" : "excalibur",
 			"name" :  "אקסקליבר",
 			"peopleCompleted" : 0,
 			"phone" : "0733745336",
@@ -309,10 +309,10 @@
 			"time" : 0,
 			"url" : "http://www.escapechallenge.co.il/room/Excalibur"
 		},
-		"29" : {
+		"the-magicians-apprentice" : {
 			"address" : "האלה 27, אבן יהודה, ישראל",
 			"genre" : "General",
-			"id" : "29",
+			"id" : "the-magicians-apprentice",
 			"name" :  "שוליית הקוסם",
 			"peopleCompleted" : 0,
 			"phone" : "0733745337",
@@ -320,10 +320,10 @@
 			"time" : 0,
 			"url" : "http://www.a-mazed.co.il/"
 		},
-		"30" : {
+		"mistaarvim" : {
 			"address" : "הרימון 82, נווה ימין, ישראל",
 			"genre" : "General",
-			"id" : "30",
+			"id" : "mistaarvim",
 			"name" :  "המסתערבים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745339",
@@ -331,10 +331,10 @@
 			"time" : 0,
 			"url" : "http://top-escape.co.il/he/%D7%97%D7%93%D7%A8%D7%99%D7%9D/%D7%9E%D7%A1%D7%AA%D7%A2%D7%A8%D7%91%D7%99%D7%9D"
 		},
-		"31" : {
+		"run-from-venice" : {
 			"address" : "הבונים 4, נתניה, ישראל",
 			"genre" : "General",
-			"id" : "31",
+			"id" : "run-from-venice",
 			"name" :  "הבריחה מונציה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745340",
@@ -342,10 +342,10 @@
 			"time" : 0,
 			"url" : "http://www.escapeout.co.il/escape-from-venice"
 		},
-		"32" : {
+		"operation-seals" : {
 			"address" : "היצירה 11, רעננה, ישראל",
 			"genre" : "General",
-			"id" : "32",
+			"id" : "operation-seals",
 			"name" :  "מבצע לוויתן",
 			"peopleCompleted" : 0,
 			"phone" : "0733745342",
@@ -353,10 +353,10 @@
 			"time" : 0,
 			"url" : "http://www.insideoutroom.co.il/%D7%9E%D7%91%D7%A6%D7%A2-%D7%9C%D7%95%D7%95%D7%99%D7%AA%D7%9F.html"
 		},
-		"33" : {
+		"KgbStillWatching" : {
 			"address" : "קרליבך 3, תל אביב יפו, ישראל",
 			"genre" : "Performance",
-			"id" : "33",
+			"id" : "KgbStillWatching",
 			"name" :  "קגב - עדיין צופים בך",
 			"peopleCompleted" : 0,
 			"phone" : "0733745443",
@@ -364,10 +364,10 @@
 			"time" : 0,
 			"url" : "https://www.escape-game.co.il/#modal"
 		},
-		"34" : {
+		"the-secret-of-the-gallery" : {
 			"address" : "הבונים החופשיים 11, חיפה, ישראל",
 			"genre" : "General",
-			"id" : "34",
+			"id" : "the-secret-of-the-gallery",
 			"name" :  "סוד הגלריה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745344",
@@ -375,10 +375,10 @@
 			"time" : 0,
 			"url" : "http://escapechallenge.co.il/room/SecretOfTheGallery"
 		},
-		"35" : {
+		"the-hostage" : {
 			"address" : "יוסף לוי 3, קריית ביאליק, ישראל",
 			"genre" : "General",
-			"id" : "35",
+			"id" : "the-hostage",
 			"name" :  "בן ערובה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745347",
@@ -386,10 +386,10 @@
 			"time" : 0,
 			"url" : "http://lo-st.co.il/"
 		},
-		"36" : {
+		"torpedo" : {
 			"address" : "משה לוי 9, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "36",
+			"id" : "torpedo",
 			"name" :  "טורפדו",
 			"peopleCompleted" : 0,
 			"phone" : "0733745343",
@@ -397,10 +397,10 @@
 			"time" : 0,
 			"url" : "https://www.mistory.co.il/rooms/torpedo/"
 		},
-		"37" : {
+		"the-grudge" : {
 			"address" : "האשלג 18, חיפה, ישראל",
 			"genre" : "Horror",
-			"id" : "37",
+			"id" : "the-grudge",
 			"name" :  "הטינה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745345",
@@ -408,10 +408,10 @@
 			"time" : 0,
 			"url" : "http://www.questroom.co.il/the-grudge"
 		},
-		"38" : {
+		"ocean" : {
 			"address" : "החשמונאים 100, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "38",
+			"id" : "ocean",
 			"name" :  "אושן 5. תל אביב",
 			"peopleCompleted" : 0,
 			"phone" : "0733745444",
@@ -419,10 +419,10 @@
 			"time" : 0,
 			"url" : "https://www.questomania.co.il/shop/diamond-robbery/?lang=il"
 		},
-		"39" : {
+		"king-arthur" : {
 			"address" : "נחשון 17, פתח תקווה, ישראל",
 			"genre" : "General",
-			"id" : "39",
+			"id" : "king-arthur",
 			"name" :  "המלך ארתור",
 			"peopleCompleted" : 0,
 			"phone" : "0733745348",
@@ -430,10 +430,10 @@
 			"time" : 0,
 			"url" : "http://bestescaperoom.co.il/king-arthur/"
 		},
-		"40" : {
+		"tarzan" : {
 			"address" : "החומה 12, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "40",
+			"id" : "tarzan",
 			"name" :  "טרזן ",
 			"peopleCompleted" : 0,
 			"phone" : "0733745351",
@@ -441,10 +441,10 @@
 			"time" : 0,
 			"url" : "http://drmind.co.il/?app=treatment&id=15"
 		},
-		"41" : {
+		"the-mission-escape-in-sixty-minutes" : {
 			"address" : "נתן ילין מור 17, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "41",
+			"id" : "the-mission-escape-in-sixty-minutes",
 			"name" :  "המשימה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745349",
@@ -452,10 +452,10 @@
 			"time" : 0,
 			"url" : "http://www.escapein60minutes.com"
 		},
-		"42" : {
+		"mystery-in-the-parkm" : {
 			"address" : "סוקולוב 81, הרצליה, ישראל",
 			"genre" : "General",
-			"id" : "42",
+			"id" : "mystery-in-the-parkm",
 			"name" :  "תעלומה במשרדי הפארק - הרצליה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745350",
@@ -463,10 +463,10 @@
 			"time" : 0,
 			"url" : "https://live.vcita.com/site/40423jwlivq9l76g/online-scheduling?action=47umdz49j854l2mh"
 		},
-		"43" : {
+		"the-holy-grail" : {
 			"address" : "התע'ש 24, כפר סבא, ישראל",
 			"genre" : "General",
-			"id" : "43",
+			"id" : "the-holy-grail",
 			"name" :  "אבירי השולחן העגול",
 			"peopleCompleted" : 0,
 			"phone" : "0733745352",
@@ -474,10 +474,10 @@
 			"time" : 0,
 			"url" : "http://www.cerebro.co.il"
 		},
-		"44" : {
+		"sherlock-mission" : {
 			"address" : "אלטלנה 14, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "44",
+			"id" : "sherlock-mission",
 			"name" :  "משימת שרלוק",
 			"peopleCompleted" : 0,
 			"phone" : "0733745353",
@@ -485,10 +485,10 @@
 			"time" : 0,
 			"url" : "http://sherlocked.co.il/escape_rooms/sherlock_mission/"
 		},
-		"45" : {
+		"thebunker" : {
 			"address" : "שדרות שאול המלך 35, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "45",
+			"id" : "thebunker",
 			"name" :  "הבונקר",
 			"peopleCompleted" : 0,
 			"phone" : "0733745354",
@@ -496,10 +496,10 @@
 			"time" : 0,
 			"url" : "https://vertigotlv.com/booking/"
 		},
-		"46" : {
+		"silence-of-the-lambs" : {
 			"address" : "הרימון 82, נווה ימין, ישראל",
 			"genre" : "General",
-			"id" : "46",
+			"id" : "silence-of-the-lambs",
 			"name" :  "שתיקת הכבשים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745355",
@@ -507,10 +507,10 @@
 			"time" : 0,
 			"url" : "http://top-escape.co.il/index.php/he/%D7%97%D7%93%D7%A8%D7%99%D7%9D/%D7%A9%D7%AA%D7%99%D7%A7%D7%AA-%D7%94%D7%9B%D7%91%D7%A9%D7%99%D7%9D"
 		},
-		"47" : {
+		"cube" : {
 			"address" : "נבטים 6, פתח תקווה, ישראל",
 			"genre" : "General",
-			"id" : "47",
+			"id" : "cube",
 			"name" :  "Cube קיוב",
 			"peopleCompleted" : 0,
 			"phone" : "0733745357",
@@ -518,10 +518,10 @@
 			"time" : 0,
 			"url" : "https://www.the-maze.co.il/#rooms"
 		},
-		"48" : {
+		"elmstreet" : {
 			"address" : "הרכבת 22, תל אביב יפו, ישראל",
 			"genre" : "Horror",
-			"id" : "48",
+			"id" : "elmstreet",
 			"name" :  "אלם סטריט",
 			"peopleCompleted" : 0,
 			"phone" : "0733745359",
@@ -529,10 +529,10 @@
 			"time" : 0,
 			"url" : "http://brainit.co.il/f5/room/elm-street-escape-room"
 		},
-		"49" : {
+		"secret-of-the-giant" : {
 			"address" : "יואל משה סלומון 23, ירושלים, ישראל",
 			"genre" : "General",
-			"id" : "49",
+			"id" : "secret-of-the-giant",
 			"name" :  "סודו של הענק",
 			"peopleCompleted" : 0,
 			"phone" : "0733745396",
@@ -540,10 +540,10 @@
 			"time" : 0,
 			"url" : "http://secretroom.co.il/quests/659-2/"
 		},
-		"50" : {
+		"the-sorcerer-village" : {
 			"address" : "המלאכה 8, נתניה, ישראל",
 			"genre" : "Fantasy",
-			"id" : "50",
+			"id" : "the-sorcerer-village",
 			"name" :  "עיירת המכשף",
 			"peopleCompleted" : 0,
 			"phone" : "0733745397",
@@ -551,10 +551,10 @@
 			"time" : 0,
 			"url" : "http://wizardtown.bxperia.co.il/"
 		},
-		"51" : {
+		"temple-ofoanubis" : {
 			"address" : "אורט 14, נתניה, ישראל",
 			"genre" : "General",
-			"id" : "51",
+			"id" : "temple-ofoanubis",
 			"name" :  "מקדש אנוביס - Temple Of Anubis",
 			"peopleCompleted" : 0,
 			"phone" : "0733745400",
@@ -562,10 +562,10 @@
 			"time" : 0,
 			"url" : "http://www.puzzlebox.co.il"
 		},
-		"52" : {
+		"freezer" : {
 			"address" : "מצודת בית'ר 8, בת ים, ישראל",
 			"genre" : "General",
-			"id" : "52",
+			"id" : "freezer",
 			"name" :  "המקפיא",
 			"peopleCompleted" : 0,
 			"phone" : "0733745356",
@@ -573,10 +573,10 @@
 			"time" : 0,
 			"url" : "http://rsqisrael.com/heb/Booking/room885211"
 		},
-		"53" : {
+		"careto-roshpina" : {
 			"address" : "ראש פינה, ישראל",
 			"genre" : "General",
-			"id" : "53",
+			"id" : "careto-roshpina",
 			"name" :  "קארטו ראש פינה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745398",
@@ -584,10 +584,10 @@
 			"time" : 0,
 			"url" : "http://www.insideoutroom.co.il/%D7%A7%D7%90%D7%A8%D7%98%D7%95-%D7%A8%D7%90%D7%A9-%D7%A4%D7%99%D7%A0%D7%94.html"
 		},
-		"54" : {
+		"the-end-of-the-world" : {
 			"address" : "האיזמל 2, נס ציונה, ישראל",
 			"genre" : "General",
-			"id" : "54",
+			"id" : "the-end-of-the-world",
 			"name" :  "סוף העולם",
 			"peopleCompleted" : 0,
 			"phone" : "0733745399",
@@ -595,10 +595,10 @@
 			"time" : 0,
 			"url" : "http://www.realitygames.co.il/%D7%A1%D7%95%D7%A3-%D7%94%D7%A2%D7%95%D7%9C%D7%9D-2/"
 		},
-		"55" : {
+		"the-book-of" : {
 			"address" : "יוסף קארו 19, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "55",
+			"id" : "the-book-of",
 			"name" :  "ספר סודות היקום",
 			"peopleCompleted" : 0,
 			"phone" : "0733745401",
@@ -606,10 +606,10 @@
 			"time" : 0,
 			"url" : "http://mysticroom.co.il/book-of-secrets"
 		},
-		"56" : {
+		"voodoo-inheritance" : {
 			"address" : "הסדנא 13, רעננה, ישראל",
 			"genre" : "General",
-			"id" : "56",
+			"id" : "voodoo-inheritance",
 			"name" :  "הוודו",
 			"peopleCompleted" : 0,
 			"phone" : "0733745402",
@@ -617,10 +617,10 @@
 			"time" : 0,
 			"url" : "http://questime.co.il?src=room_run"
 		},
-		"57" : {
+		"altair" : {
 			"address" : "הרכבת 22, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "57",
+			"id" : "altair",
 			"name" :  "תחנת החלל אלטאיר",
 			"peopleCompleted" : 0,
 			"phone" : "0733745403",
@@ -628,10 +628,10 @@
 			"time" : 0,
 			"url" : "https://brainit.co.il/f4/room/altair_escape_room/"
 		},
-		"58" : {
+		"bank-beersheva" : {
 			"address" : "ההסתדרות 19, באר שבע, ישראל",
 			"genre" : "General",
-			"id" : "58",
+			"id" : "bank-beersheva",
 			"name" :  "שוד בנק באר-שבע",
 			"peopleCompleted" : 0,
 			"phone" : "0733745445",
@@ -639,10 +639,10 @@
 			"time" : 0,
 			"url" : "http://exitroom.co.il/rooms/%D7%97%D7%93%D7%A8-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%A9%D7%95%D7%93-%D7%91%D7%A0%D7%A7-%D7%91%D7%90%D7%A8-%D7%A9%D7%91%D7%A2/"
 		},
-		"59" : {
+		"cave-of-wonders" : {
 			"address" : "הסדנא 11, רעננה, ישראל",
 			"genre" : "General",
-			"id" : "59",
+			"id" : "cave-of-wonders",
 			"name" :  "מערת הפלאים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745405",
@@ -650,10 +650,10 @@
 			"time" : 0,
 			"url" : "https://live.vcita.com/site/rv91kjsbk1vkkwgw/online-scheduling?staff=7xypptfxof5syntp"
 		},
-		"60" : {
+		"ramat-yishai-reactor" : {
 			"address" : "הדקל 2, רמת ישי, ישראל",
 			"genre" : "General",
-			"id" : "60",
+			"id" : "ramat-yishai-reactor",
 			"name" :  "כור גרעיני",
 			"peopleCompleted" : 0,
 			"phone" : "0733745358",
@@ -661,10 +661,10 @@
 			"time" : 0,
 			"url" : "http://exitroom.co.il/rooms/reactor/"
 		},
-		"61" : {
+		"indiana-jones" : {
 			"address" : "יוסף ספיר 9, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "61",
+			"id" : "indiana-jones",
 			"name" :  "אינדיאנה ג'ונס",
 			"peopleCompleted" : 0,
 			"phone" : "0733744372",
@@ -672,10 +672,10 @@
 			"time" : 0,
 			"url" : "http://www.enigma-escaperooms.co.il/"
 		},
-		"62" : {
+		"knights-mistory" : {
 			"address" : "משה לוי 9, ראשון לציון, ישראל",
 			"genre" : "Fantasy",
-			"id" : "62",
+			"id" : "knights-mistory",
 			"name" : "אבירי השולחן העגול ראשל",
 			"peopleCompleted" : 0,
 			"phone" : "0733745404",
@@ -683,10 +683,10 @@
 			"time" : 0,
 			"url" : "https://www.mistory.co.il/rooms/knights/"
 		},
-		"63" : {
+		"IranianThreat" : {
 			"address" : "הבוסתן 35, הרצליה, ישראל",
 			"genre" : "General",
-			"id" : "63",
+			"id" : "IranianThreat",
 			"name" :  "האיום האיראני",
 			"peopleCompleted" : 0,
 			"phone" : "0733745407",
@@ -694,10 +694,10 @@
 			"time" : 0,
 			"url" : "http://www.breakout.co.il"
 		},
-		"64" : {
+		"anna-belle" : {
 			"address" : "פרופ' א.ד. ברגמן 2, רחובות, ישראל",
 			"genre" : "Horror",
-			"id" : "64",
+			"id" : "anna-belle",
 			"name" :  "קללת אנאבל",
 			"peopleCompleted" : 0,
 			"phone" : "0733745408",
@@ -705,10 +705,10 @@
 			"time" : 0,
 			"url" : "http://www.exitgame.co.il/he/Games/9/%D7%A7%D7%9C%D7%9C%D7%AA-%D7%90%D7%A0%D7%90%D7%91%D7%9C"
 		},
-		"65" : {
+		"city-s" : {
 			"address" : "אידלסון 7, תל אביב יפו, ישראל",
 			"genre" : "Performance",
-			"id" : "65",
+			"id" : "city-s",
 			"name" :  "עיר החוטאים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745406",
@@ -716,10 +716,10 @@
 			"time" : 0,
 			"url" : "https://www.logica.games/sinnerscity"
 		},
-		"66" : {
+		"cowboys" : {
 			"address" : "שדרות גיבורי ישראל 24, נתניה, ישראל",
 			"genre" : "General",
-			"id" : "66",
+			"id" : "cowboys",
 			"name" :  "קאובויז",
 			"peopleCompleted" : 0,
 			"phone" : "0733745409",
@@ -727,10 +727,10 @@
 			"time" : 0,
 			"url" : "https://brainit.co.il/f2/room/cowboys/"
 		},
-		"67" : {
+		"bank-robbery" : {
 			"address" : "שדרות ההסתדרות 32, חיפה, ישראל",
 			"genre" : "General",
-			"id" : "67",
+			"id" : "bank-robbery",
 			"name" :  "שוד בנק",
 			"peopleCompleted" : 0,
 			"phone" : "0733745411",
@@ -738,10 +738,10 @@
 			"time" : 0,
 			"url" : "https://www.logica.games/bank"
 		},
-		"68" : {
+		"obsession" : {
 			"address" : "20, קצרין",
 			"genre" : "General",
-			"id" : "68",
+			"id" : "obsession",
 			"name" :  "אובססיה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745413",
@@ -749,10 +749,10 @@
 			"time" : 0,
 			"url" : "https://sherlocked.co.il/escape_rooms/perfume-the-obsession/"
 		},
-		"69" : {
+		"jurassic-park" : {
 			"address" : "יוסף ספיר 9, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "69",
+			"id" : "jurassic-park",
 			"name" :  "פארק היורה",
 			"peopleCompleted" : 0,
 			"phone" : "0733744373",
@@ -760,10 +760,10 @@
 			"time" : 0,
 			"url" : "http://www.enigma-escaperooms.co.il/"
 		},
-		"70" : {
+		"Anthrax" : {
 			"address" : "אלטלנה 14, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "70",
+			"id" : "Anthrax",
 			"name" :  "אנתרקס",
 			"peopleCompleted" : 0,
 			"phone" : "0733745410",
@@ -771,10 +771,10 @@
 			"time" : 0,
 			"url" : "http://sherlocked.co.il/escape_rooms/anthrax/"
 		},
-		"71" : {
+		"mystery-in-the-park" : {
 			"address" : "שטנר 7, ירושלים, ישראל",
 			"genre" : "General",
-			"id" : "71",
+			"id" : "mystery-in-the-park",
 			"name" :  "תעלומה במשרדי הפארק - ירושלים",
 			"peopleCompleted" : 0,
 			"phone" : " 0733745412",
@@ -782,10 +782,10 @@
 			"time" : 0,
 			"url" : "https://live.vcita.com/site/40423jwlivq9l76g/online-scheduling?action=47umdz49j854l2mh"
 		},
-		"72" : {
+		"the-last-station" : {
 			"address" : "נחשון 17, פתח תקווה, ישראל",
 			"genre" : "General",
-			"id" : "72",
+			"id" : "the-last-station",
 			"name" :  "התחנה האחרונה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745432",
@@ -793,10 +793,10 @@
 			"time" : 0,
 			"url" : "http://drmind.co.il/?app=treatment&id=10"
 		},
-		"73" : {
+		"embassy-siege" : {
 			"address" : "אפעל 24, פתח תקווה, ישראל",
 			"genre" : "General",
-			"id" : "73",
+			"id" : "embassy-siege",
 			"name" :  "שגרירות במצור",
 			"peopleCompleted" : 0,
 			"phone" : "0733745415",
@@ -804,10 +804,10 @@
 			"time" : 0,
 			"url" : "https://www.freedomescape.co.il/embassy-area51"
 		},
-		"74" : {
+		"TrappedInTime" : {
 			"address" : "נירים 10, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "74",
+			"id" : "TrappedInTime",
 			"name" :  "לכודים בזמן",
 			"peopleCompleted" : 0,
 			"phone" : "0733745417",
@@ -815,10 +815,10 @@
 			"time" : 0,
 			"url" : "http://www.mindrush.co.il/"
 		},
-		"75" : {
+		"frankenstein" : {
 			"address" : "דרך השרון 12, כפר סבא, ישראל",
 			"genre" : "General",
-			"id" : "75",
+			"id" : "frankenstein",
 			"name" :  "פרנקנשטיין",
 			"peopleCompleted" : 0,
 			"phone" : "0733745414",
@@ -826,10 +826,10 @@
 			"time" : 0,
 			"url" : "https://www.runoutescaperoom.com/"
 		},
-		"76" : {
+		"doomsday" : {
 			"address" : "הדסה 53, באר שבע, ישראל",
 			"genre" : "General",
-			"id" : "76",
+			"id" : "doomsday",
 			"name" :  "שעת חירום",
 			"peopleCompleted" : 0,
 			"phone" : "0733745416",
@@ -837,10 +837,10 @@
 			"time" : 0,
 			"url" : "http://www.escaperoom.co.il/beer-sheva-doomsday"
 		},
-		"77" : {
+		"secret-room" : {
 			"address" : "יואל משה סלומון 16, ירושלים, ישראל",
 			"genre" : "General",
-			"id" : "77",
+			"id" : "secret-room",
 			"name" :  "שבויי המבצר",
 			"peopleCompleted" : 0,
 			"phone" : "0733745418",
@@ -848,10 +848,10 @@
 			"time" : 0,
 			"url" : "http://secretroom.co.il/quests/pobeg-iz-tyurmy/"
 		},
-		"78" : {
+		"da-vinci-code" : {
 			"address" : "שדרות הנשיא 104, חיפה, ישראל",
 			"genre" : "General",
-			"id" : "78",
+			"id" : "da-vinci-code",
 			"name" :  "חדרו הסודי של לאונרדו דה וינצ'י",
 			"peopleCompleted" : 0,
 			"phone" : "0733745419",
@@ -859,10 +859,10 @@
 			"time" : 0,
 			"url" : "https://www.escapeclub.co.il/"
 		},
-		"79" : {
+		"escape-from-cherbourg" : {
 			"address" : "מרכז מסחרי מחניים,  12000, ישראל",
 			"genre" : "General",
-			"id" : "79",
+			"id" : "escape-from-cherbourg",
 			"name" :  "הבריחה משרבורג",
 			"peopleCompleted" : 0,
 			"phone" : "0733745420",
@@ -870,10 +870,10 @@
 			"time" : 0,
 			"url" : "http://www.tnq.co.il"
 		},
-		"80" : {
+		"the-mission-bus" : {
 			"address" : "דוד רמז 4, ירושלים, 9354102, ישראל",
 			"genre" : "General",
-			"id" : "80",
+			"id" : "the-mission-bus",
 			"name" :  "אוטובוס",
 			"peopleCompleted" : 0,
 			"phone" : "0733745421",
@@ -881,10 +881,10 @@
 			"time" : 0,
 			"url" : "http://a-maze.org.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%97%D7%93%D7%A8/"
 		},
-		"81" : {
+		"prison-break" : {
 			"address" : "אצ'ל 6, ראשון לציון, ישראל",
 			"genre" : "General",
-			"id" : "81",
+			"id" : "prison-break",
 			"name" :  "נמלטים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745422",
@@ -892,10 +892,10 @@
 			"time" : 0,
 			"url" : "https://www.escaperoom.co.il/rishon-lezion-prison-break"
 		},
-		"82" : {
+		"AliceInWonderlands" : {
 			"address" : "החשמונאים 100, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "82",
+			"id" : "AliceInWonderlands",
 			"name" :  "עליסה בארץ הפלאות",
 			"peopleCompleted" : 0,
 			"phone" : "0733745424",
@@ -903,10 +903,10 @@
 			"time" : 0,
 			"url" : "https://www.questomania.co.il/shop/alice-in-wonderland/?lang=il"
 		},
-		"83" : {
+		"lord-of-the-rung-the-revenge-of-saruman" : {
 			"address" : "אלנבי 119, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "83",
+			"id" : "lord-of-the-rung-the-revenge-of-saruman",
 			"name" :  "שר הטבעות",
 			"peopleCompleted" : 0,
 			"phone" : "0733745423",
@@ -914,10 +914,10 @@
 			"time" : 0,
 			"url" : "http://escapism.co.il/he/%D7%A9%D7%A8-%D7%94%D7%98%D7%91%D7%A2%D7%95%D7%AA/"
 		},
-		"84" : {
+		"the-crooks" : {
 			"address" : "החשמל, עפולה, ישראל",
 			"genre" : "Performance",
-			"id" : "84",
+			"id" : "the-crooks",
 			"name" :  "הנוכלים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745425",
@@ -925,10 +925,10 @@
 			"time" : 0,
 			"url" : "http://www.pinkdifferent.co.il/"
 		},
-		"85" : {
+		"obscurity" : {
 			"address" : "רבינוביץ 11, חולון, ישראל",
 			"genre" : "General",
-			"id" : "85",
+			"id" : "obscurity",
 			"name" :  "אובסקיוריטי",
 			"peopleCompleted" : 0,
 			"phone" : "0733745428",
@@ -936,10 +936,10 @@
 			"time" : 0,
 			"url" : "http://www.locked-games.com/obscurity"
 		},
-		"86" : {
+		"siryan-captivity" : {
 			"address" : "החרוב, קיבוץ מרחביה, 1910000, ישראל",
 			"genre" : "General",
-			"id" : "86",
+			"id" : "siryan-captivity",
 			"name" :  "בשבי הסורי קיבוץ מרחביה",
 			"peopleCompleted" : 0,
 			"phone" : "0733745426",
@@ -947,10 +947,10 @@
 			"time" : 0,
 			"url" : "http://www.questeam.co.il/cncpt/%D7%91%D7%A9%D7%91%D7%99-%D7%94%D7%A1%D7%95%D7%A8%D7%99/"
 		},
-		"87" : {
+		"PharoahsCurse" : {
 			"address" : "יוסף קארו 19, תל אביב יפו, ישראל",
 			"genre" : "General",
-			"id" : "87",
+			"id" : "PharoahsCurse",
 			"name" :  "קללת הפרעונים",
 			"peopleCompleted" : 0,
 			"phone" : "0733745427",
@@ -958,10 +958,10 @@
 			"time" : 0,
 			"url" : "http://mysticroom.co.il/pharaoh"
 		},
-		"88" : {
+		"the-x-ray-killer" : {
 			"address" : "החרוב, קיבוץ מרחביה, 1910000, ישראל",
 			"genre" : "General",
-			"id" : "88",
+			"id" : "the-x-ray-killer",
 			"name" :  "רוצח הרנטגן",
 			"peopleCompleted" : 0,
 			"phone" : "0733745429",
@@ -969,10 +969,10 @@
 			"time" : 0,
 			"url" : "http://www.questeam.co.il/cncpt/%D7%A8%D7%95%D7%A6%D7%97-%D7%94%D7%A8%D7%A0%D7%98%D7%92%D7%9F/"
 		},
-		"89" : {
+		"breaking-bad" : {
 			"address" : "שלזינגר 1, אשדוד, ישראל",
 			"genre" : "General",
-			"id" : "89",
+			"id" : "breaking-bad",
 			"name" :  "שובר שורות",
 			"peopleCompleted" : 0,
 			"phone" : "0733745430",
@@ -980,10 +980,10 @@
 			"time" : 0,
 			"url" : "http://www.livequest.co.il/%D7%A9%D7%95%D7%91%D7%A8-%D7%A9%D7%95%D7%A8%D7%95%D7%AA/#GmaeReserve"
 		},
-		"90" : {
+		"kidnappedinthailand" : {
 			"address" : "נחשון, פתח תקווה, ישראל",
 			"genre" : "General",
-			"id" : "90",
+			"id" : "kidnappedinthailand",
 			"name" :  "חטופים בתאילנד",
 			"peopleCompleted" : 0,
 			"phone" : "0733745431",
@@ -993,3 +993,4 @@
 		}
 	}
 }
+
