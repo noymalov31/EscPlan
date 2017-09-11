@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.esc_plan.escplan.db.PrivateRoom;
@@ -38,6 +39,7 @@ public class PrivateRoomPage extends AppCompatActivity {
             //add image
             ImageView iv = (ImageView) findViewById(R.id.image_pr);
             MainActivity.escaper().getImage(PrivateRoomPage.this, my_room, iv);
+            RelativeLayout rl = (RelativeLayout) findViewById(R.id.text_photo);
 
             //add review
             if (my_room.getReview()!= null){

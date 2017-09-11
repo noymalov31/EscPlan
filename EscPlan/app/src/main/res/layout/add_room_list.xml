@@ -7,7 +7,8 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/add_room_list">
+        android:id="@+id/add_room_list"
+        android:background="#E0F8F7">
 
         <LinearLayout
             android:layout_width="wrap_content"

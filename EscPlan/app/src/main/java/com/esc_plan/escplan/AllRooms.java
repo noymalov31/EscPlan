@@ -52,6 +52,7 @@ public class AllRooms  extends AppCompatActivity {
 
                 bundle.putInt(getString(R.string.ROOM_TYPE), Type.ALL.ordinal());
                 bundle.putInt(getString(R.string.ROOM_POS), adapter.getRealIndex(position));
+                bundle.putString("src", "All");
                 i.putExtras(bundle);
                 startActivity(i);
             }

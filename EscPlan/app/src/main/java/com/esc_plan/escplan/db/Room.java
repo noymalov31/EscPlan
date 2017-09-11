@@ -15,6 +15,11 @@ public interface Room {
     enum Genre {
         General, Kids, Horror, Fantasy, Action, Performance;
         public static final int length = Genre.values().length;
+        private String[] hebStrings = {"כללי", "ילדים", "אימה", "פנטזיה", "פעולה", "פרפורמנס"};
+
+        public String getHebName() {
+            return hebStrings[this.ordinal()];
+        }
     }
     enum Type {
         ALL, TODO, RECOMMENDED, MINE;

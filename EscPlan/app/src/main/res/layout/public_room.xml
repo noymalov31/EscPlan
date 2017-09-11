@@ -9,257 +9,282 @@
         android:layout_height="fill_parent"
         android:id="@+id/public_room">
 
-    <Button
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/gotomenu"
-        android:id="@+id/gotomenu"
-        android:layout_alignParentLeft="true"
-        />
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gotomenu"
+            android:id="@+id/gotomenu"
+            android:layout_alignParentLeft="true"
+            />
 
-    //room image:
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:id="@+id/room_image"
-        android:layout_below="@+id/gotomenu"
-        android:layout_alignParentRight="true"/>
-
-    //name
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/room_name"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/room_image"
-        android:weightSum="1">
-
-
-        <TextView
+        //room image:
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:typeface="sans"
-            android:textSize="50sp"
-            android:shadowRadius="2"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:id="@+id/name_value"/>
-    </LinearLayout>
+            android:id="@+id/text_photo">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/room_image"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_alignParentRight="true"/>>
 
-    //rate
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rate"
-        android:layout_below="@+id/room_name"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:weightSum="1">
+            //name
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:typeface="sans"
+                android:textSize="50sp"
+                android:shadowRadius="2"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_alignBottom="@+id/room_image"
+                android:textColor="#FFFFFF"
+                android:id="@+id/name_value"/>>
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/rate_header"
+        //rate
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="דירוג: "
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
+            android:id="@+id/rate"
+            android:layout_below="@+id/text_photo"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/rate_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="דירוג: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/rate_value"/>
+        </LinearLayout>
+
+        //time
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/rate_value"/>
-    </LinearLayout>
+            android:id="@+id/time"
+            android:layout_below="@+id/rate"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:weightSum="1">
 
-    //address
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:id="@+id/address"
-        android:layout_below="@+id/rate"
-        android:weightSum="1">
+            <TextView
+                android:id="@+id/time_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="זמן יציאה : "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/time_value"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/address_header"
+        //address
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="כתובת: "
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/address"
+            android:layout_below="@+id/time"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/address_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="כתובת: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/adress_value"/>
+        </LinearLayout>
+
+        //phone number
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/adress_value"/>
-    </LinearLayout>
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/phone_num"
+            android:layout_below="@+id/address"
+            android:weightSum="1">
 
-    //phone number
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/phone_num"
-        android:layout_below="@+id/address"
-        android:weightSum="1">
+            <TextView
+                android:id="@+id/phone_num_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="טלפון: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/phone_num_value"
+                android:onClick="onClickPhone" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/phone_num_header"
+        //website
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="טלפון: "
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/website"
+            android:layout_below="@+id/phone_num"
+            android:layout_alignParentRight="true"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/website_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="אתר החדר: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/website_value"
+                android:onClick="onClickWebsite"
+                android:text="לחץ למעבר לאתר"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp"
+                />
+        </LinearLayout>
+
+        //genre
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/phone_num_value"
-            android:onClick="onClickPhone" />
-    </LinearLayout>
+            android:id="@+id/genre"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_below="@+id/website"
+            android:layout_alignParentRight="true"
+            android:weightSum="1">
 
-    //website
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:id="@+id/website"
-        android:layout_below="@+id/phone_num"
-        android:layout_alignParentRight="true"
-        android:weightSum="1">
+            <TextView
+                android:id="@+id/genre_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="ז'אנר: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/genre_value"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/website_header"
+        //reviews
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="אתר החדר: "
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/reviews"
+            android:layout_below="@+id/genre"
+            android:layout_alignParentRight="true"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/reviews_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="ביקורות: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/reviews_value"/>
+        </LinearLayout>
+
+        //similar_rooms
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/website_value"
-            android:onClick="onClickWebsite"
-            android:text="לחץ למעבר לאתר"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginRight="3dp"
-            android:layout_marginLeft="3dp"
-            />
-    </LinearLayout>
+            android:id="@+id/similar_rooms"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_below="@+id/reviews"
+            android:layout_alignParentRight="true"
+            android:weightSum="1">
 
-    //genre
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/genre"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_below="@+id/website"
-        android:layout_alignParentRight="true"
-        android:weightSum="1">
+            <TextView
+                android:id="@+id/similar_rooms_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="חדרים דומים: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/similar_rooms_value"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/genre_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="ז'אנר: "
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/genre_value"/>
-    </LinearLayout>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:id="@+id/add_to_todo"
+            android:layout_marginBottom="52dp"
+            android:background="@drawable/add_to_todo_btn"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/similar_rooms"
+            android:layout_centerHorizontal="true" />
 
-    //reviews
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:id="@+id/reviews"
-        android:layout_below="@+id/genre"
-        android:layout_alignParentRight="true"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/reviews_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="ביקורות: "
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/reviews_value"/>
-    </LinearLayout>
-
-    //similar_rooms
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/similar_rooms"
-        android:layout_marginRight="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_below="@+id/reviews"
-        android:layout_alignParentRight="true"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/similar_rooms_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.34"
-            android:shadowRadius="2"
-            android:text="חדרים דומים: "
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/similar_rooms_value"/>
-    </LinearLayout>
-
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="45dp"
-        android:id="@+id/add_to_todo"
-        android:layout_marginBottom="52dp"
-        android:background="@drawable/add_to_todo_btn"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/similar_rooms"
-        android:layout_centerHorizontal="true" />
-
-</RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
+</ScrollView>

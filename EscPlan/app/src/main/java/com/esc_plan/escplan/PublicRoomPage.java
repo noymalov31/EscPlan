@@ -2,11 +2,13 @@ package com.esc_plan.escplan;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +25,15 @@ import static com.esc_plan.escplan.db.Room.Type;
 
 public class PublicRoomPage extends AppCompatActivity {
     PublicRoom curr_room;
+    String src;
+    int roomIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.public_room);
 
         Bundle bundle = getIntent().getExtras();
-        int roomIndex = bundle.getInt(getString(R.string.ROOM_POS));
+        roomIndex = bundle.getInt(getString(R.string.ROOM_POS));
         switch (Type.vals[bundle.getInt(getString(R.string.ROOM_TYPE))]) {
             case ALL:
                 curr_room = MainActivity.escaper().getAllRooms().get(roomIndex);
@@ -43,11 +47,18 @@ public class PublicRoomPage extends AppCompatActivity {
             case MINE:
                 return;
         }
+        src = bundle.getString("src");
+        Button btn = (Button)  findViewById(R.id.add_to_todo);
+        if (src.equals("TODO")){
+            btn.setBackgroundResource(R.drawable.add_to_list_btn);
+        }
 
         TextView name = (TextView) findViewById(R.id.name_value);
         name.setText(curr_room.getName());
         TextView rate = (TextView) findViewById(R.id.rate_value);
         rate.setText(Float.toString(curr_room.getRating()));
+        TextView time = (TextView) findViewById(R.id.time_value);
+        time.setText(Float.toString(curr_room.getTime()));
         TextView address = (TextView) findViewById(R.id.adress_value);
         address.setText(curr_room.getAddress());
         TextView phone_num = (TextView) findViewById(R.id.phone_num_value);
@@ -56,9 +67,13 @@ public class PublicRoomPage extends AppCompatActivity {
         TextView website = (TextView) findViewById(R.id.website_value);
         website.setPaintFlags(website.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         TextView genre = (TextView) findViewById(R.id.genre_value);
-        genre.setText(String.valueOf(curr_room.getGenre()));
+        genre.setText(curr_room.getGenre().getHebName());
         TextView reviews = (TextView) findViewById(R.id.reviews_value);
         String all_reviews = "";
+
+        ImageView iv = (ImageView) findViewById(R.id.room_image);
+        MainActivity.escaper().getImage(PublicRoomPage.this, curr_room, iv);
+
         if (curr_room.getReviews() != null) {
             for (int i = 0; i < curr_room.getReviews().size(); i++) {
                 all_reviews += curr_room.getReviews().get(i) + "\n";
@@ -81,10 +96,24 @@ public class PublicRoomPage extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                MainActivity.escaper().todo(curr_room);
+                if (src.equals("All")) {
+                    MainActivity.escaper().todo(curr_room);
 
-                Toast.makeText(PublicRoomPage.this, curr_room.getName() +
-                        "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PublicRoomPage.this, curr_room.getName() +
+                            " התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(PublicRoomPage.this, TodoList.class);
+                    startActivity(i);
+                    finish();
+                }
+                else{
+                    Intent i = new Intent(PublicRoomPage.this, AddRoomList.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.MINE.ordinal());
+                    bundle.putInt(getString(R.string.ROOM_POS), roomIndex);
+                    i.putExtras(bundle);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
 
