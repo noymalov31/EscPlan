@@ -1,5 +1,7 @@
 const functions = require('firebase-functions');
 const TOP_USR_CORR = 11;
+const THRES = 5;
+const SIMILARS = 3;
 
 exports.ranker = functions.database.ref('/ranks/{uid}').onWrite(event => {
 	const newUid = event.params.uid;
@@ -51,6 +53,7 @@ exports.rankAll = functions.https.onRequest((request, response) => {
 	root.child('/ranks').once('value').then(snap => {
 		snap.forEach(function(child) {
 			scores = [];
+			correlation = [];
 			var childRank = child.val();
 			var childRankRooms = Object.keys(childRank);
 
@@ -80,15 +83,46 @@ exports.rankAll = functions.https.onRequest((request, response) => {
 			for(var key in scores) {
 				if(scores.hasOwnProperty(key)) {
 					scores[key] /= maxVal;
+					if (score[key] < THRES) {
+						delete score[key];
+					}
 				}
 			}
+			promises.push(root.child(`${child.key}/recommended`).set(scores));
 		});
-		promises.push(root.child(`${child.key}/recommended`).set(scores));
+		return Promise.all(promises).then(results => {
+			response.send("Ranked sucessfully!");
+		});
 	});
+});
 
 
-	return Promise.all(promises).then(results => {
-		response.send("Ranked sucessfully!");
+exports.calcSimilarRooms = functions.https.onRequest((request, response) => {
+	var pubRef = functions.database.ref('/public');
+	var promises = [];
+
+	pubRef.once('value').then(snap => {
+		snap.forEach(function(child) {
+			scores = [];
+			var childRank = child.child('/reviewsBag').val();
+
+			snap.forEach(function(brother) {
+				if (child.key != brother.key) {
+					var brotherRank = brother.child('/reviewsBag').val();
+					correlation[child.key] = corr(childRank, brotherRank);
+				}
+			});
+			var topCorrelated = Object.keys(correlation).sort(function(a, b) {
+				return correlation[a] - correlation[b];
+			}).slice(0,3);
+			for (i = 0; i < SIMILARS, ; i++) {
+				scores[i] = topCorrelated[i];
+			}
+			promises.push(pubRef.child(`${child.key}/similarRooms`).set(scores));
+		});
+		return Promise.all(promises).then(results => ={
+			response.send("Ranked sucessfully!");
+		});
 	});
 });
 
