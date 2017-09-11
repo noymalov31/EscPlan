@@ -67,8 +67,22 @@ public class AllRooms  extends AppCompatActivity {
                         MainActivity.escaper().todo(adapter.getItem(position));
 
                         Toast.makeText(AllRooms.this, adapter.getItem(position).getName() +
-                                "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                                " התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(AllRooms.this, TodoList.class);
+                        startActivity(i);
+                        finish();
 
+                    }
+                });
+                b.setNeutralButton("הוסף לרשימה שלי", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent i = new Intent(AllRooms.this, AddRoomList.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.TODO.ordinal());
+                        bundle.putInt(getString(R.string.ROOM_POS), position);
+                        i.putExtras(bundle);
+                        startActivity(i);
+                        finish();
                     }
                 });
 

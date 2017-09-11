@@ -14,12 +14,12 @@
         android:layout_toEndOf="@+id/gotomenu">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/mylist_header"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_height="80dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:background="@drawable/mylist_header2" />
+            android:background="@drawable/mylist_header3" />
 
     </LinearLayout>
 

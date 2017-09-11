@@ -15,10 +15,10 @@
         android:layout_toEndOf="@+id/gotomenu">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/todo_header"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:background="@drawable/todo_header" />
+            android:layout_height="80dp"
+            android:background="@drawable/todo_header1" />
     </LinearLayout>
 
     <ListView

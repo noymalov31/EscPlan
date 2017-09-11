@@ -17,10 +17,10 @@
         <TextView
             android:id="@+id/header_text"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:background="@drawable/all_rooms_header" />
+            android:background="@drawable/all_rooms_header1" />
     </LinearLayout>
 
     <RelativeLayout

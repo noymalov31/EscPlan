@@ -6,16 +6,12 @@
     tools:context="com.esc_plan.escplan.MainActivity"
     android:background="@drawable/locked1">
 
-
-    <Button
-        android:id="@+id/Recommended_button"
-        android:layout_width="155dp"
-        android:layout_height="95dp"
-        android:background="@drawable/recommended_button1"
-        android:layout_above="@+id/MyList_button"
-        android:layout_marginLeft="10dp"
-         />
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp"
+    android:id="@+id/upbtn">
     <Button
         android:id="@+id/TODO_button"
         android:layout_width="155dp"
@@ -23,8 +19,19 @@
         android:background="@drawable/todo_button1"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="36dp" />
+
+    <Button
+        android:id="@+id/Recommended_button"
+        android:layout_width="155dp"
+        android:layout_height="95dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/recommended_button1" />
+</RelativeLayout>
 
     <Button
         android:id="@+id/MyList_button"
@@ -32,11 +39,12 @@
         android:layout_height="115dp"
         android:background="@drawable/my_list_button2"
         android:layout_marginTop="42dp"
-        android:layout_below="@+id/TODO_button"
-        android:layout_alignEnd="@+id/TODO_button"
-        android:layout_marginRight="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_alignStart="@+id/Recommended_button" />
+        android:layout_below="@+id/upbtn"
+        android:layout_alignEnd="@+id/upbtn"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_alignStart="@+id/upbtn" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
