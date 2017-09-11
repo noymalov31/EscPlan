@@ -59,7 +59,7 @@ public class Recommended extends AppCompatActivity {
                         MainActivity.escaper().todo(recommendedItems.get(position));
 
                         Toast.makeText(Recommended.this, recommendedItems.get(position).getName() +
-                                        "התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                                        " התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
 
                     }
                 });

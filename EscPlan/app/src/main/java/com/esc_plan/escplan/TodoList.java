@@ -49,6 +49,7 @@ public class TodoList extends AppCompatActivity {
 
                 bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.TODO.ordinal());
                 bundle.putInt(getString(R.string.ROOM_POS), position);
+                bundle.putString("src", "TODO");
                 i.putExtras(bundle);
                 startActivity(i);
             }
