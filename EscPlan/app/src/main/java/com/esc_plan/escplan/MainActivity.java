@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        setContentView(R.layout.main_page);
         escaper = new Escaper(authenticator.getUserString());
+        setContentView(R.layout.main_page);
         Button my_list_btn=(Button)findViewById(R.id.MyList_button);
         my_list_btn.setOnClickListener(new View.OnClickListener() {
 
