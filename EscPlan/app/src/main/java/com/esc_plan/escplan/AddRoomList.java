@@ -134,8 +134,7 @@ public class AddRoomList extends AppCompatActivity {
 
                 String rate = rate_sp.getSelectedItem().toString();
                 PrivateRoom new_room = new PrivateRoom(selectedRoom, Integer.valueOf(rate));
-
-
+                removeFromTodo(selectedRoom);
 
                 //add review
                 TextView review_value = (TextView) findViewById(R.id.review_value_i);
@@ -338,7 +337,11 @@ public class AddRoomList extends AppCompatActivity {
         return image;
     }
 
-
+    private void removeFromTodo (PublicRoom curr_room){
+        try {
+            MainActivity.escaper().untodo(curr_room);
+        } catch (Exception e){}
+    }
 
 
 
