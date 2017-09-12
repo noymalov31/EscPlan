@@ -79,11 +79,10 @@ public class AllRooms  extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         Intent i = new Intent(AllRooms.this, AddRoomList.class);
                         Bundle bundle = new Bundle();
-                        bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.TODO.ordinal());
+                        bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.ALL.ordinal());
                         bundle.putInt(getString(R.string.ROOM_POS), position);
                         i.putExtras(bundle);
                         startActivity(i);
-                        finish();
                     }
                 });
 
