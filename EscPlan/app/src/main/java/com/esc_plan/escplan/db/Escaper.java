@@ -33,6 +33,9 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -277,6 +280,12 @@ public class Escaper implements Serializable{
                     recommends.put(recSnap.getKey(), recSnap.getValue(Integer.class));
                     recommendedRooms.add(getPublicById(recSnap.getKey()));
                 }
+                Collections.sort(recommendedRooms, new Comparator<PublicRoom>() {
+                    @Override
+                    public int compare(PublicRoom room, PublicRoom other) {
+                        return recommends.get(other.getId()).compareTo(recommends.get(room.getId()));
+                    }
+                });
                 notifyDataChange();
             }
 
@@ -400,6 +409,12 @@ public class Escaper implements Serializable{
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Collections.sort(allRooms, new Comparator<PublicRoom>() {
+                    @Override
+                    public int compare(PublicRoom room, PublicRoom other) {
+                        return Float.compare(other.getRating(), room.getRating());
+                    }
+                });
                 setMyRoomsEvents();
                 setTodoEvents();
                 setRecommendedEvents();

@@ -83,7 +83,6 @@ public class AllRooms  extends AppCompatActivity {
                         bundle.putInt(getString(R.string.ROOM_POS), position);
                         i.putExtras(bundle);
                         startActivity(i);
-                        finish();
                     }
                 });
 
@@ -124,6 +123,7 @@ public class AllRooms  extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         MainActivity.escaper().setCurrAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     @Override

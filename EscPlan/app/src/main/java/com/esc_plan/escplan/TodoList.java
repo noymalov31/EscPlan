@@ -158,6 +158,7 @@ public class TodoList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         MainActivity.escaper().setCurrAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     @Override

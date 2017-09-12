@@ -100,8 +100,12 @@ public class PublicRoom implements Room, Serializable {
             this.rating = ((this.rating * this.peopleCompleted) + newRoom.getRating())
                     / (this.peopleCompleted + 1);
             if (newRoom.getTime() != 0) {
-                this.time = ((this.time * this.peopleCompleted) + newRoom.getTime())
-                        / (this.peopleCompleted + 1);
+                if (this.time == 0) {
+                    this.time = newRoom.getTime();
+                } else {
+                    this.time = ((this.time * this.peopleCompleted) + newRoom.getTime())
+                            / (this.peopleCompleted + 1);
+                }
             }
 
         }
@@ -147,7 +151,7 @@ public class PublicRoom implements Room, Serializable {
 
     @Override
     public float getRating() {
-        return rating;
+        return (float) (Math.round(rating *100)) / 100;
     }
 
     @Override
