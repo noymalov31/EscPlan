@@ -136,6 +136,7 @@ public class AddRoomList extends AppCompatActivity {
                 PrivateRoom new_room = new PrivateRoom(selectedRoom, Integer.valueOf(rate));
 
 
+
                 //add review
                 TextView review_value = (TextView) findViewById(R.id.review_value_i);
                 if (review_value != null) {
@@ -336,6 +337,8 @@ public class AddRoomList extends AppCompatActivity {
         parcelFileDescriptor.close();
         return image;
     }
+
+
 
 
 

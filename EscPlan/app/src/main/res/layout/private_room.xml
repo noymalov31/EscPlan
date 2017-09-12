@@ -15,7 +15,7 @@
             android:layout_height="20dp"
             android:background="@drawable/gotomenu"
             android:id="@+id/gotomenu"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             />
 
         //room image:
@@ -29,7 +29,7 @@
                 android:id="@+id/image_pr"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentEnd="true"/>
 
             //name
             <TextView
@@ -58,6 +58,7 @@
             android:id="@+id/rate"
             android:layout_below="@+id/sep"
             android:layout_alignParentRight="true"
+            android:gravity="end"
             android:layout_marginTop="10dp"
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
@@ -88,7 +89,7 @@
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
             android:id="@+id/date"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/rate">
         </LinearLayout>
 
@@ -99,7 +100,7 @@
             android:orientation="horizontal"
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:id="@+id/partners"
             android:layout_below="@+id/date">
         </LinearLayout>
@@ -108,7 +109,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:orientation="horizontal"
             android:id="@+id/time"
             android:layout_marginRight="6dp"
@@ -122,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:orientation="horizontal"
             android:id="@+id/address"
             android:layout_below="@+id/time">
@@ -135,7 +136,7 @@
             android:orientation="horizontal"
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:id="@+id/review"
             android:layout_below="@+id/address">
         </LinearLayout>

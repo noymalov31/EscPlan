@@ -1,6 +1,7 @@
 package com.esc_plan.escplan;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         AuthActivity authenticator = new AuthActivity();
         if (authenticator.getUserString() == null) {

@@ -52,8 +52,10 @@ public class AllRoomsListAdapter extends ArrayAdapter<PublicRoom> {
         PublicRoom curr_room = getItem(position);
         roomName = (TextView) v.findViewById(R.id.name);
         roomName.setText(curr_room.getName());
-        roomRate = (TextView) v.findViewById(R.id.rate);
-        roomRate.setText(Float.toString(curr_room.getRating()));
+        roomRate = (TextView) v.findViewById(R.id.room_rate);
+        //roomRate.setText(Float.toString(curr_room.getRating()));
+        roomRate.setText(String.format("%.2f",curr_room.getRating()));
+
         return v;
     }
 
