@@ -43,6 +43,7 @@ public class Recommended extends AppCompatActivity {
 
                 bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.RECOMMENDED.ordinal());
                 bundle.putInt(getString(R.string.ROOM_POS), position);
+                bundle.putString("src", "RECOMMENDED");
                 i.putExtras(bundle);
                 startActivity(i);
             }
