@@ -120,7 +120,7 @@ exports.calcSimilarRooms = functions.https.onRequest((request, response) => {
 			}
 			promises.push(pubRef.child(`${child.key}/similarRooms`).set(scores));
 		});
-		return Promise.all(promises).then(results => ={
+		return Promise.all(promises).then(results => {
 			response.send("Ranked sucessfully!");
 		});
 	});
