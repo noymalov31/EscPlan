@@ -58,6 +58,9 @@ public class RecommendedAdapter  extends ArrayAdapter<PublicRoom> {
         }
         else if (coorelation > 85) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+        } else {
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
+
         }
 
 
