@@ -221,6 +221,35 @@
                 android:id="@+id/genre_value"/>
         </LinearLayout>
 
+        //similar_rooms
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/similar_rooms"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_below="@+id/genre"
+            android:layout_alignParentRight="true"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/similar_rooms_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:shadowRadius="2"
+                android:text="חדרים דומים: "
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="25sp" />
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/similar_rooms_value"
+                android:textSize="20sp"
+                android:layout_below="@+id/header" />
+        </LinearLayout>
+
         //reviews
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -228,7 +257,7 @@
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
             android:id="@+id/reviews"
-            android:layout_below="@+id/genre"
+            android:layout_below="@+id/similar_rooms"
             android:layout_alignParentRight="true"
             android:weightSum="1">
 
@@ -250,34 +279,6 @@
                 android:layout_below="@+id/reviews_header"/>
         </RelativeLayout>
 
-        //similar_rooms
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/similar_rooms"
-            android:layout_marginRight="6dp"
-            android:layout_marginLeft="6dp"
-            android:layout_below="@+id/reviews"
-            android:layout_alignParentRight="true"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/similar_rooms_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.34"
-                android:shadowRadius="2"
-                android:text="חדרים דומים: "
-                android:textStyle="bold"
-                android:textColor="@android:color/holo_blue_light"
-                android:textSize="25sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:id="@+id/similar_rooms_value"/>
-        </LinearLayout>
-
         <Button
             android:layout_width="80dp"
             android:layout_height="45dp"
@@ -285,7 +286,7 @@
             android:layout_marginBottom="52dp"
             android:background="@drawable/add_to_todo_btn"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/similar_rooms"
+            android:layout_below="@+id/reviews"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

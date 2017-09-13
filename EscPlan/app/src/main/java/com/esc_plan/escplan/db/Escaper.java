@@ -262,7 +262,7 @@ public class Escaper implements Serializable{
 
     }
 
-    private PublicRoom getPublicById(String key) {
+    public PublicRoom getPublicById(String key) {
         for (int i = 0; i < allRooms.size(); i++) {
             if (allRooms.get(i).getId().equals(key)) {
                 return allRooms.get(i);
@@ -270,6 +270,16 @@ public class Escaper implements Serializable{
         }
         return null;
     }
+
+    public Integer getPosById(String key) {
+        for (int i = 0; i < allRooms.size(); i++) {
+            if (allRooms.get(i).getId().equals(key)) {
+                return i;
+            }
+        }
+        return null;
+    }
+
 
     private void setRecommendedEvents() {
         dbRefRecommendedRooms.addListenerForSingleValueEvent(new ValueEventListener() {

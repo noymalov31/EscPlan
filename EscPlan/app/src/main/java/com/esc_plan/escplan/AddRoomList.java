@@ -45,6 +45,7 @@ public class AddRoomList extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
     private String selectedImagePath;
     private String filemanagerstring;
+    private Room.Type source = null;
     AutoCompleteTextView autoCompleteText;
 
     private PublicRoom selectedRoom = null;
@@ -63,8 +64,8 @@ public class AddRoomList extends AppCompatActivity {
         String room_name = "";
         if(bundle != null ) {
             int roomIndex = bundle.getInt(getString(R.string.ROOM_POS));
-
-            switch (Room.Type.vals[bundle.getInt(getString(R.string.ROOM_TYPE))]) {
+            source = Room.Type.vals[bundle.getInt(getString(R.string.ROOM_TYPE))];
+            switch (source) {
                 case ALL:
                     selectedRoom = MainActivity.escaper().getAllRooms().get(roomIndex);
                     break;
@@ -187,6 +188,10 @@ public class AddRoomList extends AppCompatActivity {
                 }
 
                 Toast.makeText(AddRoomList.this, "room added successfully ", Toast.LENGTH_SHORT).show();
+                if(source == Room.Type.ALL) {
+                    Intent i = new Intent(AddRoomList.this, MyList.class);
+                    startActivity(i);
+                }
                 finish();
 
             }

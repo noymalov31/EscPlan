@@ -6,12 +6,16 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.esc_plan.escplan.db.Escaper;
 import com.esc_plan.escplan.db.PublicRoom;
 import com.esc_plan.escplan.db.Room;
 
@@ -27,6 +31,8 @@ public class PublicRoomPage extends AppCompatActivity {
     PublicRoom curr_room;
     String src;
     int roomIndex;
+    private BaseRoomsAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,14 +87,31 @@ public class PublicRoomPage extends AppCompatActivity {
             }
             reviews.setText(all_reviews);
         }
-        TextView similar_rooms_value = (TextView) findViewById(R.id.similar_rooms_value);
-        String all_similar = "";
+        ListView similar_rooms_value = (ListView) findViewById(R.id.similar_rooms_value);
+        ArrayList<Integer> all_similar = new ArrayList();
         if (curr_room.getSimilarRooms() != null) {
             for (int i = 0; i < curr_room.getSimilarRooms().size(); i++) {
-                all_similar += curr_room.getSimilarRooms().get(i) + "\n";
+                all_similar.add(MainActivity.escaper().getPosById(curr_room.getSimilarRooms().get(i)));
 
             }
-            similar_rooms_value.setText(all_similar);
+            adapter = new BaseRoomsAdapter(getApplicationContext(), R.layout.base_list_item, all_similar);
+            similar_rooms_value.setAdapter(adapter);
+
+
+            similar_rooms_value.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                    Intent i = new Intent(PublicRoomPage.this, PublicRoomPage.class);
+                    Bundle bundle = new Bundle();
+
+                    bundle.putInt(getString(R.string.ROOM_TYPE), Type.ALL.ordinal());
+                    bundle.putInt(getString(R.string.ROOM_POS), adapter.getItem(position));
+                    bundle.putString("src", "All");
+                    i.putExtras(bundle);
+                    startActivity(i);
+                    finish();
+                }
+            });
         }
 
         Button to_todo = (Button) findViewById(R.id.add_to_todo);

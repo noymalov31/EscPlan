@@ -71,7 +71,6 @@ public class AllRooms  extends AppCompatActivity {
                                 " התווסף בהצלחה!", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(AllRooms.this, TodoList.class);
                         startActivity(i);
-                        finish();
 
                     }
                 });
@@ -79,7 +78,7 @@ public class AllRooms  extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         Intent i = new Intent(AllRooms.this, AddRoomList.class);
                         Bundle bundle = new Bundle();
-                        bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.MINE.ordinal());
+                        bundle.putInt(getString(R.string.ROOM_TYPE), Room.Type.ALL.ordinal());
                         bundle.putInt(getString(R.string.ROOM_POS), position);
                         i.putExtras(bundle);
                         startActivity(i);
