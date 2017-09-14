@@ -129,9 +129,8 @@ public class AuthActivity extends AppCompatActivity implements LoaderCallbacks<C
             }
         });
 
-        String googleClientId = "632728554736-8jqr49784kmugvr0qdth0ip0vpkammg1.apps.googleusercontent.com";
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(googleClientId)
+                .requestIdToken(getString(R.string.def_token))
                 .requestEmail()
                 .build();
 
@@ -364,8 +363,7 @@ public class AuthActivity extends AppCompatActivity implements LoaderCallbacks<C
             GoogleSignInAccount account = result.getSignInAccount();
             firebaseAuthWithGoogle(account);
         } else {
-            Toast.makeText(this, "You have to connect in order to use EscPlan!", Toast.LENGTH_LONG).show();
-            finish();
+            Toast.makeText(this, "Google couldn't authenticate you. Try authenticate with email and password", Toast.LENGTH_LONG).show();
             // Signed out, show unauthenticated UI.
         }
     }
